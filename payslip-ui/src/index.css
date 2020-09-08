@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+}
+.container {
+  display: flex;
+}
+.text-align {
+  align-items: center;
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+  border-bottom: 1px solid green;
+}
+.sidebar {
+  width: 15vw;
+  border-right: 1px solid green;
+  height: 100vh;
+  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+}
+.date-info {
+  height: 50px;
+}
+.app-options {
+  margin-top: 40px;
+  width: 100%;
+}
+.app-options-group {
+  display: flex;
+  padding: 20px;
+  font-size: 16px;
+  width: 100%;
+  justify-content: flex-start;
+}
+.app-options-group div {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.app-options-group:hover {
+  background-color: #edeff3;
+  border-radius: 50px;
+  width: inherit;
+  cursor: pointer;
+  transition: all 100ms ease-in;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+.navbar {
+  width: 85vw;
+  height: 50px;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 700px) {
+  .app-options-group {
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    border: none;
+  }
+  .app-options-group div:nth-of-type(2) {
+    display: none;
+  }
+  .text-align {
+    font-size: 0.8rem;
+  }
+}

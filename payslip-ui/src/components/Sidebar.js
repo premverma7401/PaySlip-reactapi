@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { IoIosCreate, IoIosList } from 'react-icons/io';
 import { HiOutlineClipboardList } from 'react-icons/hi';
 import { FaMoneyCheckAlt } from 'react-icons/fa';
@@ -6,8 +6,6 @@ import { MdAttachMoney } from 'react-icons/md';
 import AppOptions from '../common/AppOptions';
 import { NavLink } from 'react-router-dom';
 const Sidebar = () => {
-  const [linkName, setLinkName] = useState('Dashboard');
-
   return (
     <div className="sidebar ">
       <div className="date-info text-align">{new Date().toDateString()}</div>

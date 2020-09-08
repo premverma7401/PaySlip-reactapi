@@ -1,7 +1,13 @@
 import React from 'react';
+import Navbar from './Navbar';
 
 const ViewEmployees = () => {
-  return <div>this is view employee list component.</div>;
+  return (
+    <div>
+      <Navbar title="View Employee" />
+      this is view employee list component.
+    </div>
+  );
 };
 
 export default ViewEmployees;

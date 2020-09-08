@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navbar = ({ title }) => {
+const Navbar = ({ title = 'Dashboard' }) => {
   return <div className="navbar text-align">{title}</div>;
 };
 

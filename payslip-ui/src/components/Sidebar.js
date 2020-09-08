@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { IoIosCreate, IoIosList } from 'react-icons/io';
 import { HiOutlineClipboardList } from 'react-icons/hi';
+import { FaMoneyCheckAlt } from 'react-icons/fa';
 import { MdAttachMoney } from 'react-icons/md';
-import { AiOutlineFolderView } from 'react-icons/ai';
 import AppOptions from '../common/AppOptions';
 import { NavLink } from 'react-router-dom';
 const Sidebar = () => {
@@ -22,7 +22,7 @@ const Sidebar = () => {
           <AppOptions text="Generate Payslip" Icon={<MdAttachMoney />} />
         </NavLink>
         <NavLink to={'/viewpay'}>
-          <AppOptions text="View Payslip" Icon={<AiOutlineFolderView />} />
+          <AppOptions text="View Payslip" Icon={<FaMoneyCheckAlt />} />
         </NavLink>
         <NavLink to={'/payrecord'}>
           <AppOptions text="Pay Records" Icon={<HiOutlineClipboardList />} />

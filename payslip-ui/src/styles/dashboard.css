@@ -1,14 +1,15 @@
 .sidebar {
   width: 15vw;
-  border-right: 1px solid green;
+  border-right: 1px solid #6a85b6 ;
   height: 100vh;
-  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+  background-image: linear-gradient(to top, #5a5757 0%, #333333 100%);
 }
 .date-info {
   height: 50px;
+  color: #ffffff;
 }
 .app-options {
-  margin-top: 40px;
+  margin-top: 60px;
   width: 100%;
 }
 .app-options-group {
@@ -20,11 +21,12 @@
 }
 .app-options-group div {
   padding: 0 10px;
-  cursor: pointer;
+  cursor: pointer; 
+  color: #ffffff;
 }
 
 .app-options-group:hover {
-  background-color: #edeff3;
+  background-color: #8d9097;
   border-radius: 50px;
   width: inherit;
   cursor: pointer;
@@ -38,7 +40,8 @@
 .navbar {
   width: 85vw;
   height: 50px;
-  background-color: #fff;
+  background:#333;
+  color: #ffffff;
 }
 
 @media screen and (max-width: 700px) {

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import './styles/dashboard.css';
-import './styles/createEmployee.css';
+import './styles/viewEmployee.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

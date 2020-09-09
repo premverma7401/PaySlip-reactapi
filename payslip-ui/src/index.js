@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 import './index.css';
 import './styles/dashboard.css';
-import App from './App';
+import './styles/createEmployee.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

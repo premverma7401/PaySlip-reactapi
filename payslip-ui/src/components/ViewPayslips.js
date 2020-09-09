@@ -5,7 +5,6 @@ const ViewPayslips = () => {
   return (
     <div>
       <Navbar title="View Payslips" />
-      View all payslips
     </div>
   );
 };

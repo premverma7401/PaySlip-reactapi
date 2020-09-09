@@ -10,3 +10,18 @@ const App = () => {
 };
 
 export default App;
+
+/* 
+Sequence of the components.
+Index.js is main-------- we dont put any code... only config code comes here...
+app.js ------------ Routing...FIrst component of the app.
+Features and there components..
+MainDashboard
+ 1. Sidebar
+ 2. 
+
+
+
+
+
+*/

@@ -5,7 +5,10 @@ const CreateEmployee = () => {
   return (
     <div>
       <Navbar title="Create Employee" />
-      This is create employee component
+      <div className="main-create-emp">
+        dasdsjao
+        <input type="text" />
+      </div>
     </div>
   );
 };

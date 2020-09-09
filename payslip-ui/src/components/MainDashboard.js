@@ -7,6 +7,8 @@ import ViewEmployees from './ViewEmployees';
 import CreatePayslip from './CreatePayslip';
 import ViewPayslips from './ViewPayslips';
 import PayRecords from './PayRecords';
+import Sample from './Sample';
+import Information from './Information';
 const MainDashboard = () => {
   return (
     <div className="container">
@@ -15,11 +17,13 @@ const MainDashboard = () => {
       <div className="main-content">
         <Switch>
           <Route exact path="/" component={Navbar} />
-          <Route exact path="/createemp" component={CreateEmployee} />
+          <Route path="/info" component={Information} />
+          <Route path="/createemp" component={CreateEmployee} />
           <Route path="/viewemp" component={ViewEmployees} />
           <Route path="/createpay" component={CreatePayslip} />
           <Route path="/viewpay" component={ViewPayslips} />
           <Route path="/payrecord" component={PayRecords} />
+          <Route path="/prem" component={Sample} />
         </Switch>
       </div>
     </div>

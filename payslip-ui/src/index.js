@@ -4,6 +4,7 @@ import App from './App';
 import './index.css';
 import './styles/dashboard.css';
 import './styles/viewEmployee.css';
+import './styles/ViewPayslips.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

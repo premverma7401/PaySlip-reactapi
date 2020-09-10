@@ -5,6 +5,7 @@ import './index.css';
 import './styles/dashboard.css';
 import './styles/viewEmployee.css';
 import './styles/ViewPayslips.css';
+import './styles/CreateEmployee.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

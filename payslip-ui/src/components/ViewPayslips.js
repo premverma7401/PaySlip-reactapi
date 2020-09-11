@@ -5,8 +5,8 @@ const ViewPayslips = () => {
   return (
     <div>
       <Navbar title="View Payslips" />
-      <div> 
-        <div className="payslip-heading">
+      <div className="parent"> 
+        <div className="payslip-inputs">
         <span>
                 <input type="text" placeholder="Employee Name" />
                 <input type="text" placeholder="Employee ID" />

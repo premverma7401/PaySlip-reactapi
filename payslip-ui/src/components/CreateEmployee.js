@@ -4,21 +4,35 @@ import Navbar from './Navbar';
 const CreateEmployee = () => {
   return (
     <div>
-      <Navbar title="Create Employee" />
-      <div class="page-title">
-            <div class="nav-options">
-                <ul>
-                    <li>
-                        PERSONAL
-                    </li>
-                    <li>
-                        CONTRACT
-                    </li>
-                </ul>
+        <Navbar title="View Employee" />
+        <div class="nav-options" id="nav-options">
+            <ul>
+                <li>
+                   <a href="#personal">PERSONAL</a>
+                </li>
+                <li>
+                <a href="#contract">CONTRACT</a>
+                </li>
+            </ul>
+        </div>
+        <div class="form" id="personal">
+            <div>
+                <input type="number" placeholder="Employee ID" />
+                <input type="number" placeholder="First Name" />
+                <input type="number" placeholder="Contact number" />
+                <input type="text" placeholder="IRD"/>
+                <input type="taxt" placeholder="Date Of Birth"/>
+            </div>
+            <div>
+                <input type="text" placeholder="Username"/>
+                <input type="text" placeholder="Last Name"/>
+                <input type="email" placeholder="E-Mail"/>
+                <input type="text" placeholder="Address"/>
+                <input type="number" placeholder="Age"/>
             </div>
         </div>
-        <div class="contract-id-input">
-            <input type="text" placeholder="Employee Contract ID" />
+        <div class="contract-id" id="contract">
+                <input type="text" placeholder="Employee Contract ID" />
         </div>
         <div class="form">
             <div>

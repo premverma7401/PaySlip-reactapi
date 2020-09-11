@@ -1,0 +1,95 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Buttons navigation bar */
+
+.nav-options ul{
+    width: 85vw;
+    height: 10vh;
+    background-color: #333333;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.nav-options li{
+    color: #cccccc;
+    background: #333333;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px #cccccc solid;
+    transition: padding 0.2s ease-out 0s;    
+}
+.nav-options li:hover{
+    background: #0085FC;
+    letter-spacing: 0.9px;
+    padding:15px;
+}
+
+/* contract id Row */
+
+.contract-id-input{
+    width: 85vw;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.contract-id-input input{
+    width: 35vw;
+    background: none;
+}
+
+/* input form */
+
+.form{
+    height: 60vh;
+    width: 85vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.form div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.contract-id input, div input{
+    border: none;
+    border-bottom: 1px solid #070707;
+    background: none;
+	font-size: 18px;
+    width: 20vw;
+    height: 5vh;
+    padding: 1vw;
+    border-radius: 0.5vw;
+}
+.contract-id input:focus, div input:focus{
+	border-bottom-color: #333333;
+    outline: none;
+    box-shadow: 2px 2px 2px 2px #333333;
+    transition: 0.5s ease-in-out;
+}
+.form button{
+    position: relative;
+    top: 25vh;
+    width: 7vw;
+    background-color: #333;
+    color: #cccccc;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    border: 1px #cccccc solid;
+    transition: padding 0.2s ease-out 0s;   
+}
+.form button:hover{
+    background: #0085FC;
+    letter-spacing: 0.9px;
+    padding:13px;
+}

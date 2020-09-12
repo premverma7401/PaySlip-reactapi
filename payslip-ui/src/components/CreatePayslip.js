@@ -5,7 +5,7 @@ const CreatePayslip = () => {
   return (
     <div>
       <Navbar title="Create Payslips" />
-      <div class="payslip-heading">
+      <div class="payslip-inputs">
             <span>
                 <input type="text" placeholder="Employee Name" />
                 <input type="text" placeholder="Employee ID" />

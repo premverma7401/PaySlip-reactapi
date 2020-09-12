@@ -5,7 +5,7 @@
 }
 /* payslip heading */
 
-.payslip-heading{
+.payslip-inputs{
     width: 85vw;
     height: 28vh;
     display: flex;
@@ -14,7 +14,7 @@
     padding: 5vh 0vw;
     font-size:27px;
 }
-.payslip-heading span{
+.payslip-inputs span{
     width: 34vw;
     height: 22vh;
     display: flex;
@@ -24,7 +24,7 @@
     font-size: 38px;
 }
 
-.payslip-heading input{
+.payslip-inputs input{
     height: 5vh;
     width: 20vw;
     margin: 20px;
@@ -35,11 +35,11 @@
     border:1px #333333 solid;
     border-radius: 3vw;
 }
-.payslip-heading input:focus, input[type="date"]:focus{
+.payslip-inputs input:focus, input[type="date"]:focus{
     outline: none;
     background-color: #ffffff;
 }
-.payslip-heading input:hover{
+.payslip-inputs input:hover{
     background-color: #333333;
     transition: all 0.4s ease 0s;    
 }

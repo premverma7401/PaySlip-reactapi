@@ -3,46 +3,34 @@
     margin: 0px;
     padding: 0px;
 }
-/* payslip heading */
 
-.payslip-heading{
-    width: 85vw;
-    height: 28vh;
+/* Input and select feild styles */
+.payslip-inputs span{
+    width: 83vw;
+    height: 20vh;
     display: flex;
     flex-direction: row;
-    justify-content:space-between ;
-    padding: 5vh 0vw;
-    font-size:27px;
-}
-.payslip-heading span{
-    width: 34vw;
-    height: 22vh;
-    display: flex;
-    flex-direction: column;
     justify-content: space-evenly;
-    align-items:center;
-    font-size: 38px;
+    align-items: center;
 }
-
-.payslip-heading input{
-    height: 5vh;
-    width: 20vw;
-    margin: 20px;
-    padding: 10px;
-    box-shadow: 1px 1px 1px 1px #333333;
-    font-size:19px;
+.payslip-inputs select, .payslip-inputs input {
+    color: #333333;
+    border: 0;
     background: none;
-    border:1px #333333 solid;
-    border-radius: 3vw;
-}
-.payslip-heading input:focus, input[type="date"]:focus{
+	border-bottom: 1px solid #070707;
+	font-size: 18px;
+    width: 20vw;
+    padding-left: 1vw;
+    height: 5vh;
+    border-radius: 0.5vw;
+  }
+  .payslip-inputs input:focus, 
+  .payslip-inputs select:focus, 
+  .select-date input:focus{
     outline: none;
-    background-color: #ffffff;
-}
-.payslip-heading input:hover{
-    background-color: #333333;
-    transition: all 0.4s ease 0s;    
-}
+    box-shadow: 2px 2px 2px 2px #457B9D;
+    transition: 0.5s ease-in-out;
+  }
 .select-date{
     width: 60vw;
     height: 30vh;
@@ -52,7 +40,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 4px #333333 solid;
+    border: 4px #1D3557 solid;
     border-radius: 3vw;
     font-size:25px;
     font-weight: bold;
@@ -73,9 +61,9 @@ input[type="date"]{
     cursor: text;
 }
 .select-date button{
-    color: #cccccc;
+    color: #F1FAEE;
     text-decoration: none;
-    background: #333333;
+    background: #1D3557;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -84,7 +72,7 @@ input[type="date"]{
     transition: all 0.4s ease 0s;    
 }
 .select-date button:hover{
-    background: #0085FC;
+    background: #999999;
     letter-spacing: 0.5px;
     transition: all 0.4s ease 0s;
 }

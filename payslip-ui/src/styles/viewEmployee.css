@@ -1,92 +1,49 @@
-.empinfo {
-  height: 100vh;
-  width: 85vw;
-  font-family: Arial, Helvetica, sans-serif;
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
-
-/* Title bar */
-
-header {
-  height: 12vh;
-  width: 85vw;
-  border-bottom: 1px solid #6a85b6;
-  background-image: linear-gradient(to top, #5a5757 0%, #333333 100%);
-}
-header div {
+.emp-details{
+  width: 83.5vw;
+  margin-top: 10vh;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
-}
-
-/* Buttons navigation bar */
-
-.nav-buttons button {
-  color: #ffffff !important;
-  text-transform: uppercase;
-  text-decoration: none;
-  background: none;
-  margin: 17px 20px;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: inline-block;
-  border: 1px #ffffff solid;
-  transition: all 0.4s ease 0s;
-}
-.nav-buttons button:hover {
-  background: #0085fc;
-  letter-spacing: 0.5px;
-  transition: all 0.4s ease 0s;
-}
-
-/* section page heading */
-
-.page-heading {
-  height: 10vh;
-  width: 20vw;
-  position: relative;
-  top: 4vh;
-  left: 33vw;
-  font-size: 26px;
-  font-weight: bold;
-}
-/* section details */
-
-.details {
-  height: 60vh;
-  width: 85vw;
-  display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
-.details div {
-  height: 70vh;
-  width: 40vw;
+.emp-details div{
+  height: 110vh;
+  width: 80vw;    
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
+} 
+.emp-details div span{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
-.details span {
-  width: 20vw;
-  padding: 1vh 0vw;
+.emp-details span:nth-child(1){
+  align-self: center;
+  border: 1px #1D3557 solid;
+  padding: 3vh;
   text-align: center;
-  font-weight: bold;
-  border: 1px #333333 solid;
-  border-radius: 2vw;
-  box-shadow: 1px 2px 2px 1px #333333;
-  transition: 0.5s ease-in-out;
+  background-color: #1D3557;
+  color: #F1FAEE;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius:25px;
+  box-shadow: 2px 2px 2px 2px #333333;
 }
-div .profile-pic {
-  border: none;
-  box-shadow: none;
+.emp-details p{
+  border: none ;
+  box-shadow: 3px 7px 10px #333333;
+  font-size: 18px;
+  width: 20vw;
+  
+  padding: 5px;
+  border-radius: 0.5vw;
+  text-align: center;
 }
-.profile-pic img {
-  border: 1px #333333 solid;
-  box-shadow: 1px 3px 3px 1px #333333;
-  border-radius: 7vw;
-  width: 14vw;
+.address-bar{
+  width: 40vw !important;
 }

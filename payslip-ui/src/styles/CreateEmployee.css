@@ -3,90 +3,64 @@
     margin: 0px;
     padding: 0px;
 }
-
-/* Buttons navigation bar */
-
-.nav-options ul{
-    height: 10vh;
-    background-color: #333333;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.nav-options li{
-    color: #cccccc;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block;
-    border: 1px #cccccc solid;
-    transition: padding 0.2s ease-out 0s;    
-}
-.nav-options li:hover{
-    background: #0085FC;
-    letter-spacing: 0.9px;
-    padding:15px;
-}
-
-/* contract id Row */
-
-.contract-id{
-    width: 85vw;
-    height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.contract-id input{
-    width: 35vw;
-    background: none;
-}
-
-/* input form */
-
-.contract-form{
-    height: 60vh;
-    width: 85vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.contract-form div{
+.form{
+    width: 83.5vw;
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-}
-.contract-id input, .contract-form input{
-    border: none;
-    border-bottom: 1px solid #070707;
+    align-items: center;
+  }
+  .form div{
+    height: 110vh;
+    width: 80vw;    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  } 
+  .form div span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .form span:nth-child(1){
+    align-self: center;
+    border: 1px #1D3557 solid;
+    padding: 3vh;
+    text-align: center;
+    background-color: #1D3557;
+    color: #ffffff;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius:25px;
+    box-shadow: 2px 2px 2px 2px #333333;
+  }
+  .form input{
+    border: 0;
     background: none;
-	font-size: 18px;
+	  border-bottom: 1px solid #1D3557;
+	  font-size: 18px;
     width: 20vw;
     height: 5vh;
     padding: 1vw;
     border-radius: 0.5vw;
-}
-.contract-id input:focus, .contract-form input:focus{
-	border-bottom-color: #333333;
+  }
+  .form input:focus{
     outline: none;
-    box-shadow: 2px 2px 2px 2px #333333;
+    box-shadow: 2px 2px 2px 2px #457B9D;
     transition: 0.5s ease-in-out;
-}
-.contract-form button{
-    position: relative;
-    top: 25vh;
-    width: 7vw;
-    background-color: #333;
-    color: #cccccc;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block;
-    border: 1px #cccccc solid;
-    transition: padding 0.2s ease-out 0s;   
-}
-.contractf-orm button:hover{
-    background: #0085FC;
-    letter-spacing: 0.9px;
-    padding:13px;
-}
+  }
+  .form .submit-button{
+    height: 8vh;
+  }
+  .submit-button button{
+    height: 8vh;
+    text-align: center;
+    background-color: #1D3557;
+    border: 1px #1D3557 solid;
+    border-top-left-radius: 25px;
+    border-bottom-right-radius:25px;
+    box-shadow: 2px 2px 2px 2px #333333;
+    color: #F1FAEE;
+    text-align: center;
+    font-size: 20px;
+  }

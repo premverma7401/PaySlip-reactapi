@@ -9,7 +9,7 @@
   color: #000000;
 }
 body {
-  background-color: rgb(239, 255, 167);
+  background: #F1FAEE;
 }
 .container {
   display: flex;
@@ -19,5 +19,5 @@ body {
   display: flex;
   font-size: 1.2rem;
   justify-content: center;
-  border-bottom: 1px #6a85b6 solid;
+  border-bottom: 1px #F1FAEE solid;
 }

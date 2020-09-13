@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
+import '../styles/CreateEmployee.css'
 
 const CreateEmployee = () => {
   return (
@@ -8,6 +9,9 @@ const CreateEmployee = () => {
         <form className="main">
             <div class="form">
                 <div>
+                    <span>
+                        PERSONAL INFORMATION
+                    </span>
                     <span>
                         <input type="text" placeholder="Employee ID" />
                         <input type="text" placeholder="Username"/>
@@ -26,10 +30,13 @@ const CreateEmployee = () => {
                         <input type="number" placeholder="Age"/>
                     </span>
                     <span>
-                        <input type="text" placeholder="Address"/>
+                        <input className="address-bar" type="text" placeholder="Address"/>
                     </span> 
                 </div>
                 <div>
+                    <span>
+                        CONTRACT INFORMATION
+                    </span>
                     <span>
                         <input type="number" placeholder="Contract Hours" />
                         <input type="text" placeholder="Contract Type" />
@@ -42,10 +49,10 @@ const CreateEmployee = () => {
                         <input type="number" placeholder="Kiwi Saver" />    
                         <input type="text" placeholder="Union" />
                     </span>
+                </div>            
+                <div className="submit-button">
+                    <button>submit</button>
                 </div>
-            </div>
-            <div className="submit-button">
-                <button>submit</button>
             </div>
         </form>
     </div>

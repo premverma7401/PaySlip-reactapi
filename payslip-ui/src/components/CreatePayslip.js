@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
+import'../styles/CreatePayslips.css';
 
 const CreatePayslip = () => {
   return (
@@ -8,17 +9,18 @@ const CreatePayslip = () => {
         <div className="main">
         <div class="payslip-inputs">
             <span>
-                <label for="employee-list">Employee Name </label>
                 <select Name="employee-list" id="employee-list">
-                <option>Name1</option>
-                <option>Name2</option>
-                <option>Name3</option>
-                <option>Name4</option>
+                    <option value="list" selected hidden>select employee</option>
+                    <option>Name1</option>
+                    <option>Name2</option>
+                    <option>Name3</option>
+                    <option>Name4</option>
+                    <option>Name1</option>
+                    <option>Name2</option>
+                    <option>Name3</option>
+                    <option>Name4</option>
                 </select>
                 <input type="number" placeholder="NO. of hours worked" />
-            </span>
-            <span>
-                <h1>PAYSLIP</h1>
             </span>
         </div> 
         <div class="record">

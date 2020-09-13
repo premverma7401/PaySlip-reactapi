@@ -6,53 +6,52 @@ const ViewEmployees = () => {
     <div>
       <Navbar title="View Employee" />
       <div className="main">
-        <div className="emp-details">
-          <div>
-            <p>GENERAL DETAILS</p>
-            <div>
-              <span>User name</span>
-              <span>Full name</span>
-              <span>Email</span>
+      <div class="emp-details">
+                <div>
+                    <span>
+                        PERSONAL INFORMATION
+                    </span>
+                    <span>
+                      <p>Employee ID</p>
+                      <p>UserName</p>
+                    </span>
+                    <span>
+                    <p>First name</p>
+                    <p>Last name</p>
+                    </span>
+                    <span>
+                    <p>Contact No.</p>
+                    <p>E-mail ID</p>
+                    </span>
+                    <span>
+                    <p>IRD</p>
+                    <p>Date of Birth</p>
+                    <p>Age</p>
+                    </span>
+                    <span>
+                    <p class="address-bar">Address</p>
+                    </span> 
+                </div>
+                <div>
+                    <span>
+                        CONTRACT INFORMATION
+                    </span>
+                    <span>
+                    <p>Contract Hours</p>
+                    <p>Contract Type</p>
+                    </span> 
+                    <span>
+                    <p>Pay per Hour</p>
+                    <p>Overtime Rate</p>
+                    </span>
+                    <span>
+                    <p>Kiwi Saver</p>
+                    <p>Union</p>
+                    </span>
+                </div>            
             </div>
-            <div>
-              <span>Contact No.</span>
-              <span>Department</span>
-              <span>Designantion</span>
-            </div>
-          </div>
-          <div>
-            <p>PERSONAL DETAILS</p>
-            <div>
-              <span>Full Name</span>
-              <span>E-Mail ID</span>
-              <span>IRD</span>
-              <span>Date Of Birth</span>
-            </div>
-            <div>
-              <span>UserName</span>
-              <span>Contact No.</span>
-              <span>Address</span>
-              <span>Age</span>
-            </div>
-          </div>
-          <div>
-            <p>CONTRACT DETAILS</p>
-            <div>
-              <span>Contract Hours</span>
-              <span>Pay Per Hour</span>
-              <span>Union</span>
-              <span>Date Of Contract</span>
-            </div>
-            <div>
-              <span>Contract type</span>
-              <span>Overtime Rate</span>
-              <span>Kiwi Saver</span>
-              <span>Pay Record</span>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
+      </div> 
   );
 };
 

@@ -7,7 +7,6 @@ import ViewEmployees from './ViewEmployees';
 import CreatePayslip from './CreatePayslip';
 import ViewPayslips from './ViewPayslips';
 import PayRecords from './PayRecords';
-import Sample from './Sample';
 import Information from './Information';
 const MainDashboard = () => {
   return (
@@ -23,7 +22,6 @@ const MainDashboard = () => {
           <Route path="/createpay" component={CreatePayslip} />
           <Route path="/viewpay" component={ViewPayslips} />
           <Route path="/payrecord" component={PayRecords} />
-          <Route path="/prem" component={Sample} />
         </Switch>
       </div>
     </div>

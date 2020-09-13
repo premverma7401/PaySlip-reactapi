@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
+import '../styles/ViewPayslips.css';
 
 const ViewPayslips = () => {
   return (
@@ -8,7 +9,6 @@ const ViewPayslips = () => {
       <div className="main"> 
         <div className="payslip-inputs">
             <span>
-                <label for="employee-list">Employee Name </label>
                 <select Name="employee-list" id="employee-list">
                 <option>Name1</option>
                 <option>Name2</option>

@@ -1,7 +1,7 @@
 .sidebar {
   position: fixed;
   width: 15vw;
-  border-right: 1px solid #6a85b6 ;
+  border-right: 1px solid #6a85b6;
   height: 100vh;
   background-image: linear-gradient(to top, #5a5757 0%, #333333 100%);
 }
@@ -26,7 +26,7 @@
 
 .app-options-group div {
   padding: 0 10px;
-  cursor: pointer; 
+  cursor: pointer;
   color: #ffffff;
 }
 
@@ -47,20 +47,19 @@
   position: fixed;
   width: 85vw;
   height: 10vh;
-  margin-left:15vw ;
-  background:#333;
+  margin-left: 15vw;
+  background: #333;
   color: #ffffff;
 }
 
-.main{
-  height: 90vh;
-  width: 85vw;
+.main {
+  width: 80vw;
   margin-top: 10vh;
   margin-left: 15vw;
 }
 /* new added css */
 /*************** for company profile and stats ************8*/
-.company-profile{
+.company-profile {
   height: 90vh;
   width: 85vw;
   display: flex;
@@ -68,14 +67,15 @@
   justify-content: space-between;
 }
 /* left column with employee details */
-.left, .right{
+.left,
+.right {
   height: 90vh;
   width: 40vw;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
-.employee-card{
+.employee-card {
   height: 90vh;
   width: 30vw;
   /* overflow-y: scroll; */
@@ -83,7 +83,7 @@
   flex-direction: column;
   justify-content: space-evenly;
 }
-.profile-card{ 
+.profile-card {
   align-self: center;
   height: 40vh;
   width: 20vw;
@@ -93,9 +93,9 @@
   cursor: pointer;
   transition: 0.2s;
 }
-.card-image:hover{
-    opacity: 0.4;
-    transition:0.9s ease-in-out;
+.card-image:hover {
+  opacity: 0.4;
+  transition: 0.9s ease-in-out;
 }
 .emp-name-title {
   position: sticky;
@@ -107,13 +107,13 @@
   padding: 10px;
   transition: 0.2s;
 }
-.emp-name-title h2{
+.emp-name-title h2 {
   margin: 30px 0;
   padding: 0;
   text-align: center;
   color: #333;
-}     
-.emp-name-title span{
+}
+.emp-name-title span {
   font-size: 1rem;
   line-height: 2.5rem;
   color: #333;
@@ -126,11 +126,11 @@
   opacity: 0.7;
 }
 /* right side of stats */
-.right div:nth-child(1){
+.right div:nth-child(1) {
   align-self: center;
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   width: 20vw;
   height: 40vh;
@@ -139,7 +139,7 @@
   background-image: url('https://images.unsplash.com/photo-1529595354331-201ad3ae5e71?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6114533e2d0c1c81534fe13611dbfd76&auto=format&fit=crop&w=658&q=80');
   color: #f36363;
 }
-.right div:nth-child(2){
+.right div:nth-child(2) {
   align-self: center;
   height: 33vh;
   width: 15vw;
@@ -147,62 +147,36 @@
   background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);
   box-shadow: 0 7px 18px #333333;
 }
-div h2{
+div h2 {
   align-self: center;
   padding: 20px;
   color: #cccccc;
 }
-.stats{
+.stats {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
   width: 20vw;
   margin: 10px;
-  border-top:1px #cccccc solid;
+  border-top: 1px #cccccc solid;
 }
-.stats p{
+.stats p {
   width: 20vw;
   padding: 5px;
-  border-bottom:1px #cccccc solid;
+  border-bottom: 1px #cccccc solid;
   color: #cccccc;
 }
 
 /* Css for view employee form */
 
-.emp-details{
+.emp-details {
   width: 85vw;
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @media screen and (max-width: 700px) {
   .app-options-group {

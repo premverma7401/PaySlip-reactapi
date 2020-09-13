@@ -5,14 +5,17 @@ const ViewPayslips = () => {
   return (
     <div>
       <Navbar title="View Payslips" />
-      <div className="parent"> 
+      <div className="main"> 
         <div className="payslip-inputs">
-        <span>
-                <input type="text" placeholder="Employee Name" />
-                <input type="text" placeholder="Employee ID" />
-            </span>
             <span>
-                <h1>PAYSLIP</h1>
+                <label for="employee-list">Employee Name </label>
+                <select Name="employee-list" id="employee-list">
+                <option>Name1</option>
+                <option>Name2</option>
+                <option>Name3</option>
+                <option>Name4</option>
+                </select>
+                <input type="number" placeholder="NO. of hours worked" />
             </span>
         </div>
         <div className="select-date">
@@ -27,7 +30,7 @@ const ViewPayslips = () => {
                     <input type="date" id="to" placeholder="dd/mm/yy" />
                 </span>
             </div> 
-            <button>GENERATE</button>
+            <button>View Payslip</button>
         </div>
     </div>
     </div>

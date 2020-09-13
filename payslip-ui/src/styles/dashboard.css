@@ -170,14 +170,25 @@ div h2{
 
 /* Css for view employee form */
 
-.emp-details{
+.form{
   width: 85vw;
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-
+.form div{
+  height: 45vh;
+  width: 85vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.form span{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
 
 
 

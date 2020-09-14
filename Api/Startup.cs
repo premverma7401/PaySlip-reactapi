@@ -25,7 +25,16 @@ namespace Api
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPayslipRepository, PayslipRepository>();
-
+            services.AddCors(options =>
+                       {
+                           options.AddDefaultPolicy(builder =>
+                           {
+                               builder.WithOrigins("http://localhost:3000")
+                                   .SetIsOriginAllowedToAllowWildcardSubdomains()
+                                   .AllowAnyHeader()
+                                   .AllowAnyMethod();
+                           });
+                       });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +48,7 @@ namespace Api
             //  app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

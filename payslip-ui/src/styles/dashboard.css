@@ -1,14 +1,14 @@
 .sidebar {
   position: fixed;
   width: 15vw;
-  border-right: 1px solid #F1FAEE;
+  border-right: 1px solid #f1faee;
   height: 100vh;
-  background:#1D3557;
+  background: #1d3557;
 }
 
 .date-info {
   height: 10vh;
-  color: #F1FAEE;
+  color: #f1faee;
 }
 
 .app-options {
@@ -23,11 +23,15 @@
   width: 100%;
   justify-content: flex-start;
 }
+.app-options-group svg {
+  fill: white;
+  font-size: 20px;
+}
 
 .app-options-group div {
   padding: 0 10px;
   cursor: pointer;
-  color: #F1FAEE;
+  color: #f1faee;
 }
 
 .app-options-group:hover {
@@ -49,8 +53,8 @@
   height: 10vh;
   margin-left: 15vw;
   z-index: 4;
-  background: #1D3557;
-  color: #F1FAEE;
+  background: #1d3557;
+  color: #f1faee;
 }
 
 .main {

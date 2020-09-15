@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { IoIolert, IoIosArrowBack } from 'react-icons/io';
+import { IoIosArrowBack } from 'react-icons/io';
 import agent from '../../api/agent';
 import InfotabComponent from '../../common/InfotabComponent';
 import { UserContext } from '../../store/UserContext';
@@ -13,18 +13,17 @@ const ViewEmployeeDetails = ({ match }) => {
   useEffect(() => {
     const employeeId = currUserId;
     loadUser(employeeId);
-  }, []);
+  }, [currUserId]);
 
   const loadUser = async (id) => {
     try {
       const selectedUser = await agent.Users.details(id);
-      console.log(selectedUser);
+      console.log(selectedUser, 'user');
       setSelectedUser(selectedUser);
     } catch (error) {
       console.log(error);
     }
   };
-
   return (
     <div>
       <Navbar
@@ -40,14 +39,14 @@ const ViewEmployeeDetails = ({ match }) => {
         <div className="personal-info">
           <InfotabComponent text="PERSONAL INFORMATION" />
           <div>
-            <p>{selectedUser.employeeId}</p>
-            <p>{selectedUser.username}</p>
-            <p>
+            <p>{selectedUser && selectedUser.employeeId}</p>
+            <p>{selectedUser && selectedUser.username}</p>
+            {/* <p>
               {selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.ird}
-            </p>
+            </p> */}
           </div>
-          <div>
+          {/* <div>
             <p>{selectedUser.firstName}</p>
             <p>{selectedUser.lastName}</p>
             <p>
@@ -73,9 +72,9 @@ const ViewEmployeeDetails = ({ match }) => {
               {selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.city}
             </p>
-          </div>
+          </div> */}
         </div>
-        <div className="contract-info">
+        {/* <div className="contract-info">
           <InfotabComponent text="CONTRACT INFORMATION" />
           <div>
             <p>
@@ -107,7 +106,7 @@ const ViewEmployeeDetails = ({ match }) => {
                 selectedUser.employeeContract.contractType}
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

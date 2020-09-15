@@ -3,9 +3,9 @@ import Navbar from '../Navbar';
 import '../ViewEmployee/viewEmployee.css';
 import { UserContext } from '../../store/UserContext';
 import { Link } from 'react-router-dom';
+
 const ViewEmployees = () => {
   const [users, setusers, loadUsers] = useContext(UserContext);
-
   useEffect(() => {
     loadUsers();
   }, []);

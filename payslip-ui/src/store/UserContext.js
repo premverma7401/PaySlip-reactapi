@@ -13,10 +13,9 @@ export const UserProvider = (props) => {
       console.log(error);
     }
   };
-
-  const handleCreateUser = async (user) => {
-    console.log(user);
-  };
+  useEffect(() => {
+    loadUsers();
+  }, []);
   return (
     <UserContext.Provider value={[users, setUsers, loadUsers]}>
       {props.children}

@@ -19,7 +19,6 @@ const ViewPayslips = () => {
                 </option>
               ))}
             </select>
-            <input type="number" placeholder="NO. of hours worked" />
           </span>
         </div>
         <div className="select-date">

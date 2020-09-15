@@ -1,8 +1,5 @@
 import React from 'react';
-import { IoIosArrowBack } from 'react-icons/io';
-import { RiDashboardFill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import IconBtn from '../common/IconBtn';
 
 const Navbar = ({
   title = 'Dashboard',

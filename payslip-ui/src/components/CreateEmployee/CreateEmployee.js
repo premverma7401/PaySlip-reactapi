@@ -30,8 +30,6 @@ const CreateEmployee = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user);
-    setUsers((preMovies) => [...preMovies, { user }]);
-    console.log(setUsers(user));
   };
 
   return (

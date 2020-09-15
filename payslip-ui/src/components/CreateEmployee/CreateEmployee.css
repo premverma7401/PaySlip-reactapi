@@ -34,6 +34,31 @@
   padding: 1vw;
   border-radius: 0.5vw;
 }
+.create-contract-info label {
+  font-size: 17px;
+  align-self: center;
+  color: #757575;
+  padding: 0 5px;
+}
+.create-contract-info select {
+  border: 0;
+  background: none;
+  border-bottom: 1px solid #1d3557;
+  font-size: 18px;
+  width: 12vw;
+  height: 5vh;
+  padding: 0 10px;
+
+  border-radius: 0.5vw;
+  color: #757575;
+}
+.create-contract-info select:focus {
+  outline: none;
+  color: #757575;
+  padding: 0 10px;
+  box-shadow: 2px 2px 2px 2px #457b9d;
+  transition: 0.5s ease-in-out;
+}
 .create-personal-info input:focus,
 .create-contract-info input:focus {
   outline: none;
@@ -46,8 +71,10 @@
 .submit-button {
   display: flex;
   justify-content: center;
+  margin-bottom: 10px;
 }
 .submit-button button {
+  cursor: pointer;
   padding: 10px 25px;
   background-color: #797979;
   border: 1px #1d3557 solid;
@@ -63,15 +90,3 @@
 .address-bar {
   width: 60vw !important;
 }
-
-/* .submit-button {
-  height: 8vh;
-}
-.submit-button button {
-  height: 8vh;
-  text-align: center;
-  border-top-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  box-shadow: 2px 2px 2px 2px #333333;
-  text-align: center;
-} */

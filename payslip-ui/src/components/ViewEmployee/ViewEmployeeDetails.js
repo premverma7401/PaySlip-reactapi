@@ -1,13 +1,30 @@
-import React, { useContext } from 'react';
-import { IoIosAlert, IoIosArrowBack } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { IoIolert, IoIosArrowBack } from 'react-icons/io';
+import agent from '../../api/agent';
 import InfotabComponent from '../../common/InfotabComponent';
 import { UserContext } from '../../store/UserContext';
 import Navbar from '../Navbar';
 import '../ViewEmployee/viewEmployeeDetails.css';
 
-const ViewEmployeeDetails = () => {
-  const { selectedUser } = useContext(UserContext);
+const ViewEmployeeDetails = ({ match }) => {
+  const [selectedUser, setSelectedUser] = useState({});
+  const currUserId = match.params.id;
+
+  useEffect(() => {
+    const employeeId = currUserId;
+    loadUser(employeeId);
+  }, []);
+
+  const loadUser = async (id) => {
+    try {
+      const selectedUser = await agent.Users.details(id);
+      console.log(selectedUser);
+      setSelectedUser(selectedUser);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <Navbar
@@ -23,35 +40,72 @@ const ViewEmployeeDetails = () => {
         <div className="personal-info">
           <InfotabComponent text="PERSONAL INFORMATION" />
           <div>
-            <p>{selectedUser && selectedUser.firstName}</p>
-            <p>user.username</p>
-            <p>IRD</p>
+            <p>{selectedUser.employeeId}</p>
+            <p>{selectedUser.username}</p>
+            <p>
+              {selectedUser.employeePersonal &&
+                selectedUser.employeePersonal.ird}
+            </p>
           </div>
           <div>
-            <p>First name</p>
-            <p>Last name</p>
-            <p>Date of Birth</p>
+            <p>{selectedUser.firstName}</p>
+            <p>{selectedUser.lastName}</p>
+            <p>
+              {selectedUser.employeePersonal &&
+                new Date(
+                  selectedUser.employeePersonal.dateOfBirth
+                ).toLocaleDateString()}
+            </p>
           </div>
           <div>
-            <p>Contact No.</p>
-            <p>E-mail ID</p>
-            <p>Age</p>
+            <p>
+              {selectedUser.employeePersonal &&
+                selectedUser.employeePersonal.phone}
+            </p>
+            <p>{selectedUser.email}</p>
+            <p>
+              {selectedUser.employeePersonal &&
+                selectedUser.employeePersonal.age}
+            </p>
           </div>
           <div>
-            <p className="address-bar">Address</p>
+            <p className="address-bar">
+              {selectedUser.employeePersonal &&
+                selectedUser.employeePersonal.city}
+            </p>
           </div>
         </div>
         <div className="contract-info">
           <InfotabComponent text="CONTRACT INFORMATION" />
           <div>
-            <p>Contract Hours</p>
-            <p>Contract Type</p>
-            <p>Pay per Hour</p>
+            <p>
+              {selectedUser.employeeContract &&
+                selectedUser.employeeContract.contractHours}
+            </p>
+            <p>
+              {selectedUser.employeeContract &&
+                selectedUser.employeeContract.perHourPay}
+            </p>
+            <p>
+              {selectedUser.employeeContract &&
+                selectedUser.employeeContract.overtimeRate}
+            </p>
           </div>
           <div>
-            <p>Overtime Rate</p>
-            <p>Kiwi Saver</p>
-            <p>Union</p>
+            <p>
+              {selectedUser.employeeContract &&
+              selectedUser.employeeContract.union
+                ? 'YES'
+                : 'NO'}
+            </p>
+            <p>
+              {selectedUser.employeeContract &&
+                selectedUser.employeeContract.kiwiSaver}
+            </p>
+            <p>
+              {selectedUser.employeeContract &&
+                selectedUser.employeeContract.contractType}
+            </p>
           </div>
         </div>
       </div>

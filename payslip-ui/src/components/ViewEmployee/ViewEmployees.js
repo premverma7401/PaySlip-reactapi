@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Navbar from '../Navbar';
 import '../ViewEmployee/viewEmployee.css';
 import { UserContext } from '../../store/UserContext';
 import { Link } from 'react-router-dom';
 const ViewEmployees = () => {
-  const [users, setusers, selectedUser, setSelectedUser] = useContext(
-    UserContext
-  );
+  const [users, setusers, loadUsers] = useContext(UserContext);
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
   return (
     <div>
@@ -14,14 +16,13 @@ const ViewEmployees = () => {
       <div className="info-parent main">
         <div className="card-group">
           {users.map((user) => (
-            <Link
-              to={`/viewemp/${user.empId}`}
-              key={user.empId}
-              onClick={() => setSelectedUser(user.empId)}
-            >
+            <Link to={`/viewemp/${user.empId}`} key={user.empId}>
               <div className="user-summary-card">
                 <div>
-                  <img src="" alt="profile two" />
+                  <img
+                    src="https://randomuser.me/api/portraits/men/75.jpg"
+                    alt="profile two"
+                  />
                   <h2>
                     <p>
                       {user.firstName} {user.lastName}

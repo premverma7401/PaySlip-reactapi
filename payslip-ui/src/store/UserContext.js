@@ -4,11 +4,6 @@ export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [users, setUsers] = useState([]);
-  const [selectedUser, setSelectedUser] = useState(1);
-
-  useEffect(() => {
-    loadUsers();
-  }, []);
 
   const loadUsers = async () => {
     try {
@@ -19,17 +14,11 @@ export const UserProvider = (props) => {
     }
   };
 
-  // async function loadUser() {
-  //   const response = await agent.Users.details();
-  //   console.log(response, 'value');
-  //   setSelectedUser(response);
-  // }
-  // loadUser();
-
+  const handleCreateUser = async (user) => {
+    console.log(user);
+  };
   return (
-    <UserContext.Provider
-      value={[users, setUsers, selectedUser, setSelectedUser]}
-    >
+    <UserContext.Provider value={[users, setUsers, loadUsers]}>
       {props.children}
     </UserContext.Provider>
   );

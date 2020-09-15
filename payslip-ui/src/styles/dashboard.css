@@ -52,11 +52,24 @@
   width: 85vw;
   height: 10vh;
   margin-left: 15vw;
-  z-index: 4;
+  /* z-index: 4; */
   background: #1d3557;
   color: #f1faee;
 }
-
+.iconBtn {
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px 0 5px;
+}
+.iconBtn div {
+  color: white;
+  cursor: pointer;
+}
+.iconBtn svg {
+  align-self: center;
+  fill: white;
+}
 .main {
   width: 80vw;
   margin-top: 10vh;

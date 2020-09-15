@@ -1,36 +1,27 @@
-import React, { useContext, useEffect } from 'react';
-import UserStore from '../../store/UserStore';
+import React, { useContext } from 'react';
 import Navbar from '../Navbar';
 import '../ViewEmployee/viewEmployee.css';
-import { observer } from 'mobx-react-lite';
-
+import { UserContext } from '../../store/UserContext';
+import { Link } from 'react-router-dom';
 const ViewEmployees = () => {
-  const userStore = useContext(UserStore);
-  const { loadUsers, users, loadingInitial, selectUser } = userStore;
-
-  useEffect(() => {
-    loadUsers();
-  }, [loadUsers]);
+  const [users, setusers, selectedUser, setSelectedUser] = useContext(
+    UserContext
+  );
 
   return (
     <div>
       <Navbar title="Employees List" />
       <div className="info-parent main">
         <div className="card-group">
-          {users &&
-            users.map((user, index) => (
-              <div
-                className="user-summary-card"
-                key={index}
-                onClick={() => {
-                  selectUser(index);
-                }}
-              >
+          {users.map((user) => (
+            <Link
+              to={`/viewemp/${user.empId}`}
+              key={user.empId}
+              onClick={() => setSelectedUser(user.empId)}
+            >
+              <div className="user-summary-card">
                 <div>
-                  <img
-                    src="https://image.ibb.co/c9rY6J/profile02.jpg"
-                    alt="profile two"
-                  />
+                  <img src="" alt="profile two" />
                   <h2>
                     <p>
                       {user.firstName} {user.lastName}
@@ -41,9 +32,11 @@ const ViewEmployees = () => {
                     <span>{user.email}</span>
                   </h2>
                 </div>
+
                 <button>View Info</button>
               </div>
-            ))}
+            </Link>
+          ))}
         </div>
         <div className="right-stats">
           <div className="info-stats">
@@ -69,4 +62,4 @@ const ViewEmployees = () => {
   );
 };
 
-export default observer(ViewEmployees);
+export default ViewEmployees;

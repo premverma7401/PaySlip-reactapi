@@ -1,23 +1,30 @@
 import React, { useContext } from 'react';
+import { IoIosAlert, IoIosArrowBack } from 'react-icons/io';
+import { Link } from 'react-router-dom';
 import InfotabComponent from '../../common/InfotabComponent';
-import UserStore from '../../store/UserStore';
+import { UserContext } from '../../store/UserContext';
 import Navbar from '../Navbar';
 import '../ViewEmployee/viewEmployeeDetails.css';
-import { observer } from 'mobx-react-lite';
 
 const ViewEmployeeDetails = () => {
-  const userStore = useContext(UserStore);
-  const { selecteduser: user, loadingInitial } = userStore;
-
+  const { selectedUser } = useContext(UserContext);
   return (
     <div>
-      <Navbar title="View Employee" />
+      <Navbar
+        title="View Employee"
+        isBtn
+        Icon={<IoIosArrowBack />}
+        IconText="Back"
+        rightText="Edit Details"
+        redirectLink="/createemp"
+        redirectIcon={'/viewemp'}
+      />
       <div className="main">
         <div className="personal-info">
           <InfotabComponent text="PERSONAL INFORMATION" />
           <div>
-            <p>Employee ID</p>
-            <p>{user.username}</p>
+            <p>{selectedUser && selectedUser.firstName}</p>
+            <p>user.username</p>
             <p>IRD</p>
           </div>
           <div>
@@ -52,4 +59,4 @@ const ViewEmployeeDetails = () => {
   );
 };
 
-export default observer(ViewEmployeeDetails);
+export default ViewEmployeeDetails;

@@ -1,3 +1,4 @@
+import { observer } from 'mobx-react-lite';
 import React from 'react';
 import InfotabComponent from '../../common/InfotabComponent';
 import Navbar from '../Navbar';
@@ -55,4 +56,4 @@ const CreateEmployee = () => {
   );
 };
 
-export default CreateEmployee;
+export default observer(CreateEmployee);

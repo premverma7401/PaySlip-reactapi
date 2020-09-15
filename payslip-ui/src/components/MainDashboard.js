@@ -9,25 +9,29 @@ import ViewPayslips from './Payslips/ViewPayslips';
 import PayRecords from './PayRecord/PayRecords';
 import Information from './Information';
 import ViewEmployeeDetails from './ViewEmployee/ViewEmployeeDetails';
+import { observer } from 'mobx-react-lite';
+import { UserProvider } from '../store/UserContext';
 const MainDashboard = () => {
   return (
     <div className="container">
-      <Sidebar />
-      {/* <Navbar title="Dashboard" /> */}
-      <div className="main-content">
-        <Switch>
-          <Route exact path="/" component={Navbar} />
-          <Route path="/info" component={Information} />
-          <Route path="/createemp" component={CreateEmployee} />
-          <Route path="/viewemp" component={ViewEmployees} />
-          <Route path="/viewemp/:id" component={ViewEmployeeDetails} />
-          <Route path="/createpay" component={CreatePayslip} />
-          <Route path="/viewpay" component={ViewPayslips} />
-          <Route path="/payrecord" component={PayRecords} />
-        </Switch>
-      </div>
+      <UserProvider>
+        <Sidebar />
+        {/* <Navbar title="Dashboard" /> */}
+        <div className="main-content">
+          <Switch>
+            <Route exact path="/" component={Navbar} />
+            <Route path="/info" component={Information} />
+            <Route path="/createemp" component={CreateEmployee} />
+            <Route path="/viewemp" exact component={ViewEmployees} />
+            <Route path="/viewemp/:id" component={ViewEmployeeDetails} />
+            <Route path="/createpay" component={CreatePayslip} />
+            <Route path="/viewpay" component={ViewPayslips} />
+            <Route path="/payrecord" component={PayRecords} />
+          </Switch>
+        </div>
+      </UserProvider>
     </div>
   );
 };
 
-export default MainDashboard;
+export default observer(MainDashboard);

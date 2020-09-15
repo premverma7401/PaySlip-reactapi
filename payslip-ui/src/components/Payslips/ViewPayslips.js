@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../store/UserContext';
 import Navbar from '../Navbar';
 import './ViewPayslips.css';
 
 const ViewPayslips = () => {
+  const [users, setUsers] = useContext(UserContext);
+
   return (
     <div>
       <Navbar title="View Payslips" />
@@ -10,10 +13,11 @@ const ViewPayslips = () => {
         <div className="payslip-inputs">
           <span>
             <select name="employee-list" id="employee-list">
-              <option>Name1</option>
-              <option>Name2</option>
-              <option>Name3</option>
-              <option>Name4</option>
+              {users.map((user) => (
+                <option key={user.empId} value={user.firstName}>
+                  {user.firstName}
+                </option>
+              ))}
             </select>
             <input type="number" placeholder="NO. of hours worked" />
           </span>

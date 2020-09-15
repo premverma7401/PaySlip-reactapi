@@ -22,6 +22,7 @@ namespace Service.Implimentation
         {
             return await _context.Employees.Select(e => new EmployeeVM()
             {
+                empId = e.employeeId,
                 FirstName = e.FirstName,
                 LastName = e.LastName,
                 ImageUrl = e.ImageUrl,

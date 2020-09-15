@@ -6,6 +6,7 @@ import { MdAttachMoney } from 'react-icons/md';
 import { RiDashboardFill } from 'react-icons/ri';
 import AppOptions from '../common/AppOptions';
 import { NavLink } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 const Sidebar = () => {
   return (
     <div className="sidebar ">
@@ -34,4 +35,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default observer(Sidebar);

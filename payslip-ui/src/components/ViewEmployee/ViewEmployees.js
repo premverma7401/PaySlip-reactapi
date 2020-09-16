@@ -3,6 +3,8 @@ import Navbar from '../Navbar';
 import '../ViewEmployee/viewEmployee.css';
 import { UserContext } from '../../store/UserContext';
 import { Link } from 'react-router-dom';
+import Insights from './Insights';
+import PieChart from './PieChart';
 
 const ViewEmployees = () => {
   const [users, setusers, loadUsers] = useContext(UserContext);
@@ -20,7 +22,7 @@ const ViewEmployees = () => {
               <div className="user-summary-card">
                 <div>
                   <img
-                    src="https://randomuser.me/api/portraits/men/75.jpg"
+                    src={'https://randomuser.me/api/portraits/men/75.jpg'}
                     alt="profile two"
                   />
                   <h2>
@@ -39,24 +41,9 @@ const ViewEmployees = () => {
             </Link>
           ))}
         </div>
-        <div className="right-stats">
-          <div className="info-stats">
-            <div className="front">
-              <div className="inner">
-                <h3>INSIGHTS</h3>
-              </div>
-            </div>
-            <div className="back">
-              <div className="inner">
-                <p>Total Employees</p>
-                <p>Software Developers</p>
-                <p>Team Lead</p>
-                <p>Bussiness Anlyst</p>
-                <p>Software Tester</p>
-              </div>
-            </div>
-          </div>
-          <div className="info-pie"></div>
+        <div>
+          <Insights />
+          <PieChart />
         </div>
       </div>
     </div>

@@ -39,14 +39,14 @@ const ViewEmployeeDetails = ({ match }) => {
         <div className="personal-info">
           <InfotabComponent text="PERSONAL INFORMATION" />
           <div>
-            <p>{selectedUser && selectedUser.employeeId}</p>
-            <p>{selectedUser && selectedUser.username}</p>
-            {/* <p>
+            <p>{selectedUser.employeeId}</p>
+            <p>{selectedUser.username}</p>
+            <p>
               {selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.ird}
-            </p> */}
+            </p>
           </div>
-          {/* <div>
+          <div>
             <p>{selectedUser.firstName}</p>
             <p>{selectedUser.lastName}</p>
             <p>
@@ -72,9 +72,9 @@ const ViewEmployeeDetails = ({ match }) => {
               {selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.city}
             </p>
-          </div> */}
+          </div>
         </div>
-        {/* <div className="contract-info">
+        <div className="contract-info">
           <InfotabComponent text="CONTRACT INFORMATION" />
           <div>
             <p>
@@ -106,7 +106,7 @@ const ViewEmployeeDetails = ({ match }) => {
                 selectedUser.employeeContract.contractType}
             </p>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

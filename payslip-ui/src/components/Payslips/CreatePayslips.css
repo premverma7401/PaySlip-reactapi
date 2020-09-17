@@ -1,0 +1,33 @@
+/* Input and select feild styles */
+.payslip-inputs form {
+  width: 83vw;
+  height: 20vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.payslip-inputs select,
+.payslip-inputs input {
+  color: #1d3557;
+  border: 0;
+  background: none;
+  border-bottom: 1px solid #1d3557;
+  font-size: 18px;
+  width: 20vw;
+  padding-left: 1vw;
+  height: 5vh;
+  border-radius: 0.5vw;
+}
+.payslip-inputs input:focus,
+.payslip-inputs select:focus {
+  outline: none;
+  box-shadow: 2px 2px 2px 2px #457b9d;
+  transition: 0.5s ease-in-out;
+}
+.btn-create {
+  padding: 20px;
+  cursor: pointer;
+  outline: none;
+  background-color: #cedbee;
+}

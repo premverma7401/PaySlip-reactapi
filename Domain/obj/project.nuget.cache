@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "njNeBwJLNu46xzT4cGxmzIvixi98NZJINF2AGVwLlQ2gKNW1U0AolIjK6z8CZYQriQQ42aMtv8RC3Aewn85qzQ==",
+  "dgSpecHash": "qb8ddg4h99VmPUDTIOr+ZMK7uPVolY5Ohh1Nxj4NJFO3yIshFouZ5oQFvuI/pcl+uChHdyw7DOt7QSjYFJHXAQ==",
   "success": true,
   "projectFilePath": "C:\\dev\\payslip-react\\Domain\\Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Prem\\.nuget\\packages\\microsoft.aspnetcore.http.features\\3.1.8\\microsoft.aspnetcore.http.features.3.1.8.nupkg.sha512",
+    "C:\\Users\\Prem\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.8\\microsoft.extensions.primitives.3.1.8.nupkg.sha512",
+    "C:\\Users\\Prem\\.nuget\\packages\\system.io.pipelines\\4.7.2\\system.io.pipelines.4.7.2.nupkg.sha512"
+  ],
   "logs": []
 }

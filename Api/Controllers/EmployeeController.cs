@@ -22,6 +22,11 @@ namespace Api.Controllers
         {
             return await _user.GetEmployees();
         }
+        [HttpGet("test")]
+        public ActionResult<string> TestFunction()
+        {
+            return ("test value return");
+        }
 
         [HttpPost]
         public async Task<int> AddEmployee(Employee employee)

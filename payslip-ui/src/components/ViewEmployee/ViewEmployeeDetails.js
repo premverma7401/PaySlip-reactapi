@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoIosArrowBack } from 'react-icons/io';
 import agent from '../../api/agent';
 import InfotabComponent from '../../common/InfotabComponent';
-import { UserContext } from '../../store/UserContext';
 import Navbar from '../Navbar';
 import '../ViewEmployee/viewEmployeeDetails.css';
 
@@ -18,7 +17,6 @@ const ViewEmployeeDetails = ({ match }) => {
   const loadUser = async (id) => {
     try {
       const selectedUser = await agent.Users.details(id);
-      console.log(selectedUser, 'user');
       setSelectedUser(selectedUser);
     } catch (error) {
       console.log(error);
@@ -39,8 +37,8 @@ const ViewEmployeeDetails = ({ match }) => {
         <div className="personal-info">
           <InfotabComponent text="PERSONAL INFORMATION" />
           <div>
-            <p>{selectedUser.employeeId}</p>
-            <p>{selectedUser.username}</p>
+            <p>Employee Id : {selectedUser.employeeId}</p>
+            <p>Username: {selectedUser.username}</p>
             <p>
               {selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.ird}

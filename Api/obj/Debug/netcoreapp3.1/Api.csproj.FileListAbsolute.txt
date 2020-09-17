@@ -58,3 +58,5 @@ C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\staticwebassets\Api.StaticWebAs
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.dll
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.pdb
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.genruntimeconfig.cache
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll

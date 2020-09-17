@@ -5,12 +5,15 @@ import { UserContext } from '../../store/UserContext';
 import { Link } from 'react-router-dom';
 import Insights from './Insights';
 import PieChart from './PieChart';
+import LoadingProgress from '../../common/LoadingProgress';
 
 const ViewEmployees = () => {
-  const [users, setusers, loadUsers] = useContext(UserContext);
+  const [users, setusers, loadUsers, loading] = useContext(UserContext);
   useEffect(() => {
     loadUsers();
   }, []);
+
+  if (loading) return <LoadingProgress text="Loading users" />;
 
   return (
     <div>

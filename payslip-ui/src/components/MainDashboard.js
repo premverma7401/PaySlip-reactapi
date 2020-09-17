@@ -8,7 +8,6 @@ import ViewPayslips from './Payslips/ViewPayslips';
 import PayRecords from './PayRecord/PayRecords';
 import Information from './Information';
 import ViewEmployeeDetails from './ViewEmployee/ViewEmployeeDetails';
-import { observer } from 'mobx-react-lite';
 import { UserProvider } from '../store/UserContext';
 import CreateNewEmployee from './CreateEmployee/CreateNewEmployee';
 const MainDashboard = () => {
@@ -34,4 +33,4 @@ const MainDashboard = () => {
   );
 };
 
-export default observer(MainDashboard);
+export default MainDashboard;

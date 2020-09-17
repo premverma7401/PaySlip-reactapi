@@ -1,21 +1,27 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Domain.models.employee;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Service.Interface;
 using System.Linq;
 using Service.VM;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Service.Implimentation
 {
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
-        public UserRepository(DataContext context)
+        private readonly IWebHostEnvironment _hostingenvironment;
+
+        public UserRepository(DataContext context, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingenvironment = hostingEnvironment;
+
         }
 
         public async Task<List<EmployeeVM>> GetEmployees()
@@ -70,6 +76,18 @@ namespace Service.Implimentation
                     Union = employee.EmployeeContract.Union
                 }
             };
+            // if (employee.ImageUrl != null && employee.ImageUrl.Length > 0)
+            // {
+            //     var uploadFol = @"images/employee";
+            //     var fileName = Path.GetFileNameWithoutExtension(employee.ImageUrl.FileName);
+            //     var extension = Path.GetExtension(employee.ImageUrl.FileName);
+            //     var webRootPath = _hostingenvironment.WebRootPath;
+            //     fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extension;
+            //     var path = Path.Combine(webRootPath, uploadFol, fileName);
+            //     await employee.ImageUrl.CopyToAsync(new FileStream(path, FileMode.Create));
+            //     employee.ImageUrl = "/" + uploadFol + "/" + fileName;
+
+            // }
             await _context.AddAsync(emp);
             await _context.SaveChangesAsync();
             return 0;

@@ -33,6 +33,7 @@
   padding: 10px;
   border-radius: 0.5vw;
   text-align: center;
+  margin: 0;
 }
 .address-bar {
   width: 60vw !important;

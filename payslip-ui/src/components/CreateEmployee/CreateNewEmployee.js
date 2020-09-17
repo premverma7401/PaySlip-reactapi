@@ -17,7 +17,7 @@ const CreateNewEmployee = () => {
           email: 'psag@gmail.com',
           username: 'skhv',
           employeePersonal: {
-            dateOfBirth: new Date().toLocaleDateString(),
+            dateOfBirth: new Date(),
             phone: '0275113822',
             ird: '456-898-85',
             city: 'Sirsa',

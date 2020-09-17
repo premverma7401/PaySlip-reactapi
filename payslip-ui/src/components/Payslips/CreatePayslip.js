@@ -46,12 +46,12 @@ const CreatePayslip = () => {
             </select>
             <input
               type="number"
-              placeholder="NO. of hours worked"
+              placeholder="No of hours worked"
               onChange={(e) => handleChange(e)}
               value={payData.th}
               name="th"
             />
-            <button>Generate Payslip</button>
+            <button className="btn-create">Generate Payslip</button>
           </form>
         </div>
       </div>

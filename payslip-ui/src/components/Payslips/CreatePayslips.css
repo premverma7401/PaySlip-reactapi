@@ -25,3 +25,9 @@
   box-shadow: 2px 2px 2px 2px #457b9d;
   transition: 0.5s ease-in-out;
 }
+.btn-create {
+  padding: 20px;
+  cursor: pointer;
+  outline: none;
+  background-color: #cedbee;
+}

@@ -9,8 +9,9 @@ namespace Service.Interface
     {
         Task<List<EmployeeVM>> GetEmployees();
         Task<Employee> GetEmployee(int Id);
-        Task<int> CreateEmployee(Employee employee);
+        Task<int> CreateEmployee(EmployeeCreateVm employee);
         Task<string> UpdateEmployee(Employee employee, int id);
         Task<string> DeleteEmployee(int Id);
+        List<EmployeeDesignationVM> GetEmpCountByDesignation();
     }
 }

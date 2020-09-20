@@ -29,9 +29,10 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async Task<int> AddEmployee(Employee employee)
+        public async Task<ActionResult> AddEmployee(EmployeeCreateVm employee)
         {
-            return await _user.CreateEmployee(employee);
+            await _user.CreateEmployee(employee);
+            return Ok("Inserted");
         }
         [HttpPut("{Id}")]
         public async Task<string> UpdateEmployee(Employee employee, int Id)
@@ -47,6 +48,11 @@ namespace Api.Controllers
         public async Task<Employee> GetEmpById(int Id)
         {
             return await _user.GetEmployee(Id);
+        }
+        [HttpGet("designationCount")]
+        public List<EmployeeDesignationVM> GetEmployeeDesignationCount()
+        {
+            return _user.GetEmpCountByDesignation();
         }
 
     }

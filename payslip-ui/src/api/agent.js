@@ -14,6 +14,7 @@ const request = {
 
 const Users = {
   list: () => request.get('/employee/'),
+  statList: () => request.get('/employee/designationCount'),
   details: (id) => request.get(`/employee/${id}/`),
   create: (user) => request.post('/employee', user),
   update: (user, id) => request.put(`/employee/${id}`, user),

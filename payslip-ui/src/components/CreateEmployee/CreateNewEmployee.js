@@ -32,12 +32,24 @@ const CreateNewEmployee = () => {
           },
         }}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log('values sent for submittion');
-          agent.Users.create(values);
-          console.log('submitted');
+          const image = new FormData();
+          image.append('imageUrl', values.imageUrl);
+
+          // agent.Users.create(image);
+
+          // fetch('http://localhost:5000/api/employee', {
+          //   method: 'post',
+          //   headers: new Headers({
+          //     Accept: 'application/json',
+          //     // Authorization: 'Bearer ' + token,
+          //   }),
+          //   body: image,
+          // })
+          //   .then((response) => response.json())
+          //   .catch((error) => console.log(error));
         }}
       >
-        {({ values }) => (
+        {(formProps) => (
           <Form className="main" autoComplete="off">
             <div className="create-personal-info">
               <InfotabComponent text="PERSONAL INFORMATION" />
@@ -89,7 +101,9 @@ const CreateNewEmployee = () => {
                   id="file-upload"
                   type="file"
                   name="imageUrl"
-                  accept="image/*"
+                  onChange={(e) =>
+                    formProps.setFieldValue('imageUrl', e.target.files[0])
+                  }
                 />
               </div>
             </div>

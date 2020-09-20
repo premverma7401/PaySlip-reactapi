@@ -23,6 +23,7 @@ namespace Service.VM
         public int Age { get; set; }
         public string Phone { get; set; }
         public string IRD { get; set; }
+        public string Designation { get; set; }
         public string City { get; set; }
     }
 }

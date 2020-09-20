@@ -9,11 +9,6 @@ const ViewEmployeeDetails = ({ match }) => {
   const [selectedUser, setSelectedUser] = useState({});
   const currUserId = match.params.id;
 
-  useEffect(() => {
-    const employeeId = currUserId;
-    loadUser(employeeId);
-  }, [currUserId]);
-
   const loadUser = async (id) => {
     try {
       const selectedUser = await agent.Users.details(id);
@@ -22,6 +17,11 @@ const ViewEmployeeDetails = ({ match }) => {
       console.log(error);
     }
   };
+  useEffect(() => {
+    const employeeId = currUserId;
+    loadUser(employeeId);
+  }, [currUserId]);
+
   return (
     <div>
       <Navbar

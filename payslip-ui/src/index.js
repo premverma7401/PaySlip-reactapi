@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 import './styles/dashboard.css';
-// import './styles/viewEmployee.css';
-// import './styles/ViewPayslips.css';
-// import './styles/CreateEmployee.css';
-// import './styles/CreatePayslips.css';
-// import './styles/information.css';
+import 'semantic-ui-css/semantic.min.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

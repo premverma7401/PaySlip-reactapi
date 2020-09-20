@@ -1,11 +1,13 @@
 using System;
 using Domain.models;
 using Domain.models.employee;
+using Microsoft.AspNetCore.Http;
 
 namespace Service.VM
 {
     public class EmployeeVM : Entity
     {
+        public int empId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string ImageUrl { get; set; }
@@ -21,6 +23,7 @@ namespace Service.VM
         public int Age { get; set; }
         public string Phone { get; set; }
         public string IRD { get; set; }
+        public string Designation { get; set; }
         public string City { get; set; }
     }
 }

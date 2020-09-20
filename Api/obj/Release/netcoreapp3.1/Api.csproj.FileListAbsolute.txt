@@ -58,3 +58,5 @@ C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\runtimes\win-x86\native\sni.d
 C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\System.IO.Pipelines.dll

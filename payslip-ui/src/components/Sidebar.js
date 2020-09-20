@@ -29,9 +29,6 @@ const Sidebar = () => {
         <NavLink to={'/payrecord'}>
           <AppOptions text="Pay Records" Icon={<HiOutlineClipboardList />} />
         </NavLink>
-        <NavLink to={'/prem'}>
-          <AppOptions text="Sample" Icon={<HiOutlineClipboardList />} />
-        </NavLink>
       </div>
     </div>
   );

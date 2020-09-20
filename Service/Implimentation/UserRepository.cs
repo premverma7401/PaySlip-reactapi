@@ -1,27 +1,34 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Domain.models.employee;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Service.Interface;
 using System.Linq;
 using Service.VM;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Service.Implimentation
 {
     public class UserRepository : IUserRepository
     {
         private readonly DataContext _context;
-        public UserRepository(DataContext context)
+        private readonly IWebHostEnvironment _hostingenvironment;
+
+        public UserRepository(DataContext context, IWebHostEnvironment hostingEnvironment)
         {
             _context = context;
+            _hostingenvironment = hostingEnvironment;
+
         }
 
         public async Task<List<EmployeeVM>> GetEmployees()
         {
             return await _context.Employees.Select(e => new EmployeeVM()
             {
+                empId = e.employeeId,
                 FirstName = e.FirstName,
                 LastName = e.LastName,
                 ImageUrl = e.ImageUrl,
@@ -37,38 +44,51 @@ namespace Service.Implimentation
                 Age = e.EmployeePersonal.Age,
                 Phone = e.EmployeePersonal.Phone,
                 IRD = e.EmployeePersonal.IRD,
-                City = e.EmployeePersonal.City
-
+                City = e.EmployeePersonal.City,
+                Designation = e.Designation
             }).ToListAsync();
         }
 
-        public async Task<int> CreateEmployee(Employee employee)
+        public async Task<int> CreateEmployee(EmployeeCreateVm employee)
         {
             var emp = new Employee()
             {
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
-                ImageUrl = employee.ImageUrl,
+                // ImageUrl = employee.ImageUrl,
                 Email = employee.Email,
                 Username = employee.Username,
+                Designation = employee.Designation,
                 EmployeePersonal = new EmployeePersonal()
                 {
-                    DateOfBirth = employee.EmployeePersonal.DateOfBirth,
-                    Age = Utils.Helper.GetAge(employee.EmployeePersonal.DateOfBirth),
-                    Phone = employee.EmployeePersonal.Phone,
-                    IRD = employee.EmployeePersonal.IRD,
-                    City = employee.EmployeePersonal.City,
+                    DateOfBirth = employee.DateOfBirth,
+                    Age = Utils.Helper.GetAge(employee.DateOfBirth),
+                    Phone = employee.Phone,
+                    IRD = employee.IRD,
+                    City = employee.City,
                 },
                 EmployeeContract = new EmployeeContract()
                 {
-                    ContractHours = employee.EmployeeContract.ContractHours,
-                    PerHourPay = employee.EmployeeContract.PerHourPay,
-                    OvertimeRate = employee.EmployeeContract.OvertimeRate,
-                    ContractType = employee.EmployeeContract.ContractType,
-                    KiwiSaver = employee.EmployeeContract.KiwiSaver,
-                    Union = employee.EmployeeContract.Union
+                    ContractHours = employee.ContractHours,
+                    PerHourPay = employee.PerHourPay,
+                    OvertimeRate = employee.OvertimeRate,
+                    ContractType = employee.ContractType,
+                    KiwiSaver = employee.KiwiSaver,
+                    Union = employee.Union
                 }
             };
+            if (employee.ImageUrl != null && employee.ImageUrl.Length > 0)
+            {
+                var uploadFol = @"images/Employee";
+                var fileName = Path.GetFileNameWithoutExtension(employee.ImageUrl.FileName);
+                var extension = Path.GetExtension(employee.ImageUrl.FileName);
+                var webRootPath = _hostingenvironment.WebRootPath;
+                fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extension;
+                var path = Path.Combine(webRootPath, uploadFol, fileName);
+                await employee.ImageUrl.CopyToAsync(new FileStream(path, FileMode.Create));
+                emp.ImageUrl = "/" + uploadFol + "/" + fileName;
+
+            }
             await _context.AddAsync(emp);
             await _context.SaveChangesAsync();
             return 0;
@@ -109,5 +129,17 @@ namespace Service.Implimentation
             }
             return emp;
         }
+
+        public List<EmployeeDesignationVM> GetEmpCountByDesignation()
+        {
+            var empDesiCount = _context.Employees.GroupBy(e => e.Designation).Select(e => new { e.Key, Count = e.Count() })
+            .ToDictionary(e => e.Key, e => e.Count);
+            return empDesiCount.Select(e => new EmployeeDesignationVM
+            {
+                DesignationCount = e.Value,
+                Designation = e.Key
+            }).ToList();
+        }
+
     }
 }

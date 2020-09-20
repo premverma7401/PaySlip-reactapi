@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* Input and select feild styles */
+.payslip-inputs span{
+    width: 83vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.payslip-inputs select, .payslip-inputs input {
+    color: #333333;
+    border: 0;
+    background: none;
+	border-bottom: 1px solid #070707;
+	font-size: 18px;
+    width: 20vw;
+    padding-left: 1vw;
+    height: 5vh;
+    border-radius: 0.5vw;
+  }
+  .payslip-inputs input:focus, 
+  .payslip-inputs select:focus, 
+  .select-date input:focus{
+    outline: none;
+    box-shadow: 2px 2px 2px 2px #457B9D;
+    transition: 0.5s ease-in-out;
+  }
+.select-date{
+    width: 60vw;
+    height: 30vh;
+    position: relative;
+    left: 13vw;
+    top: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 4px #1D3557 solid;
+    border-radius: 3vw;
+    font-size:25px;
+    font-weight: bold;
+}
+.select-date div{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+input[type="date"]{
+    height: 5vh;
+    width: 13vw;
+    margin: 0vh 1vh;
+    padding: 1vw;
+    border-radius: 2vw;
+    border: none;
+    cursor: text;
+}
+.select-date button{
+    color: #F1FAEE;
+    text-decoration: none;
+    background: #1D3557;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;    
+}
+.select-date button:hover{
+    background: #999999;
+    letter-spacing: 0.5px;
+    transition: all 0.4s ease 0s;
+}

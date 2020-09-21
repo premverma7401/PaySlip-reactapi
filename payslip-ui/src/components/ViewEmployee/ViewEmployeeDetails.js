@@ -13,6 +13,7 @@ const ViewEmployeeDetails = ({ match }) => {
     try {
       const selectedUser = await agent.Users.details(id);
       setSelectedUser(selectedUser);
+      console.log(selectedUser);
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +41,8 @@ const ViewEmployeeDetails = ({ match }) => {
             <p>Employee Id : {selectedUser.employeeId}</p>
             <p>Username: {selectedUser.username}</p>
             <p>
-              {selectedUser.employeePersonal &&
+              {selectedUser &&
+                selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.ird}
             </p>
           </div>

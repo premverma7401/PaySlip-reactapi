@@ -1,39 +1,82 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../store/UserContext';
 import Navbar from '../Navbar';
 import './ViewPayslips.css';
+import { Collapsible, CollapsibleItem, Icon, Select } from 'react-materialize';
+import agent from '../../api/agent';
 
-const ViewPayslips = () => {
+const ViewPayslips = ({ match }) => {
   const [users, setUsers] = useContext(UserContext);
+  // const [payslipList, setPayslipList] = useState('');
+  const [payslipsList, setPayslipsList] = useState([]);
+
+  // const currUserId = match.params.id;
+
+  const getPayslip = async (id) => {
+    try {
+      const payslipsList = await agent.Payslip.list(id);
+      setPayslipsList(payslipsList);
+      console.log(payslipsList);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
       <Navbar title="View Payslips" />
       <div className="main">
         <div className="payslip-inputs">
-          <span>
-            <select name="employee-list" id="employee-list">
-              {users.map((user) => (
-                <option key={user.empId} value={user.firstName}>
-                  {user.firstName}
-                </option>
-              ))}
-            </select>
-          </span>
-        </div>
-        <div className="select-date">
-          <p>DATE :</p>
+          <Select
+            name="employee-list"
+            id="employee-list"
+            multiple={false}
+            options={{
+              dropdownOptions: {
+                alignment: 'left',
+                autoTrigger: true,
+                closeOnClick: true,
+                constrainWidth: true,
+                coverTrigger: false,
+                hover: false,
+              },
+            }}
+            value=""
+            onChange={(e) => getPayslip(e.target.value)}
+          >
+            <option disabled value="">
+              Select Employee
+            </option>
+            {users.map((user) => (
+              <option key={user.empId} value={user.empId}>
+                {user.firstName}
+              </option>
+            ))}
+          </Select>
+
           <div>
-            <span>
-              <label htmlFor="from">From</label>
-              <input type="date" id="from" placeholder="dd/mm/yy" />
-            </span>
-            <span>
-              <label htmlFor="To">&nbsp;&nbsp;&nbsp;&nbsp;To</label>
-              <input type="date" id="to" placeholder="dd/mm/yy" />
-            </span>
+            <input type="text" placeholder="Search By Date" />
           </div>
-          <button>View Payslip</button>
+        </div>
+
+        <div>
+          {payslipsList.length > 0 ? (
+            <Collapsible accordion>
+              {payslipsList.map((ps, i) => (
+                <CollapsibleItem
+                  key={i}
+                  expanded={false}
+                  header={`Total Hours worked: ${ps.totalHours}`}
+                  icon={<Icon>filter_drama</Icon>}
+                  node="div"
+                >
+                  {ps.totalHours}
+                </CollapsibleItem>
+              ))}
+            </Collapsible>
+          ) : (
+            <div>Please select employee:</div>
+          )}
         </div>
       </div>
     </div>

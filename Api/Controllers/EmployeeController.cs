@@ -36,9 +36,10 @@ namespace Api.Controllers
             return Ok("Inserted");
         }
         [HttpPut("{Id}")]
-        public async Task<string> UpdateEmployee(Employee employee, int Id)
+        public async Task<IActionResult> UpdateEmployee(Employee employee, int Id)
         {
-            return await _user.UpdateEmployee(employee, Id);
+            await _user.UpdateEmployee(employee, Id);
+            return Ok("Updated");
         }
         [HttpDelete("{Id}")]
         public async Task<string> DeleteEmployee(int Id)

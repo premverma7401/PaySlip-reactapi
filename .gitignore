@@ -338,3 +338,12 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+Service/obj/Debug/netcoreapp3.1/Service.assets.cache
+Service/obj/Debug/netcoreapp3.1/Service.csproj.FileListAbsolute.txt
+Persistence/obj/Debug/netcoreapp3.1/Persistence.assets.cache
+Persistence/obj/Debug/netcoreapp3.1/Persistence.csproj.FileListAbsolute.txt
+Domain/obj/Debug/netcoreapp3.1/Domain.assets.cache
+Domain/obj/Debug/netcoreapp3.1/Domain.csproj.FileListAbsolute.txt
+Api/obj/Debug/netcoreapp3.1/Api.assets.cache
+Api/obj/Debug/netcoreapp3.1/Api.csproj.FileListAbsolute.txt
+Api/obj/Debug/netcoreapp3.1/Api.csprojAssemblyReference.cache

@@ -60,18 +60,18 @@ const CreateNewEmployee = () => {
     IRD: '',
     City: '',
     ContractHours: 0,
-    PerHourPay: '',
-    OvertimeRate: '',
-    ContractType: '',
-    Union: '',
-    KiwiSaver: '',
+    PerHourPay: 1,
+    OvertimeRate: 1,
+    ContractType: 0,
+    Union: false,
+    KiwiSaver: 0,
   };
 
   return (
     <div>
       <Navbar title="Create Employee" />
       <Formik
-        initialValues={initialValues}
+        initialValues={initValues}
         onSubmit={(values, actions) => {
           const image = new FormData();
           image.append('imageUrl', values.imageUrl);

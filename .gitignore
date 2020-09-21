@@ -347,3 +347,5 @@ Domain/obj/Debug/netcoreapp3.1/Domain.csproj.FileListAbsolute.txt
 Api/obj/Debug/netcoreapp3.1/Api.assets.cache
 Api/obj/Debug/netcoreapp3.1/Api.csproj.FileListAbsolute.txt
 Api/obj/Debug/netcoreapp3.1/Api.csprojAssemblyReference.cache
+Api/obj/Debug/netcoreapp3.1/Api.csprojAssemblyReference.cache
+Domain/obj/Debug/netcoreapp3.1/Domain.csprojAssemblyReference.cache

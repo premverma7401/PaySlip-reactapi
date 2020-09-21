@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using System.Threading.Tasks;
 using Domain.models.payslip;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -24,9 +23,9 @@ namespace Service.Implimentation
             _user = user;
             _context = context;
         }
-        public async Task<int> GenratePayslip(int Id, decimal th)
+        public int GenratePayslip(int Id, decimal th)
         {
-            var emp = await _context.Employees.Include(e => e.EmployeeContract).Where(e => e.employeeId == Id).FirstAsync();
+            var emp = _context.Employees.Include(e => e.EmployeeContract).Where(e => e.employeeId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("User Not Found");
@@ -44,16 +43,16 @@ namespace Service.Implimentation
                 TotalDeduction = _totalAmountDeduted = pay.GetTotalDeduction(emp.EmployeeContract.Union, th, _totalAmountEarned, emp.EmployeeContract.ContractHours, emp.EmployeeContract.KiwiSaver),
                 InHandPay = _totalAmountEarned - _totalAmountDeduted
             };
-            await _context.Payslips.AddAsync(payslip);
-            await _context.SaveChangesAsync();
+            _context.Payslips.Add(payslip);
+            _context.SaveChanges();
             return 0;
         }
 
 
-        public async Task<List<PayslipVM>> GetAllPayslips(int Id)
+        public List<PayslipVM> GetAllPayslips(int Id)
         {
-            var emp = await _context.Employees.Where(e => e.employeeId == Id).FirstAsync();
-            var allPs = await _context.Payslips.Where(e => e.EmpId == Id).OrderByDescending(e => e.CreatedAt).ToListAsync();
+            var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
+            var allPs = _context.Payslips.Where(e => e.EmpId == Id).OrderByDescending(e => e.CreatedAt).ToList();
             return allPs.Select(e => new PayslipVM
             {
                 FirstName = emp.FirstName,
@@ -70,11 +69,11 @@ namespace Service.Implimentation
             }).ToList();
 
         }
-        public async Task<PayslipVM> GetSinglePayslip(int Id)
+        public PayslipVM GetSinglePayslip(int Id)
         {
-            var emp = await _context.Employees.Where(e => e.employeeId == Id).FirstAsync();
+            var emp = _context.Employees.Where(e => e.employeeId == Id).First();
 
-            return await _context.Payslips.Where(e => e.EmpId == Id).OrderByDescending(e => e.CreatedAt).Select(e => new PayslipVM
+            return _context.Payslips.Where(e => e.EmpId == Id).OrderByDescending(e => e.CreatedAt).Select(e => new PayslipVM
             {
                 FirstName = emp.FirstName,
                 LastName = emp.LastName,
@@ -88,13 +87,13 @@ namespace Service.Implimentation
                 TotalDeduction = e.TotalDeduction,
                 InHandPay = e.InHandPay
 
-            }).FirstAsync();
+            }).FirstOrDefault();
         }
 
-        public async Task<PayHistoryVM> GetPaySummary(int Id)
+        public PayHistoryVM GetPaySummary(int Id)
         {
-            var emp = await _context.Employees.Where(e => e.employeeId == Id).FirstAsync();
-            var allPs = await _context.Payslips.Where(e => e.EmpId == Id).ToListAsync();
+            var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
+            var allPs = _context.Payslips.Where(e => e.EmpId == Id).ToList();
             decimal sumEarning = 0;
             decimal sumDeduction = 0;
             decimal sumInhand = 0;
@@ -116,14 +115,14 @@ namespace Service.Implimentation
                 TotalIHPSoFar = sumInhand,
                 TotalHoursSoFar = sumHoursWorked,
                 TotalOTHSoFar = sumOTH,
-            }).First();
+            }).FirstOrDefault();
         }
 
-        // public async Task<int> UpdatePayslip(int Id, decimal th)
+        // public  int> UpdatePayslip(int Id, decimal th)
         // {
         //     return 1;
         // }
-        // public async Task<int> DeletePayslip(int Id)
+        // public  int> DeletePayslip(int Id)
         // {
         //     return 1;
 

@@ -65,7 +65,7 @@ namespace Service.Implimentation
                     Age = Utils.Helper.GetAge(employee.DateOfBirth),
                     Phone = employee.Phone,
                     IRD = employee.IRD,
-                    City = employee.City,
+                    City = employee.City
                 },
                 EmployeeContract = new EmployeeContract()
                 {

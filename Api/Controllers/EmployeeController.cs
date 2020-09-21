@@ -18,18 +18,19 @@ namespace Api.Controllers
 
         }
         [HttpGet]
-        public async Task<List<EmployeeVM>> GetEmp()
+        public async Task<IActionResult> GetEmp()
         {
-            return await _user.GetEmployees();
+            var users = await _user.GetEmployees();
+            return Ok(users);
         }
         [HttpGet("test")]
-        public ActionResult<string> TestFunction()
+        public IActionResult TestFunction()
         {
-            return ("test value return");
+            return Ok("test value return");
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddEmployee(EmployeeCreateVm employee)
+        public async Task<IActionResult> AddEmployee(EmployeeCreateVm employee)
         {
             await _user.CreateEmployee(employee);
             return Ok("Inserted");

@@ -121,3 +121,18 @@ END;
 
 GO
 
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200917083223_imageUpload')
+BEGIN
+    ALTER TABLE [Employees] ADD [Designation] nvarchar(max) NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200917083223_imageUpload')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20200917083223_imageUpload', N'3.1.5');
+END;
+
+GO
+

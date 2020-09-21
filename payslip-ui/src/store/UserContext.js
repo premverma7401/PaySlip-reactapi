@@ -24,7 +24,7 @@ export const UserProvider = (props) => {
   const loadDesignationStats = async () => {
     try {
       setLoading(true);
-      const stats = await agent.Users.statList();
+      //  const stats = await agent.Users.statList();
       setStats(stats);
       console.log('stats', stats[1].designationCount);
       setLoading(false);

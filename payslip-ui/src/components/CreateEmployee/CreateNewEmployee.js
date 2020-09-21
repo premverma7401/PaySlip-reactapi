@@ -55,23 +55,23 @@ const CreateNewEmployee = () => {
     Email: '',
     Username: '',
     Designation: '',
-    DateOfBirth: new Date(),
+    DateOfBirth: '',
     Phone: '',
     IRD: '',
     City: '',
-    ContractHours: 0,
-    PerHourPay: 1,
-    OvertimeRate: 1,
+    ContractHours: '',
+    PerHourPay: '',
+    OvertimeRate: '',
     ContractType: 0,
     Union: false,
-    KiwiSaver: 0,
+    KiwiSaver: '',
   };
 
   return (
     <div>
       <Navbar title="Create Employee" />
       <Formik
-        initialValues={initValues}
+        initialValues={initialValues}
         onSubmit={(values, actions) => {
           const image = new FormData();
           image.append('imageUrl', values.imageUrl);
@@ -80,7 +80,7 @@ const CreateNewEmployee = () => {
             agent.Users.create(values);
             console.log(values);
             setLoading(false);
-          }, 2000);
+          }, 1000);
           actions.resetForm();
         }}
       >
@@ -106,7 +106,7 @@ const CreateNewEmployee = () => {
                 <Field type="input" placeholder="First Name" name="FirstName" />
                 <Field type="input" placeholder="Last Name" name="LastName" />
                 <Field
-                  type="input"
+                  type="date"
                   placeholder="Date Of Birth"
                   name="DateOfBirth"
                 />
@@ -142,23 +142,27 @@ const CreateNewEmployee = () => {
               <InfotabComponent text="CONTRACT INFORMATION" />
               <div>
                 <Field
-                  type="input"
+                  type="number"
                   placeholder="Contract Hours"
                   name="ContractHours"
                 />
                 <Field
-                  type="input"
+                  type="number"
                   placeholder="Pay Per Hours"
                   name="PerHourPay"
                 />
                 <Field
-                  type="input"
+                  type="number"
                   placeholder="Overtime Rate"
                   name="OvertimeRate"
                 />
               </div>
               <div>
-                <Field type="input" placeholder="Kiwi Saver" name="KiwiSaver" />
+                <Field
+                  type="number"
+                  placeholder="Kiwi Saver"
+                  name="KiwiSaver"
+                />
                 <label htmlFor="contract">Contract Type:</label>
                 <Field name="ContractType" id="contract" component="select">
                   <option value="---------">

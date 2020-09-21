@@ -10,7 +10,6 @@ const sleep = (ms) => (response) =>
 const request = {
   // get: (url) => axios.get(url).then(sleep(1500)).then(responseBody),
   get: (url) => axios.get(url).then(responseBody),
-
   post: (url, body) => axios.post(url, body).then(responseBody),
   put: (url, body) => axios.put(url, body).then(responseBody),
 };
@@ -22,5 +21,8 @@ const Users = {
   create: (user) => request.post('/employee', user),
   update: (user, id) => request.put(`/employee/${id}`, user),
 };
+const Payslip = {
+  list: (id) => request.get(`/payslip/all/${id}/`),
+};
 
-export default { Users };
+export default { Users, Payslip };

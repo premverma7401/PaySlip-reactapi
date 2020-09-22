@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Domain.models.employee;
-using System.Threading.Tasks;
 using Service.Interface;
 using System.Linq;
 using Service.VM;
@@ -24,9 +23,9 @@ namespace Service.Implimentation
 
         }
 
-        public async Task<List<EmployeeVM>> GetEmployees()
+        public List<EmployeeVM> GetEmployees()
         {
-            return await _context.Employees.Select(e => new EmployeeVM()
+            return _context.Employees.Select(e => new EmployeeVM()
             {
                 empId = e.employeeId,
                 FirstName = e.FirstName,
@@ -46,10 +45,10 @@ namespace Service.Implimentation
                 IRD = e.EmployeePersonal.IRD,
                 City = e.EmployeePersonal.City,
                 Designation = e.Designation
-            }).ToListAsync();
+            }).ToList();
         }
 
-        public async Task<int> CreateEmployee(EmployeeCreateVm employee)
+        public int CreateEmployee(EmployeeCreateVm employee)
         {
             var emp = new Employee()
             {
@@ -59,10 +58,11 @@ namespace Service.Implimentation
                 Email = employee.Email,
                 Username = employee.Username,
                 Designation = employee.Designation,
+
                 EmployeePersonal = new EmployeePersonal()
                 {
                     DateOfBirth = employee.DateOfBirth,
-                    Age = Utils.Helper.GetAge(employee.DateOfBirth),
+                    Age = Utils.Helper.CalculateAge(employee.DateOfBirth),
                     Phone = employee.Phone,
                     IRD = employee.IRD,
                     City = employee.City
@@ -74,7 +74,8 @@ namespace Service.Implimentation
                     OvertimeRate = employee.OvertimeRate,
                     ContractType = employee.ContractType,
                     KiwiSaver = employee.KiwiSaver,
-                    Union = employee.Union
+                    Union = employee.Union,
+
                 }
             };
             if (employee.ImageUrl != null && employee.ImageUrl.Length > 0)
@@ -85,44 +86,44 @@ namespace Service.Implimentation
                 var webRootPath = _hostingenvironment.WebRootPath;
                 fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extension;
                 var path = Path.Combine(webRootPath, uploadFol, fileName);
-                await employee.ImageUrl.CopyToAsync(new FileStream(path, FileMode.Create));
+                employee.ImageUrl.CopyTo(new FileStream(path, FileMode.Create));
                 emp.ImageUrl = "/" + uploadFol + "/" + fileName;
 
             }
-            await _context.AddAsync(emp);
-            await _context.SaveChangesAsync();
-            return 0;
+            _context.Add(emp);
+            _context.SaveChanges();
+            return emp.employeeId;
         }
 
-        public async Task<string> UpdateEmployee(Employee employee, int Id)
+        public string UpdateEmployee(Employee employee, int Id)
         {
-            var emp = await _context.Employees.Where(x => x.employeeId == Id).FirstOrDefaultAsync();
+            var emp = _context.Employees.Where(x => x.employeeId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("Not Found");
             }
             emp.FirstName = employee.FirstName;
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return ("Updated");
 
         }
 
-        public async Task<string> DeleteEmployee(int Id)
+        public string DeleteEmployee(int Id)
         {
-            var emp = await _context.Employees.Where(x => x.employeeId == Id).FirstOrDefaultAsync();
+            var emp = _context.Employees.Where(x => x.employeeId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("Not Found");
             }
             _context.Remove(emp);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return ("Deleted");
         }
 
-        public async Task<Employee> GetEmployee(int Id)
+        public Employee GetEmployee(int Id)
         {
-            var emp = await _context.Employees.Include(x => x.EmployeePersonal).Include(x => x.EmployeeContract)
-                                              .Where(x => x.employeeId == Id).FirstOrDefaultAsync();
+            var emp = _context.Employees.Include(x => x.EmployeePersonal).Include(x => x.EmployeeContract)
+                                              .Where(x => x.employeeId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("No User found");

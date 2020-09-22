@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
+using Service.VM;
 
 namespace Api.Controllers
 {
@@ -17,9 +18,9 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("createPayslip")]
-        public IActionResult CreatePS(int id, decimal totalHours)
+        public IActionResult CreatePS(CreatePayslipVM payslipVM)
         {
-            return Ok(_payslip.GenratePayslip(id, totalHours));
+            return Ok(_payslip.GenratePayslip(payslipVM));
         }
         [HttpPost]
         [Route("all/{Id}")]

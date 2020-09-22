@@ -1,5 +1,5 @@
-import Axios from 'axios';
-import React, { Fragment, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
 import { RadioGroup, Select, TextInput } from 'react-materialize';
 import { UserContext } from '../../store/UserContext';
 import Navbar from '../Navbar';
@@ -26,7 +26,7 @@ const CreatePayslip = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Axios.post(url, payData).then((res) => {
+    axios.post(url, payData).then((res) => {
       console.log(res.data);
     });
     console.log('clicked');
@@ -64,42 +64,48 @@ const CreatePayslip = () => {
               ))}
             </Select>
             {payData.empId && (
-              <Fragment>
-                <RadioGroup
-                  label="Select Preference"
-                  name="payType"
-                  onChange={(e) => handleChange(e)}
-                  options={[
-                    {
-                      label: 'Per Hour',
-                      value: 'perHour',
-                    },
-                    {
-                      label: 'Monthly',
-                      value: 'monthly',
-                    },
-                  ]}
-                  value={payData.payType}
-                />
-                {payData.payType === 'perHour' ? (
-                  <TextInput
-                    type="number"
-                    placeholder="No of hours worked"
+              <div className="payslip-data">
+                <div>
+                  <RadioGroup
+                    label="Select Preference"
+                    name="payType"
                     onChange={(e) => handleChange(e)}
-                    value={payData.totalHours}
-                    name="totalHours"
+                    options={[
+                      {
+                        label: 'Total Hours',
+                        value: 'perHour',
+                      },
+                      {
+                        label: 'Monthly Salary',
+                        value: 'monthly',
+                      },
+                    ]}
+                    value={payData.payType}
                   />
-                ) : (
-                  <TextInput
-                    type="number"
-                    placeholder="Total Monthly"
-                    onChange={(e) => handleChange(e)}
-                    value={payData.totalMonthly}
-                    name="totalMonthly"
-                  />
-                )}
-                {/* <button className="btn-create">Generate Payslip</button> */}
-              </Fragment>
+                </div>
+                <div>
+                  {payData.payType === 'perHour' ? (
+                    <TextInput
+                      type="number"
+                      placeholder="No of hours worked"
+                      onChange={(e) => handleChange(e)}
+                      value={payData.totalHours}
+                      name="totalHours"
+                    />
+                  ) : (
+                    <TextInput
+                      type="number"
+                      placeholder="Total Monthly"
+                      onChange={(e) => handleChange(e)}
+                      value={payData.totalMonthly}
+                      name="totalMonthly"
+                    />
+                  )}
+                </div>
+              </div>
+            )}
+            {payData.empId && (
+              <button className="btn-create">Generate Payslip</button>
             )}
           </form>
         </div>

@@ -6,7 +6,7 @@ namespace Service.Interface
 {
     public interface IPayslipRepository
     {
-        int GenratePayslip(int Id, decimal th);
+        int GenratePayslip(CreatePayslipVM payVM);
         List<PayslipVM> GetAllPayslips(int Id);
         PayslipVM GetSinglePayslip(int Id);
         PayHistoryVM GetPaySummary(int Id);

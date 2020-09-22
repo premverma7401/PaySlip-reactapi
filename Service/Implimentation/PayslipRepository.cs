@@ -23,26 +23,46 @@ namespace Service.Implimentation
             _user = user;
             _context = context;
         }
-        public int GenratePayslip(int Id, decimal totalHours)
+        public int GenratePayslip(CreatePayslipVM payVM)
         {
-            var emp = _context.Employees.Include(e => e.EmployeeContract).Where(e => e.employeeId == Id).FirstOrDefault();
+            var emp = _context.Employees.Include(e => e.EmployeeContract).Where(e => e.employeeId == payVM.EmpId).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("User Not Found");
             }
-            var payslip = new Payslip()
+            if (payVM.isHours == true)
             {
-                EmpId = emp.employeeId,
-                ContractedHours = emp.EmployeeContract.ContractHours,
-                TotalHours = totalHours,
-                OvertimeHours = (totalHours - emp.EmployeeContract.ContractHours),
-                ContractedEarning = pay.GetContractedEarning(emp.EmployeeContract.ContractHours, emp.EmployeeContract.PerHourPay, totalHours),
-                OvertimeEarning = pay.GetOvertimeEarning(totalHours, emp.EmployeeContract.ContractHours, emp.EmployeeContract.OvertimeRate, emp.EmployeeContract.PerHourPay),
-                TotalEarning = _totalAmountEarned = pay.GetTotalEarning(),
-                TotalDeduction = _totalAmountDeduted = pay.GetTotalDeduction(emp.EmployeeContract.Union, totalHours, _totalAmountEarned, emp.EmployeeContract.ContractHours, emp.EmployeeContract.KiwiSaver),
-                InHandPay = _totalAmountEarned - _totalAmountDeduted
-            };
-            _context.Payslips.Add(payslip);
+                var payslip = new Payslip()
+                {
+                    EmpId = emp.employeeId,
+                    TotalHours = payVM.TotalHours,
+                    ContractedHours = emp.EmployeeContract.ContractHours,
+                    OvertimeHours = (payVM.TotalHours - emp.EmployeeContract.ContractHours),
+                    ContractedEarning = pay.GetContractedEarning(emp.EmployeeContract.ContractHours, emp.EmployeeContract.PerHourPay, payVM.TotalHours),
+                    OvertimeEarning = pay.GetOvertimeEarning(payVM.TotalHours, emp.EmployeeContract.ContractHours, emp.EmployeeContract.OvertimeRate, emp.EmployeeContract.PerHourPay),
+                    TotalEarning = _totalAmountEarned = pay.GetTotalEarning(),
+                    TotalDeduction = _totalAmountDeduted = pay.GetTotalDeduction(emp.EmployeeContract.Union, payVM.TotalHours, _totalAmountEarned, emp.EmployeeContract.ContractHours, emp.EmployeeContract.KiwiSaver),
+                    InHandPay = _totalAmountEarned - _totalAmountDeduted,
+                    CreatedAt = DateTime.Now
+                };
+                _context.Payslips.Add(payslip);
+            }
+            else
+            {
+                var payslip = new Payslip()
+                {
+                    EmpId = emp.employeeId,
+                    TotalMonthly = payVM.MonthlyPay,
+                    TotalEarning = payVM.MonthlyPay,
+                    TotalDeduction = _totalAmountDeduted = pay.GetMonthlyDeduction(emp.EmployeeContract.Union, _totalAmountEarned,
+                    emp.EmployeeContract.KiwiSaver),
+                    InHandPay = _totalAmountEarned - _totalAmountDeduted,
+                    CreatedAt = DateTime.Now
+
+                };
+                _context.Payslips.Add(payslip);
+
+            }
             _context.SaveChanges();
             return 0;
         }
@@ -51,7 +71,7 @@ namespace Service.Implimentation
         public List<PayslipVM> GetAllPayslips(int Id)
         {
             var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
-            if(emp == null)
+            if (emp == null)
             {
                 throw new Exception("User not found");
             }

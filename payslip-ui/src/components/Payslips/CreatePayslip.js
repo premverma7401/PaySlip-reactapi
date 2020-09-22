@@ -58,8 +58,8 @@ const CreatePayslip = () => {
                 Select Employee
               </option>
               {users.map((user) => (
-                <option key={user.empId} value={user.empId} name={user.empId}>
-                  {user.firstName} {user.lastName}
+                <option key={user.EmpId} value={user.EmpId} name={user.EmpId}>
+                  {user.FirstName} {user.LastName}
                 </option>
               ))}
             </Select>

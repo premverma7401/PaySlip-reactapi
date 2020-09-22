@@ -1,6 +1,5 @@
 import axios from 'axios';
-// axios.defaults.baseURL = 'https://devcompiler.in/api';
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'https://api.mocki.io/v1/c9d57f59';
 
 const responseBody = (response) => response.data;
 

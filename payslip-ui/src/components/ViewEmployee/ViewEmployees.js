@@ -26,17 +26,18 @@ const ViewEmployees = () => {
             <Link to={`/viewemp/${user.empId}`} key={user.empId}>
               <div className="user-summary-card">
                 <div>
-                  <img src="/premsager.jpg" alt="profile two" />
+                  <img
+                    src={'https://randomuser.me/api/portraits/men/75.jpg'}
+                    alt="profile"
+                  />
                   <h2>
                     <p>
-                      {user.firstName} {user.lastName}
+                      {user.FirstName} {user.LastName}
                     </p>
                     <br />
-                    <span>{user.username}</span>
+                    <span>{user.Username}</span>
                     <br />
-                    <span>{user.designation}</span>
-                    <br />
-                    <span>{user.email}</span>
+                    <span>{user.Email}</span>
                   </h2>
                 </div>
 

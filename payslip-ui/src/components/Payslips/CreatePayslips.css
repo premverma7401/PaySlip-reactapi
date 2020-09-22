@@ -31,3 +31,9 @@
   outline: none;
   background-color: #cedbee;
 }
+.payslip-data {
+}
+.card-panel.teal {
+  padding: 50px 80px;
+  display: flex;
+}

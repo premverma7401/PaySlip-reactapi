@@ -76,7 +76,8 @@ namespace Service.Implimentation
                     KiwiSaver = employee.KiwiSaver,
                     Union = employee.Union,
 
-                }
+                },
+                CreatedAt = DateTime.Now,
             };
             if (employee.ImageUrl != null && employee.ImageUrl.Length > 0)
             {

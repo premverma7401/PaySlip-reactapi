@@ -8,6 +8,7 @@ namespace Domain.models.payslip
         public decimal ContractedHours { get; set; }
         public decimal OvertimeHours { get; set; }
         public decimal TotalHours { get; set; }
+        public decimal TotalMonthly { get; set; }
         public decimal ContractedEarning { get; set; }
         public decimal OvertimeEarning { get; set; }
         public decimal TotalEarning { get; set; }

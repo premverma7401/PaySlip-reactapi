@@ -56,7 +56,7 @@ namespace Service.Implimentation
                     TotalEarning = payVM.MonthlyPay,
                     TotalDeduction = _totalAmountDeduted = pay.GetMonthlyDeduction(emp.EmployeeContract.Union, _totalAmountEarned,
                     emp.EmployeeContract.KiwiSaver),
-                    InHandPay = _totalAmountEarned - _totalAmountDeduted,
+                    InHandPay = payVM.MonthlyPay - _totalAmountDeduted,
                     CreatedAt = DateTime.Now
 
                 };

@@ -1,35 +1,32 @@
 import React, { useContext, useState } from 'react';
-import axios from 'axios';
 import { RadioGroup, Select, TextInput } from 'react-materialize';
 import { UserContext } from '../../store/UserContext';
 import Navbar from '../Navbar';
 import './CreatePayslips.css';
+import agent from '../../api/agent';
 
 const CreatePayslip = () => {
   const [users, setUsers] = useContext(UserContext);
 
-  const [payData, setPayData] = useState({
+  const [payslip, setPayslip] = useState({
     empId: '',
     payType: 'perHour',
-    totalHours: '',
-    totalMonthly: '',
+    totalHours: +0,
+    totalMonthly: +0,
   });
-  const url = `http://localhost:5000/api/payslip/createPayslip?id=${payData.empId}&totalHours=${payData.th}`;
 
   const handleChange = (e) => {
-    console.log(e.target.value);
-    const newPay = { ...payData };
+    const newPay = { ...payslip };
     newPay[e.target.name] = e.target.value;
-    setPayData(newPay);
-  };
-  // console.log(payData);
+    console.log(newPay);
 
+    setPayslip(newPay);
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post(url, payData).then((res) => {
-      console.log(res.data);
-    });
-    console.log('clicked');
+    console.log('sending', payslip);
+    agent.Payslip.create(payslip);
+    console.log('sent');
   };
   return (
     <div>
@@ -51,19 +48,18 @@ const CreatePayslip = () => {
               }}
               name="empId"
               id="employee-list"
-              value={payData.empId}
               onChange={(e) => handleChange(e)}
             >
               <option disabled value="">
                 Select Employee
               </option>
               {users.map((user) => (
-                <option key={user.EmpId} value={user.EmpId} name={user.EmpId}>
-                  {user.FirstName} {user.LastName}
+                <option key={user.empId} value={user.empId}>
+                  {user.firstName} {user.lastName}
                 </option>
               ))}
             </Select>
-            {payData.empId && (
+            {payslip.empId && (
               <div className="payslip-data">
                 <div>
                   <RadioGroup
@@ -80,16 +76,15 @@ const CreatePayslip = () => {
                         value: 'monthly',
                       },
                     ]}
-                    value={payData.payType}
+                    value={payslip.payType}
                   />
                 </div>
                 <div>
-                  {payData.payType === 'perHour' ? (
+                  {payslip.payType === 'perHour' ? (
                     <TextInput
                       type="number"
                       placeholder="No of hours worked"
                       onChange={(e) => handleChange(e)}
-                      value={payData.totalHours}
                       name="totalHours"
                     />
                   ) : (
@@ -97,14 +92,13 @@ const CreatePayslip = () => {
                       type="number"
                       placeholder="Total Monthly"
                       onChange={(e) => handleChange(e)}
-                      value={payData.totalMonthly}
                       name="totalMonthly"
                     />
                   )}
                 </div>
               </div>
             )}
-            {payData.empId && (
+            {payslip.empId && (
               <button className="btn-create">Generate Payslip</button>
             )}
           </form>

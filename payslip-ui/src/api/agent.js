@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://api.mocki.io/v1/c9d57f59';
+axios.defaults.baseURL = 'http://localhost:5000/api/';
 
 const responseBody = (response) => response.data;
 
@@ -22,6 +22,7 @@ const Users = {
 };
 const Payslip = {
   list: (id) => request.post(`/payslip/all/${id}/`),
+  create: (payslip) => request.post('/payslip/createPayslip', payslip),
 };
 
 export default { Users, Payslip };

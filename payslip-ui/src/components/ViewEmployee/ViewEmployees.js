@@ -32,12 +32,12 @@ const ViewEmployees = () => {
                   />
                   <h2>
                     <p>
-                      {user.FirstName} {user.LastName}
+                      {user.firstName} {user.lastName}
                     </p>
                     <br />
-                    <span>{user.Username}</span>
+                    <span>{user.username}</span>
                     <br />
-                    <span>{user.Email}</span>
+                    <span>{user.email}</span>
                   </h2>
                 </div>
 

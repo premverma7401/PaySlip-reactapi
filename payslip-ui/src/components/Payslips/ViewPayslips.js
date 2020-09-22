@@ -49,7 +49,7 @@ const ViewPayslips = ({ match }) => {
             </option>
             {users.map((user) => (
               <option key={user.empId} value={user.empId}>
-                {user.firstName}
+                {user.firstName} {user.lastName}
               </option>
             ))}
           </Select>

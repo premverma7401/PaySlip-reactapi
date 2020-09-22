@@ -8,42 +8,29 @@ namespace Service.Utils
         private decimal _totalDeduction;
         private decimal taxPaye;
 
-        public decimal GetContractedEarning(decimal ch, decimal pr, decimal th)
+        public decimal GetContractedEarning(decimal contractedHours, decimal payRate, decimal totalHours)
         {
-            if (ch > th)
-            {
-                return _totalContractEarning = (th * pr);
-            }
-            return _totalContractEarning = (ch * pr);
+            return _totalContractEarning = (contractedHours > totalHours) 
+                                            ? (totalHours * payRate) 
+                                            : (contractedHours * payRate);
         }
-        public decimal GetOvertimeEarning(decimal th, decimal ch, decimal or, decimal pr)
+        public decimal GetOvertimeEarning(decimal totalHours, decimal contractedHours, decimal overtimeRate, decimal payRate)
         {
-            if (th > ch)
-            {
-                return _totalOvertimeEarning = ((th - ch) * (or * pr));
-            }
-            return _totalOvertimeEarning;
+            return _totalOvertimeEarning = (totalHours > contractedHours) 
+                ? ((totalHours - contractedHours) * (overtimeRate * payRate)) 
+                : _totalOvertimeEarning;
         }
         public decimal GetTotalEarning()
         {
             return _totalEarning = (_totalContractEarning + _totalOvertimeEarning);
         }
-        public decimal GetTotalDeduction(bool union, decimal th, decimal te, decimal ch, decimal ks)
+        public decimal GetTotalDeduction(bool union, decimal totalHours, decimal totalEarning, decimal contractedHours, decimal kiwiSaver)
         {
-            if (th > ch)
-            {
-                taxPaye = ((30 * te) / 100) + (ks * te) / 100;
-            }
-            else
-            {
-                taxPaye = ((20 * te) / 100) + (ks * te) / 100;
-            }
+            taxPaye = (totalHours > contractedHours)
+                ? (((30 * totalEarning) / 100) + (kiwiSaver * totalEarning) / 100)
+                : (((20 * totalEarning) / 100) + (kiwiSaver * totalEarning) / 100);
 
-            if (union == true)
-            {
-                return _totalDeduction = (100 + taxPaye);
-            }
-            return _totalDeduction = (50 + taxPaye);
+            return _totalDeduction = (union == true) ? (100 + taxPaye) : (50 + taxPaye);
 
         }
     }

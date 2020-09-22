@@ -23,24 +23,23 @@ namespace Service.Implimentation
             _user = user;
             _context = context;
         }
-        public int GenratePayslip(int Id, decimal th)
+        public int GenratePayslip(int Id, decimal totalHours)
         {
             var emp = _context.Employees.Include(e => e.EmployeeContract).Where(e => e.employeeId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("User Not Found");
             }
-
             var payslip = new Payslip()
             {
                 EmpId = emp.employeeId,
                 ContractedHours = emp.EmployeeContract.ContractHours,
-                TotalHours = th,
-                OvertimeHours = (th - emp.EmployeeContract.ContractHours),
-                ContractedEarning = pay.GetContractedEarning(emp.EmployeeContract.ContractHours, emp.EmployeeContract.PerHourPay, th),
-                OvertimeEarning = pay.GetOvertimeEarning(th, emp.EmployeeContract.ContractHours, emp.EmployeeContract.OvertimeRate, emp.EmployeeContract.PerHourPay),
+                TotalHours = totalHours,
+                OvertimeHours = (totalHours - emp.EmployeeContract.ContractHours),
+                ContractedEarning = pay.GetContractedEarning(emp.EmployeeContract.ContractHours, emp.EmployeeContract.PerHourPay, totalHours),
+                OvertimeEarning = pay.GetOvertimeEarning(totalHours, emp.EmployeeContract.ContractHours, emp.EmployeeContract.OvertimeRate, emp.EmployeeContract.PerHourPay),
                 TotalEarning = _totalAmountEarned = pay.GetTotalEarning(),
-                TotalDeduction = _totalAmountDeduted = pay.GetTotalDeduction(emp.EmployeeContract.Union, th, _totalAmountEarned, emp.EmployeeContract.ContractHours, emp.EmployeeContract.KiwiSaver),
+                TotalDeduction = _totalAmountDeduted = pay.GetTotalDeduction(emp.EmployeeContract.Union, totalHours, _totalAmountEarned, emp.EmployeeContract.ContractHours, emp.EmployeeContract.KiwiSaver),
                 InHandPay = _totalAmountEarned - _totalAmountDeduted
             };
             _context.Payslips.Add(payslip);
@@ -52,6 +51,10 @@ namespace Service.Implimentation
         public List<PayslipVM> GetAllPayslips(int Id)
         {
             var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
+            if(emp == null)
+            {
+                throw new Exception("User not found");
+            }
             var allPs = _context.Payslips.Where(e => e.EmpId == Id).OrderByDescending(e => e.CreatedAt).ToList();
             return allPs.Select(e => new PayslipVM
             {
@@ -71,8 +74,11 @@ namespace Service.Implimentation
         }
         public PayslipVM GetSinglePayslip(int Id)
         {
-            var emp = _context.Employees.Where(e => e.employeeId == Id).First();
-
+            var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
+            if (emp == null)
+            {
+                throw new Exception("User not found");
+            }
             return _context.Payslips.Where(e => e.EmpId == Id).OrderByDescending(e => e.CreatedAt).Select(e => new PayslipVM
             {
                 FirstName = emp.FirstName,

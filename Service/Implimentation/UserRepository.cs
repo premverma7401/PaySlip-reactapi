@@ -62,7 +62,7 @@ namespace Service.Implimentation
                 EmployeePersonal = new EmployeePersonal()
                 {
                     DateOfBirth = employee.DateOfBirth,
-                    Age = Utils.Helper.GetAge(employee.DateOfBirth),
+                    Age = Utils.Helper.CalculateAge(employee.DateOfBirth),
                     Phone = employee.Phone,
                     IRD = employee.IRD,
                     City = employee.City

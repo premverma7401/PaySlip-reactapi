@@ -4,7 +4,7 @@ namespace Service.Utils
 {
     public static class Helper
     {
-        public static int GetAge(DateTime dob)
+        public static int CalculateAge(DateTime dob)
         {
             var today = DateTime.Today;
             var age = today.Year - dob.Year;

@@ -17,9 +17,9 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("createPayslip")]
-        public IActionResult CreatePS(int id, decimal th)
+        public IActionResult CreatePS(int id, decimal totalHours)
         {
-            return Ok(_payslip.GenratePayslip(id, th));
+            return Ok(_payslip.GenratePayslip(id, totalHours));
         }
         [HttpPost]
         [Route("all/{Id}")]

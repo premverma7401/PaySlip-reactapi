@@ -36,7 +36,7 @@ h2 {
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   opacity: 0;
-  transform: translate(0px, -205px);
+  transform: translate(0px, -230px);
   z-index: 3;
   transition: 0.4s;
   background-color: #f1faee;

@@ -52,7 +52,7 @@
   width: 85vw;
   height: 10vh;
   margin-left: 15vw;
-  /* z-index: 4; */
+  z-index: 4;
   background: #1d3557;
   color: #f1faee;
 }

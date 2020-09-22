@@ -26,16 +26,16 @@ const ViewEmployees = () => {
                 <div>
                   <img
                     src={'https://randomuser.me/api/portraits/men/75.jpg'}
-                    alt="profile two"
+                    alt="profile"
                   />
                   <h2>
                     <p>
-                      {user.firstName} {user.lastName}
+                      {user.FirstName} {user.LastName}
                     </p>
                     <br />
-                    <span>{user.username}</span>
+                    <span>{user.Username}</span>
                     <br />
-                    <span>{user.email}</span>
+                    <span>{user.Email}</span>
                   </h2>
                 </div>
 

@@ -12,7 +12,6 @@ const CreatePayslip = () => {
     th: '',
   });
   const url = `http://localhost:5000/api/payslip?id=${payData.empId}&th=${payData.th}`;
-
   const handleChange = (e) => {
     const newPay = { ...payData };
     newPay[e.target.name] = e.target.value;
@@ -39,8 +38,8 @@ const CreatePayslip = () => {
               onChange={(e) => handleChange(e)}
             >
               {users.map((user) => (
-                <option key={user.empId} value={user.empId} name={user.empId}>
-                  {user.firstName} {user.lastName}
+                <option key={user.EmpId} value={user.EmpId} name={user.EmpId}>
+                  {user.FirstName} {user.LastName}
                 </option>
               ))}
             </select>

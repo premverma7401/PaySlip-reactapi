@@ -14,8 +14,8 @@ const ViewPayslips = () => {
           <span>
             <select name="employee-list" id="employee-list">
               {users.map((user) => (
-                <option key={user.empId} value={user.firstName}>
-                  {user.firstName}
+                <option key={user.EmpId} value={user.FirstName}>
+                  {user.FirstName}
                 </option>
               ))}
             </select>

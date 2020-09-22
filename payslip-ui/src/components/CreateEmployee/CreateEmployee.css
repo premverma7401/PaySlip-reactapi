@@ -28,11 +28,19 @@
   border: 0;
   background: none;
   border-bottom: 1px solid #1d3557;
+  text-align: center;
   font-size: 18px;
   width: 20vw;
   height: 5vh;
   padding: 1vw;
+  margin: px;
+  padding-bottom: 3vh;
   border-radius: 0.5vw;
+}
+/********** NEW DECLARATION BOX ADDED ***********/
+.create-personal-info input[type='file']{
+  padding-bottom: 5vh;
+  transform:translateY(-2vh);
 }
 .create-contract-info label {
   font-size: 17px;
@@ -78,15 +86,17 @@
   padding: 10px 25px;
   background-color: #797979;
   border: 1px #1d3557 solid;
-  color: black;
-  font-size: 20px;
+  border-radius: 0.5vw;
+  color: #f1faee;  font-size: 20px;
 }
 .submit-button button:nth-of-type(1) {
   margin-right: 20px;
   background-color: #2e4e7a;
-  color: white;
 }
-
+.submit-button button:hover{
+  background-color: #1d3557;
+  transition: all 0.2 ease-in-out;
+} 
 .address-bar {
   width: 40vw !important;
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'https://api.mocki.io/v1/c9d57f59';
 
 const responseBody = (response) => response.data;
 
@@ -13,7 +13,7 @@ const request = {
 };
 
 const Users = {
-  list: () => request.get('/employee/'),
+  list: () => request.get(),
   details: (id) => request.get(`/employee/${id}/`),
   create: (user) => request.post('/employee', user),
   update: (user, id) => request.put(`/employee/${id}`, user),

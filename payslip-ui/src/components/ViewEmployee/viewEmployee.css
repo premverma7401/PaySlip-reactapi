@@ -71,8 +71,7 @@ button:focus {
 }
 .info-stats {
   width: 15vw;
-  height: auto;
-  background-color: #fff;
+  background-color: rgb(255, 241, 241);
   position: sticky;
   top: 12%;
   padding-bottom: 20px;
@@ -87,6 +86,10 @@ button:focus {
   padding: 10px;
   letter-spacing: 0.7px;
   list-style: none;
+}
+.inner {
+  overflow-y: scroll;
+  height: 25vh;
 }
 
 .info-pie {

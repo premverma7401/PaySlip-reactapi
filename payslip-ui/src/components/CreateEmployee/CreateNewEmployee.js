@@ -1,44 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import InfotabComponent from '../../common/InfotabComponent';
+import LoadingProgress from '../../common/LoadingProgress';
+import agent from '../../api/agent';
 import { Formik, Field, Form } from 'formik';
 import './CreateEmployee.css';
-import agent from '../../api/agent';
 
 const CreateNewEmployee = () => {
+  const [loading, setLoading] = useState(false);
+
+  if (loading) return <LoadingProgress text="creating new employee" />;
+  const initialFilledValues = {
+    firstName: 'Shiv',
+    lastName: 'Verma',
+    //   imageUrl: '',
+    email: 'psag@gmail.com',
+    designation: 'Software Developer',
+    username: 'skhv',
+    employeePersonal: {
+      dateOfBirth: new Date(),
+      phone: '0275113822',
+      ird: '456-898-85',
+      city: 'Sirsa',
+    },
+    employeeContract: {
+      contractHours: 43,
+      perHourPay: 23,
+      overtimeRate: 1.5,
+      contractType: 0,
+      union: true,
+      kiwiSaver: 3,
+    },
+  };
+  const initValues = {
+    FirstName: 'joy',
+    LastName: 'Verma',
+    Email: 'psag@gmail.com',
+    Username: 'skhv',
+    Designation: 'Software Developer',
+    DateOfBirth: '1990-09-05T07:54:18.6821159',
+    Phone: '0275113822',
+    IRD: '456-898-85',
+    City: 'Sirsa',
+    ContractHours: 43,
+    PerHourPay: 23,
+    OvertimeRate: 1.5,
+    ContractType: 0,
+    Union: true,
+    KiwiSaver: 3,
+  };
+  const initialValues = {
+    FirstName: '',
+    LastName: '',
+    Email: '',
+    Username: '',
+    Designation: '',
+    DateOfBirth: '',
+    Phone: '',
+    IRD: '',
+    City: '',
+    ContractHours: '',
+    PerHourPay: '',
+    OvertimeRate: '',
+    ContractType: 0,
+    Union: false,
+    KiwiSaver: '',
+  };
+
   return (
     <div>
       <Navbar title="Create Employee" />
       <Formik
-        initialValues={{
-          firstName: 'Shiv',
-          lastName: 'Verma',
-          imageUrl: '',
-          email: 'psag@gmail.com',
-          username: 'skhv',
-          employeePersonal: {
-            dateOfBirth: new Date(),
-            phone: '0275113822',
-            ird: '456-898-85',
-            city: 'Sirsa',
-          },
-          employeeContract: {
-            contractHours: 43,
-            perHourPay: 23,
-            overtimeRate: 1.5,
-            contractType: 0,
-            union: true,
-            kiwiSaver: 3,
-          },
-        }}
-        onSubmit={(values, { setSubmitting, resetForm }) => {
-          console.log('values sent for submittion');
-          agent.Users.create(values);
-          console.log('submitted');
+        initialValues={initialValues}
+        onSubmit={(values, actions) => {
+          const image = new FormData();
+          image.append('imageUrl', values.imageUrl);
+          setLoading(true);
+          setTimeout(() => {
+            agent.Users.create(values);
+            console.log(values);
+            setLoading(false);
+          }, 1000);
+          actions.resetForm();
         }}
       >
-        {({ values }) => (
-          <Form className="main" autoComplete="off">
+        {(formProps) => (
+          <Form
+            className="main"
+            autoComplete="off"
+            onSubmit={formProps.handleSubmit}
+          >
             <div className="create-personal-info">
               <InfotabComponent text="PERSONAL INFORMATION" />
               <div>
@@ -48,48 +99,42 @@ const CreateNewEmployee = () => {
                   name="empId"
                   disabled
                 />
-                <Field type="input" placeholder="Username" name="username" />
-                <Field
-                  type="input"
-                  placeholder="IRD"
-                  name="employeePersonal.ird"
-                />
+                <Field type="input" placeholder="Username" name="Username" />
+                <Field type="input" placeholder="IRD" name="IRD" />
               </div>
               <div>
-                <Field type="input" placeholder="First Name" name="firstName" />
-                <Field type="input" placeholder="Last Name" name="lastName" />
+                <Field type="input" placeholder="First Name" name="FirstName" />
+                <Field type="input" placeholder="Last Name" name="LastName" />
                 <Field
-                  type="input"
+                  type="date"
                   placeholder="Date Of Birth"
-                  name="employeePersonal.dateOfBirth"
+                  name="DateOfBirth"
                 />
               </div>
               <div>
                 <Field
-                  name="designation"
+                  name="Designation"
                   type="input"
                   placeholder="Designation"
                 />
-                <Field
-                  name="employeePersonal.phone"
-                  type="input"
-                  placeholder="Contact number"
-                />
-                <Field type="input" placeholder="E-Mail" name="email" />
+                <Field name="Phone" type="input" placeholder="Contact number" />
+                <Field type="input" placeholder="E-Mail" name="Email" />
               </div>
               <div>
                 <Field
                   className="address-bar"
                   type="input"
                   placeholder="Address"
-                  name="employeePersonal.city"
+                  name="City"
                 />
 
                 <input
                   id="file-upload"
                   type="file"
                   name="imageUrl"
-                  accept="image/*"
+                  onChange={(e) =>
+                    formProps.setFieldValue('imageUrl', e.target.files[0])
+                  }
                 />
               </div>
             </div>
@@ -97,33 +142,29 @@ const CreateNewEmployee = () => {
               <InfotabComponent text="CONTRACT INFORMATION" />
               <div>
                 <Field
-                  type="input"
+                  type="number"
                   placeholder="Contract Hours"
-                  name="employeeContract.contractHours"
+                  name="ContractHours"
                 />
                 <Field
-                  type="input"
+                  type="number"
                   placeholder="Pay Per Hours"
-                  name="employeeContract.perHourPay"
+                  name="PerHourPay"
                 />
                 <Field
-                  type="input"
+                  type="number"
                   placeholder="Overtime Rate"
-                  name="employeeContract.overtimeRate"
+                  name="OvertimeRate"
                 />
               </div>
               <div>
                 <Field
-                  type="input"
+                  type="number"
                   placeholder="Kiwi Saver"
-                  name="employeeContract.kiwiSaver"
+                  name="KiwiSaver"
                 />
                 <label htmlFor="contract">Contract Type:</label>
-                <Field
-                  name="employeeContract.contractType"
-                  id="contract"
-                  component="select"
-                >
+                <Field name="ContractType" id="contract" component="select">
                   <option value="---------">
                     -------------------------------
                   </option>
@@ -132,11 +173,7 @@ const CreateNewEmployee = () => {
                   <option value="2">Casual</option>
                 </Field>
                 <label htmlFor="union">Union Member:</label>
-                <Field
-                  name="employeeContract.union"
-                  id="union"
-                  component="select"
-                >
+                <Field name="Union" id="union" component="select">
                   <option value="---------">
                     ----------------------------------
                   </option>

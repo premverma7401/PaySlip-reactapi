@@ -12,7 +12,7 @@ import { UserProvider } from '../store/UserContext';
 import CreateNewEmployee from './CreateEmployee/CreateNewEmployee';
 const MainDashboard = () => {
   return (
-    <div className="container">
+    <div className="app-container">
       <UserProvider>
         <Sidebar />
         {/* <Navbar title="Dashboard" /> */}

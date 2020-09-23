@@ -9,19 +9,20 @@ const ViewEmployeeDetails = ({ match }) => {
   const [selectedUser, setSelectedUser] = useState({});
   const currUserId = match.params.id;
 
+  const loadUser = async (id) => {
+    try {
+      const selectedUser = await agent.Users.details(id);
+      setSelectedUser(selectedUser);
+      console.log(selectedUser);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
     const employeeId = currUserId;
     loadUser(employeeId);
   }, [currUserId]);
 
-  const loadUser = async (id) => {
-    try {
-      const selectedUser = await agent.Users.details(id);
-      setSelectedUser(selectedUser);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <div>
       <Navbar
@@ -40,7 +41,8 @@ const ViewEmployeeDetails = ({ match }) => {
             <p>Employee Id : {selectedUser.employeeId}</p>
             <p>Username: {selectedUser.username}</p>
             <p>
-              {selectedUser.employeePersonal &&
+              {selectedUser &&
+                selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.ird}
             </p>
           </div>

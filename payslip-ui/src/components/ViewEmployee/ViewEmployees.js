@@ -8,7 +8,9 @@ import PieChart from './PieChart';
 import LoadingProgress from '../../common/LoadingProgress';
 
 const ViewEmployees = () => {
-  const [users, setusers, loadUsers, loading] = useContext(UserContext);
+  const [users, setusers, loadUsers, loading, stats, setStats] = useContext(
+    UserContext
+  );
   useEffect(() => {
     loadUsers();
   }, []);
@@ -24,18 +26,18 @@ const ViewEmployees = () => {
             <Link to={`/viewemp/${user.empId}`} key={user.empId}>
               <div className="user-summary-card">
                 <div>
-                  <img
-                    src={'https://randomuser.me/api/portraits/men/75.jpg'}
-                    alt="profile"
-                  />
+                  <img src="/premsager.jpg" alt="profile two" />
                   <h2>
                     <p>
-                      {user.FirstName} {user.LastName}
+                      {user.firstName} {user.lastName}
                     </p>
                     <br />
-                    <span>{user.Username}</span>
+                    <span>{user.username}</span>
                     <br />
-                    <span>{user.Email}</span>
+                    <span>{user.email}</span>
+                    <span>{user.designation}</span>
+                    <br />
+                    <span>{user.email}</span>
                   </h2>
                 </div>
 

@@ -7,6 +7,7 @@ C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Api.runtimeconfig.json
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Api.runtimeconfig.dev.json
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Api.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Api.pdb
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -30,6 +31,7 @@ C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
@@ -58,5 +60,3 @@ C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\staticwebassets\Api.StaticWebAs
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.dll
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.pdb
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.genruntimeconfig.cache
-C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
-C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll

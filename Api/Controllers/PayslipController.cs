@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
 using Service.VM;
@@ -19,25 +17,31 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public async Task<int> CreatePS(int id, decimal th)
+        [Route("createPayslip")]
+        public IActionResult CreatePS(CreatePayslipVM payslipVM)
         {
-            return await _payslip.GenratePayslip(id, th);
+            return Ok(_payslip.GenratePayslip(payslipVM));
         }
-        [HttpGet("all/{Id}")]
-        public async Task<List<PayslipVM>> GetAllPayslips(int Id)
+        [HttpPost]
+        [Route("all/{Id}")]
+
+        public IActionResult GetAllPayslips(int Id)
         {
-            return await _payslip.GetAllPayslips(Id);
+            var payslips = _payslip.GetAllPayslips(Id);
+            return Ok(payslips);
         }
 
-        [HttpGet("last/{Id}")]
-        public async Task<PayslipVM> GetSinglePayslip(int Id)
+        [HttpPost]
+        [Route("last/{Id}")]
+        public IActionResult GetSinglePayslip(int Id)
         {
-            return await _payslip.GetSinglePayslip(Id);
+            return Ok(_payslip.GetSinglePayslip(Id));
         }
-        [HttpGet("summary/{Id}")]
-        public async Task<PayHistoryVM> GetSummaryView(int Id)
+        [HttpPost]
+        [Route("summary/{Id}")]
+        public IActionResult GetSummaryView(int Id)
         {
-            return await _payslip.GetPaySummary(Id);
+            return Ok(_payslip.GetPaySummary(Id));
         }
     }
 }

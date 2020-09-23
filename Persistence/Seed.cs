@@ -18,6 +18,7 @@ namespace Persistence
                     {
                       FirstName= "Prem",
                       LastName= "Sager",
+                      Designation="Software Developer",
                    //   ImageUrl= "none",
                       Email= "psag@gmail.com",
                       Username= "premv",
@@ -45,6 +46,7 @@ namespace Persistence
                     {
                       FirstName= "Aman",
                       LastName= "Verma",
+                      Designation="Data Scientist",
                      // ImageUrl= "none",
                       Email= "aman@gmail.com",
                       Username= "amanv",
@@ -68,6 +70,8 @@ namespace Persistence
                     {
                       FirstName= "Rajan",
                       LastName= "Verma",
+                       Designation="Web Developer",
+
                      // ImageUrl= "none",
                       Email= "rjv@gmail.com",
                       Username= "rajv",

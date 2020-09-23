@@ -34,6 +34,7 @@ const ViewEmployees = () => {
                     <br />
                     <span>{user.username}</span>
                     <br />
+                    <span>{user.email}</span>
                     <span>{user.designation}</span>
                     <br />
                     <span>{user.email}</span>

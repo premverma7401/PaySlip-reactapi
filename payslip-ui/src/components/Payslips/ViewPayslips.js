@@ -53,7 +53,6 @@ const ViewPayslips = ({ match }) => {
               </option>
             ))}
           </Select>
-
           <div>
             <input type="text" placeholder="Search By Date" />
           </div>

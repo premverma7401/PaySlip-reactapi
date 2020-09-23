@@ -14,8 +14,8 @@ const CreatePayslip = () => {
     totalHours: '',
     totalMonthly: '',
   });
-  const url = `http://localhost:5000/api/payslip/createPayslip?id=${payData.empId}&totalHours=${payData.th}`;
 
+  const url = `http://localhost:5000/api/payslip/createPayslip?id=${payData.empId}&totalHours=${payData.th}`;
   const handleChange = (e) => {
     console.log(e.target.value);
     const newPay = { ...payData };
@@ -58,8 +58,8 @@ const CreatePayslip = () => {
                 Select Employee
               </option>
               {users.map((user) => (
-                <option key={user.empId} value={user.empId} name={user.empId}>
-                  {user.firstName} {user.lastName}
+                <option key={user.EmpId} value={user.EmpId} name={user.EmpId}>
+                  {user.FirstName} {user.LastName}
                 </option>
               ))}
             </Select>

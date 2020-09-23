@@ -16,8 +16,7 @@ namespace Service.Implimentation
         private readonly IUserRepository _user;
         private decimal _totalAmountDeduted;
         private decimal _totalAmountEarned;
-        PayLogic pay = new PayLogic();
-
+        PayLogic pay = new PayLogic(); // shoul;d we call this class here or in constructor
         public PayslipRepository(DataContext context, IUserRepository user)
         {
             _user = user;
@@ -66,8 +65,6 @@ namespace Service.Implimentation
             _context.SaveChanges();
             return 0;
         }
-
-
         public List<PayslipVM> GetAllPayslips(int Id)
         {
             var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
@@ -88,7 +85,8 @@ namespace Service.Implimentation
                 ContractedEarning = e.ContractedEarning,
                 OvertimeEarning = e.OvertimeEarning,
                 TotalDeduction = e.TotalDeduction,
-                InHandPay = e.InHandPay
+                InHandPay = e.InHandPay,
+                CreatedAt = e.CreatedAt
             }).ToList();
 
         }
@@ -111,7 +109,8 @@ namespace Service.Implimentation
                 ContractedEarning = e.ContractedEarning,
                 OvertimeEarning = e.OvertimeEarning,
                 TotalDeduction = e.TotalDeduction,
-                InHandPay = e.InHandPay
+                InHandPay = e.InHandPay,
+                CreatedAt = e.CreatedAt
 
             }).FirstOrDefault();
         }
@@ -144,15 +143,44 @@ namespace Service.Implimentation
             }).FirstOrDefault();
         }
 
-        // public  int> UpdatePayslip(int Id, decimal th)
-        // {
-        //     return 1;
-        // }
-        // public  int> DeletePayslip(int Id)
-        // {
-        //     return 1;
+        public List<PayslipVM> SearchPayslipByDates(int Id, DateTime from, DateTime to)
+        {
+            var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
+            if (emp == null)
+            {
+                throw new Exception("User not found");
+            }
+            var allPs = _context.Payslips.Where(e => e.EmpId == Id).Where(e => e.CreatedAt >= from && e.CreatedAt <= to)
+            .OrderByDescending(e => e.CreatedAt).ToList();
+            return allPs.Select(e => new PayslipVM
+            {
+                FirstName = emp.FirstName,
+                LastName = emp.LastName,
+                Username = emp.Username,
+                ContractedHours = e.ContractedHours,
+                OvertimeHours = e.OvertimeHours,
+                TotalHours = e.TotalHours,
+                TotalEarning = e.TotalEarning,
+                ContractedEarning = e.ContractedEarning,
+                OvertimeEarning = e.OvertimeEarning,
+                TotalDeduction = e.TotalDeduction,
+                InHandPay = e.InHandPay,
+                CreatedAt = e.CreatedAt
+            }).ToList();
 
-        // }
+        }
 
     }
+
+    // public  int> UpdatePayslip(int Id, decimal th)
+    // {
+    //     return 1;
+    // }
+    // public  int> DeletePayslip(int Id)
+    // {
+    //     return 1;
+
+    // }
+
+
 }

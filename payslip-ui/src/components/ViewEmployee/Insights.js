@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { Fragment, useContext, useEffect } from 'react';
 import { UserContext } from '../../store/UserContext';
 
 const Insights = () => {
@@ -9,7 +9,10 @@ const Insights = () => {
       <ul className="inner">
         {/* <li>Total Employees : </li> */}
         {stats.map((desiCount, i) => (
-          <li key={i}>{desiCount.designation}</li>
+          <Fragment>
+            <li key={i}>{desiCount.designation}</li>
+            <li>p-{desiCount.designationCount}</li>
+          </Fragment>
         ))}
       </ul>
     </div>

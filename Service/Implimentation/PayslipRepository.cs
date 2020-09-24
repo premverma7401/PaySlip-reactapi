@@ -57,12 +57,11 @@ namespace Service.Implimentation
                     emp.EmployeeContract.KiwiSaver),
                     InHandPay = payVM.MonthlyPay - _totalAmountDeduted,
                     CreatedAt = DateTime.Now
-
                 };
                 _context.Payslips.Add(payslip);
-
             }
             _context.SaveChanges();
+
             return 0;
         }
         public List<PayslipVM> GetAllPayslips(int Id)
@@ -146,10 +145,7 @@ namespace Service.Implimentation
         public List<PayslipVM> SearchPayslipByDates(int Id, DateTime from, DateTime to)
         {
             var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
-            if (emp == null)
-            {
-                throw new Exception("User not found");
-            }
+      
             var allPs = _context.Payslips.Where(e => e.EmpId == Id).Where(e => e.CreatedAt >= from && e.CreatedAt <= to)
             .OrderByDescending(e => e.CreatedAt).ToList();
             return allPs.Select(e => new PayslipVM

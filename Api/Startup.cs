@@ -28,12 +28,12 @@ namespace Api
             services.AddCors(options =>
                        {
                            options.AddDefaultPolicy(builder =>
-                           {
-                               builder.WithOrigins("http://localhost:3000")
-                                   .SetIsOriginAllowedToAllowWildcardSubdomains()
-                                   .AllowAnyHeader()
-                                   .AllowAnyMethod();
-                           });
+                          {
+                              builder.WithOrigins().AllowAnyOrigin()
+                                  .SetIsOriginAllowedToAllowWildcardSubdomains()
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod();
+                          });
                        });
         }
 

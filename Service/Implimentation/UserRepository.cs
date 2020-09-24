@@ -134,11 +134,11 @@ namespace Service.Implimentation
 
         public List<EmployeeDesignationVM> GetEmpCountByDesignation()
         {
-            var empDesiCount = _context.Employees.GroupBy(e => e.Designation).Select(e => new { e.Key, Count = e.Count() })
-            .ToDictionary(e => e.Key, e => e.Count);
+            var empDesiCount = _context.Employees.GroupBy(e => e.Designation).Select(e => new { e.Key, Count = e.Count() }).OrderBy(e=>e.Count);
+            //.ToDictionary(e => e.Key, e => e.Count);
             return empDesiCount.Select(e => new EmployeeDesignationVM
             {
-                DesignationCount = e.Value,
+                DesignationCount = e.Count,
                 Designation = e.Key
             }).ToList();
         }

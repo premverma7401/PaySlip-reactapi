@@ -15,6 +15,7 @@ const CreatePayslip = () => {
     totalMonthly: +0,
   });
 
+  const url = `http://localhost:5000/api/payslip/createPayslip?id=${payData.empId}&totalHours=${payData.th}`;
   const handleChange = (e) => {
     const newPay = { ...payslip };
     newPay[e.target.name] = e.target.value;

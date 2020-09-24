@@ -29,7 +29,7 @@ namespace Api
                        {
                            options.AddDefaultPolicy(builder =>
                            {
-                               builder.WithOrigins("http://localhost:3000")
+                               builder.WithOrigins().AllowAnyOrigin()
                                    .SetIsOriginAllowedToAllowWildcardSubdomains()
                                    .AllowAnyHeader()
                                    .AllowAnyMethod();

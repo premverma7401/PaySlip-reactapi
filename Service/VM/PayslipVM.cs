@@ -1,6 +1,8 @@
+using Domain.models;
+
 namespace Service.VM
 {
-    public class PayslipVM
+    public class PayslipVM : Entity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
 using Service.VM;
@@ -28,6 +29,14 @@ namespace Api.Controllers
         public IActionResult GetAllPayslips(int Id)
         {
             var payslips = _payslip.GetAllPayslips(Id);
+            return Ok(payslips);
+        }
+        [HttpPost]
+        [Route("search")]
+
+        public IActionResult SearchPayslips(int Id, DateTime from, DateTime to)
+        {
+            var payslips = _payslip.SearchPayslipByDates(Id, from, to);
             return Ok(payslips);
         }
 

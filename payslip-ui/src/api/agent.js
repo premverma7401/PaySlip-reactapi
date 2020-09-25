@@ -18,11 +18,11 @@ const Users = {
   statList: () => request.post('/employee/designationCount'),
   details: (id) => request.post(`/employee/getEmpId/${id}/`),
   create: (user) => request.post('/employee/createEmp', user),
-
   update: (user, id) => request.put(`/employee/${id}`, user),
 };
 const Payslip = {
   list: (id) => request.post(`/payslip/all/${id}/`),
+  create: (payslip) => request.post('/payslip/createPayslip', payslip),
 };
 
 export default { Users, Payslip };

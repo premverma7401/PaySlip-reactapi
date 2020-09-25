@@ -1,17 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Service.VM;
+using Service.DTOs;
 
 namespace Service.Interface
 {
     public interface IPayslipRepository
     {
-        int GenratePayslip(CreatePayslipVM payVM);
-        List<PayslipVM> GetAllPayslips(int Id);
-        PayslipVM GetSinglePayslip(int Id);
-        PayHistoryVM GetPaySummary(int Id);
-        List<PayslipVM> SearchPayslipByDates(int Id, DateTime from, DateTime to);
+        int GenratePayslip(CreatePayslipDTO payVM);
+        List<PayslipDTO> GetAllPayslips(int Id);
+        PayslipDTO GetSinglePayslip(int Id);
+        PayHistoryDTO GetPaySummary(int Id);
+        List<PayslipDTO> SearchPayslipByDates(int Id, DateTime from, DateTime to);
         // Task<int> UpdatePayslip(int Id, decimal th);
         // Task<int> DeletePayslip(int Id);
     }

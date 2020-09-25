@@ -1,8 +1,8 @@
 using Domain.models;
 
-namespace Service.VM
+namespace Service.DTOs
 {
-    public class PayHistoryVM
+    public class PayHistoryDTO
     {
         public string FirstName { get; set; }
         public decimal TotalEarningSoFar { get; set; }

@@ -6,8 +6,10 @@ using Persistence;
 using Domain.models.employee;
 using Service.Interface;
 using System.Linq;
-using Service.VM;
+using Service.DTOs;
 using Microsoft.AspNetCore.Hosting;
+using Domain.models.email;
+using Service.Utils;
 
 namespace Service.Implimentation
 {
@@ -15,17 +17,20 @@ namespace Service.Implimentation
     {
         private readonly DataContext _context;
         private readonly IWebHostEnvironment _hostingenvironment;
+        private readonly SendEmail _sendemail;
 
-        public UserRepository(DataContext context, IWebHostEnvironment hostingEnvironment)
+
+        public UserRepository(DataContext context, IWebHostEnvironment hostingEnvironment, SendEmail sendEmail)
         {
             _context = context;
             _hostingenvironment = hostingEnvironment;
+            _sendemail = sendEmail;
 
         }
 
-        public List<EmployeeVM> GetEmployees()
+        public List<EmployeeDTO> GetEmployees()
         {
-            return _context.Employees.Select(e => new EmployeeVM()
+            return _context.Employees.Select(e => new EmployeeDTO()
             {
                 empId = e.employeeId,
                 FirstName = e.FirstName,
@@ -48,7 +53,7 @@ namespace Service.Implimentation
             }).ToList();
         }
 
-        public int CreateEmployee(EmployeeCreateVm employee)
+        public int CreateEmployee(EmployeeCreateDTO employee)
         {
             var emp = new Employee()
             {
@@ -93,6 +98,15 @@ namespace Service.Implimentation
             }
             _context.Add(emp);
             _context.SaveChanges();
+            var emailObj = new EmailModel()
+            {
+                toemail = emp.Email,
+                subject = $"Your profile has been registered",
+                message = $"Your profile has been created and your username is {emp.Username}.",
+                isHtml = false,
+
+            };
+            _sendemail.SendEmailHelper(emailObj);
             return emp.employeeId;
         }
 
@@ -132,11 +146,11 @@ namespace Service.Implimentation
             return emp;
         }
 
-        public List<EmployeeDesignationVM> GetEmpCountByDesignation()
+        public List<EmployeeDesignationDTO> GetEmpCountByDesignation()
         {
-            var empDesiCount = _context.Employees.GroupBy(e => e.Designation).Select(e => new { e.Key, Count = e.Count() }).OrderBy(e=>e.Count);
+            var empDesiCount = _context.Employees.GroupBy(e => e.Designation).Select(e => new { e.Key, Count = e.Count() }).OrderBy(e => e.Count);
             //.ToDictionary(e => e.Key, e => e.Count);
-            return empDesiCount.Select(e => new EmployeeDesignationVM
+            return empDesiCount.Select(e => new EmployeeDesignationDTO
             {
                 DesignationCount = e.Count,
                 Designation = e.Key

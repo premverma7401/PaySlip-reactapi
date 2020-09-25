@@ -1,7 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
-using Service.VM;
+using Service.DTOs;
 
 namespace Api.Controllers
 {
@@ -19,7 +19,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("createPayslip")]
-        public IActionResult CreatePS(CreatePayslipVM payslipVM)
+        public IActionResult CreatePS(CreatePayslipDTO payslipVM)
         {
             return Ok(_payslip.GenratePayslip(payslipVM));
         }

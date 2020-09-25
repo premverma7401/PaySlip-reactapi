@@ -1,11 +1,10 @@
 using System;
 using Domain.models;
 using Domain.models.employee;
-using Microsoft.AspNetCore.Http;
 
-namespace Service.VM
+namespace Service.DTOs
 {
-    public class EmployeeVM : Entity
+    public class EmployeeDTO : Entity
     {
         public int empId { get; set; }
         public string FirstName { get; set; }

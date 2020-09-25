@@ -51,8 +51,6 @@ C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\Domain.pdb
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.csprojAssemblyReference.cache
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.AssemblyInfoInputs.cache
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.AssemblyInfo.cs
-C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.csproj.CoreCompileInputs.cache
-C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.RazorTargetAssemblyInfo.cache
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.csproj.CopyComplete
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\staticwebassets\Api.StaticWebAssets.Manifest.cache
@@ -60,3 +58,6 @@ C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\staticwebassets\Api.StaticWeb
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.dll
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.pdb
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.genruntimeconfig.cache
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
+C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.csproj.CoreCompileInputs.cache
+C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache

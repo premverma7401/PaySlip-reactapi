@@ -1,5 +1,5 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://devcompiler.in/api';
+axios.defaults.baseURL = 'https://api.devcompiler.in/api';
 // axios.defaults.baseURL = 'http://localhost:5000/api';
 const responseBody = (response) => response.data;
 

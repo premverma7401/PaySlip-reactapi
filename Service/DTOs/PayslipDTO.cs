@@ -1,8 +1,8 @@
 using Domain.models;
 
-namespace Service.VM
+namespace Service.DTOs
 {
-    public class PayslipVM : Entity
+    public class PayslipDTO : Entity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

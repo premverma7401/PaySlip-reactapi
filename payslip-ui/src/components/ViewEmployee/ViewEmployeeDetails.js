@@ -39,17 +39,18 @@ const ViewEmployeeDetails = ({ match }) => {
           <InfotabComponent text="PERSONAL INFORMATION" />
           <div>
             <p>Employee Id : {selectedUser.employeeId}</p>
-            <p>Username: {selectedUser.username}</p>
+            <p>Username : {selectedUser.username}</p>
             <p>
+              IRD : 
               {selectedUser &&
                 selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.ird}
             </p>
           </div>
           <div>
-            <p>{selectedUser.firstName}</p>
-            <p>{selectedUser.lastName}</p>
-            <p>
+            <p>First Name : {selectedUser.firstName}</p>
+            <p>Last Name : {selectedUser.lastName}</p>
+            <p>DOB : 
               {selectedUser.employeePersonal &&
                 new Date(
                   selectedUser.employeePersonal.dateOfBirth
@@ -57,18 +58,18 @@ const ViewEmployeeDetails = ({ match }) => {
             </p>
           </div>
           <div>
-            <p>
+            <p>Contact no. : 
               {selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.phone}
             </p>
-            <p>{selectedUser.email}</p>
-            <p>
+            <p>E-mail Id : {selectedUser.email}</p>
+            <p>Age : 
               {selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.age}
             </p>
           </div>
           <div>
-            <p className="address-bar">
+            <p className="address-bar"> Address : 
               {selectedUser.employeePersonal &&
                 selectedUser.employeePersonal.city}
             </p>
@@ -77,31 +78,31 @@ const ViewEmployeeDetails = ({ match }) => {
         <div className="contract-info">
           <InfotabComponent text="CONTRACT INFORMATION" />
           <div>
-            <p>
+            <p>Contract Hours : 
               {selectedUser.employeeContract &&
                 selectedUser.employeeContract.contractHours}
             </p>
-            <p>
+            <p>Per hours Pay : 
               {selectedUser.employeeContract &&
                 selectedUser.employeeContract.perHourPay}
             </p>
-            <p>
+            <p>Overtime rate : 
               {selectedUser.employeeContract &&
                 selectedUser.employeeContract.overtimeRate}
             </p>
           </div>
           <div>
-            <p>
+            <p>Union Member : 
               {selectedUser.employeeContract &&
               selectedUser.employeeContract.union
                 ? 'YES'
                 : 'NO'}
             </p>
-            <p>
+            <p> kiwi Saver : 
               {selectedUser.employeeContract &&
                 selectedUser.employeeContract.kiwiSaver}
             </p>
-            <p>
+            <p>Contract Type :   
               {selectedUser.employeeContract &&
                 selectedUser.employeeContract.contractType}
             </p>

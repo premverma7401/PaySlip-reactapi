@@ -39,8 +39,8 @@ const ViewEmployees = () => {
                     }
                     horizontal
                     revealIcon={<Icon>more_vert</Icon>}
-                  >
-                    <div >
+                    >
+                    <div>
                       <p>
                         {user.firstName} {user.lastName}
                       </p>

@@ -21,13 +21,14 @@
 .contract-info div {
   display: flex;
   justify-content: space-evenly;
+  width: 74vw;
   padding: 30px;
 }
 
 .personal-info p,
 .contract-info p {
   border: none;
-  box-shadow: 3px 7px 10px #f3dada;
+  box-shadow: 3px 7px 10px #1d3557;
   font-size: 18px;
   width: 20vw;
   padding: 10px;

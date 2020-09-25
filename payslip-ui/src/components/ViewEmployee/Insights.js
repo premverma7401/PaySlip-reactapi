@@ -1,22 +1,37 @@
-import React, { Fragment, useContext, useEffect } from 'react';
-import { UserContext } from '../../store/UserContext';
+import React, { useContext, useEffect } from "react";
+import { UserContext } from "../../store/UserContext";
+import { Row, Col, Card, Icon, CardTitle } from "react-materialize";
 
 const Insights = () => {
   const [stats, setStats] = useContext(UserContext);
   return (
     <div className="info-stats">
-      <h3>INSIGHTS</h3>
-      <ul className="inner">
-        {/* <li>Total Employees : </li> */}
-        {stats.map((desiCount, i) => (
-          <Fragment>
-            <li key={i}>{desiCount.designation}</li>
-            <li>p-{desiCount.designationCount}</li>
-          </Fragment>
-        ))}
-      </ul>
+      <Row>
+        <Col m={6} s={12}>
+            <Card
+              closeIcon={<Icon>close</Icon>}
+              header={
+                <CardTitle
+                  image="https://materializecss.com/images/sample-1.jpg"
+                  reveal
+                  waves="light"
+                />
+              }
+              reveal={
+                <ul className="inner">
+                  {stats.map((desiCount, i) => (
+                    <li key={i}>{desiCount.designation}</li>
+                  ))}
+                </ul>
+              }
+              revealIcon={<Icon>more_vert</Icon>}
+              title="INSIGHTS"
+            ></Card>
+        </Col>
+      </Row>
     </div>
   );
 };
 
 export default Insights;
+

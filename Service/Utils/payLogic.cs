@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 namespace Service.Utils
 {
     public class PayLogic
@@ -40,5 +41,6 @@ namespace Service.Utils
             return _totalDeduction = (union == true) ? (100 + taxPaye) : (50 + taxPaye);
 
         }
+
     }
 }

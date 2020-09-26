@@ -29,14 +29,36 @@ namespace Api
             services.AddScoped<IPayslipRepository, PayslipRepository>();
             services.AddTransient<SendEmail>();
             services.AddCors(options =>
-                       {
-                           options.AddDefaultPolicy(builder =>
-                               builder.WithOrigins().AllowAnyOrigin()
-                                   .SetIsOriginAllowedToAllowWildcardSubdomains()
-                                   .AllowAnyHeader()
-                                   .AllowAnyMethod();
-                           });
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.WithOrigins().AllowAnyOrigin()
+                        .SetIsOriginAllowedToAllowWildcardSubdomains()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+            services.AddSwaggerGen();
+
+        }
+
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
                 app.UseDeveloperExceptionPage();
+            }
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+              {
+                  c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+              });
+            //  app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseCors();
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

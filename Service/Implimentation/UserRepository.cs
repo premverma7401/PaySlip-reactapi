@@ -32,7 +32,7 @@ namespace Service.Implimentation
         {
             return _context.Employees.Select(e => new EmployeeDTO()
             {
-                empId = e.employeeId,
+                empId = e.EmpId,
                 FirstName = e.FirstName,
                 LastName = e.LastName,
                 ImageUrl = e.ImageUrl,
@@ -98,21 +98,21 @@ namespace Service.Implimentation
             }
             _context.Add(emp);
             _context.SaveChanges();
-            var emailObj = new EmailModel()
-            {
-                toemail = emp.Email,
-                subject = $"Your profile has been registered",
-                message = $"Your profile has been created and your username is {emp.Username}.",
-                isHtml = false,
+            //var emailObj = new EmailModel()
+            //{
+            //    toemail = emp.Email,
+            //    subject = $"Your profile has been registered",
+            //    message = $"Your profile has been created and your username is {emp.Username}.",
+            //    isHtml = false,
 
-            };
-            _sendemail.SendEmailHelper(emailObj);
-            return emp.employeeId;
+            //};
+            //_sendemail.SendEmailHelper(emailObj);
+            return emp.EmpId;
         }
 
         public string UpdateEmployee(Employee employee, int Id)
         {
-            var emp = _context.Employees.Where(x => x.employeeId == Id).FirstOrDefault();
+            var emp = _context.Employees.Where(x => x.EmpId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("Not Found");
@@ -125,7 +125,7 @@ namespace Service.Implimentation
 
         public string DeleteEmployee(int Id)
         {
-            var emp = _context.Employees.Where(x => x.employeeId == Id).FirstOrDefault();
+            var emp = _context.Employees.Where(x => x.EmpId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("Not Found");
@@ -138,7 +138,7 @@ namespace Service.Implimentation
         public Employee GetEmployee(int Id)
         {
             var emp = _context.Employees.Include(x => x.EmployeePersonal).Include(x => x.EmployeeContract)
-                                              .Where(x => x.employeeId == Id).FirstOrDefault();
+                                              .Where(x => x.EmpId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("No User found");
@@ -148,7 +148,25 @@ namespace Service.Implimentation
 
         public List<EmployeeDesignationDTO> GetEmpCountByDesignation()
         {
-            var empDesiCount = _context.Employees.GroupBy(e => e.Designation).Select(e => new { e.Key, Count = e.Count() }).OrderBy(e => e.Count);
+            //var empDesiCount = (from z in _context.Employees
+            //                    group z by z.Designation into x
+            //                    select new EmployeeDesignationDTO()
+            //                    {
+            //                        Designation = x.Key,
+            //                        DesignationCount = x.Count()
+            //                    }).ToList();
+            //return empDesiCount;
+
+
+            //var empDesiCount = new List<EmployeeDesignationDTO>()
+            //{
+            //new EmployeeDesignationDTO(){ Designation="SoftwareDeveloper",DesignationCount=1},
+            //new EmployeeDesignationDTO(){ Designation="Designer",DesignationCount=1},
+            //new EmployeeDesignationDTO(){ Designation="Tester",DesignationCount=1},
+            //};
+            //return empDesiCount;
+
+            var empDesiCount = _context.Employees.GroupBy(e => e.Designation).Select(e => new { e.Key, Count = e.Count() }).OrderByDescending(e => e.Count);
             //.ToDictionary(e => e.Key, e => e.Count);
             return empDesiCount.Select(e => new EmployeeDesignationDTO
             {

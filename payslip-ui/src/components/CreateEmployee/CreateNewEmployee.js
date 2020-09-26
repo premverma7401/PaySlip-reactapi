@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import Navbar from "../Navbar";
-import InfotabComponent from "../../common/InfotabComponent";
-import LoadingProgress from "../../common/LoadingProgress";
-import agent from "../../api/agent";
-import { Formik, Field, Form } from "formik";
-import "./CreateEmployee.css";
-import { TextInput, DatePicker, Select, Button, Icon } from "react-materialize";
+import React, { useState } from 'react';
+import Navbar from '../Navbar';
+import InfotabComponent from '../../common/InfotabComponent';
+import LoadingProgress from '../../common/LoadingProgress';
+import agent from '../../api/agent';
+import { Formik, Field, Form } from 'formik';
+import './CreateEmployee.css';
+import { TextInput, DatePicker, Select, Button, Icon } from 'react-materialize';
 const CreateNewEmployee = () => {
   const [loading, setLoading] = useState(false);
 
@@ -16,7 +16,7 @@ const CreateNewEmployee = () => {
       <Formik
         onSubmit={(values, actions) => {
           const image = new FormData();
-          image.append("imageUrl", values.imageUrl);
+          image.append('imageUrl', values.imageUrl);
           setLoading(true);
           setTimeout(() => {
             agent.Users.create(values);
@@ -37,9 +37,13 @@ const CreateNewEmployee = () => {
               <div>
                 <div>
                   <div>
-                    <TextInput id="TextInput-4" label="Username" />
+                    <Field
+                      name="username"
+                      component={TextInput}
+                      label="Username"
+                    />
                     <TextInput id="TextInput-4" label="First Name" />
-                  </div>               
+                  </div>
                   <div>
                     <TextInput id="TextInput-4" label="IRD" />
                     <TextInput id="TextInput-4" label="Last Name" />
@@ -50,7 +54,7 @@ const CreateNewEmployee = () => {
                       type="file"
                       name="imageUrl"
                       onChange={(e) =>
-                        formProps.setFieldValue("imageUrl", e.target.files[0])
+                        formProps.setFieldValue('imageUrl', e.target.files[0])
                       }
                     />
                     {/* <TextInput id="TextInput-4" label="Designation" /> */}
@@ -92,9 +96,9 @@ const CreateNewEmployee = () => {
                     label="Contract Type"
                     multiple={false}
                     options={{
-                      classes: "",
+                      classes: '',
                       dropdownOptions: {
-                        alignment: "left",
+                        alignment: 'left',
                         autoTrigger: true,
                         closeOnClick: true,
                         constrainWidth: true,
@@ -120,9 +124,9 @@ const CreateNewEmployee = () => {
                     label="Union Member"
                     multiple={false}
                     options={{
-                      classes: "",
+                      classes: '',
                       dropdownOptions: {
-                        alignment: "left",
+                        alignment: 'left',
                         autoTrigger: true,
                         closeOnClick: true,
                         constrainWidth: true,
@@ -152,7 +156,7 @@ const CreateNewEmployee = () => {
               <Button
                 node="button"
                 style={{
-                  marginRight: "5px",
+                  marginRight: '5px',
                 }}
                 waves="light"
               >

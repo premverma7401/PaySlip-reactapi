@@ -10,6 +10,7 @@ import Information from './Information';
 import ViewEmployeeDetails from './ViewEmployee/ViewEmployeeDetails';
 import { UserProvider } from '../store/UserContext';
 import CreateNewEmployee from './CreateEmployee/CreateNewEmployee';
+import CreateUser from './CreateEmployee/CreateUser';
 const MainDashboard = () => {
   return (
     <div className="app-container">
@@ -20,7 +21,7 @@ const MainDashboard = () => {
           <Switch>
             <Route exact path="/" component={Navbar} />
             <Route path="/info" component={Information} />
-            <Route path="/createemp" component={CreateNewEmployee} />
+            <Route path="/createemp" component={CreateUser} />
             <Route path="/viewemp" exact component={ViewEmployees} />
             <Route path="/viewemp/:id" component={ViewEmployeeDetails} />
             <Route path="/createpay" component={CreatePayslip} />

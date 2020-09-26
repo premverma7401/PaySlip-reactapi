@@ -10,8 +10,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200922063644_addedMonthlyPay")]
-    partial class addedMonthlyPay
+    [Migration("20200926210633_updatedMig")]
+    partial class updatedMig
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,13 +23,16 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.models.employee.Employee", b =>
                 {
-                    b.Property<int>("employeeId")
+                    b.Property<int>("EmpId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedAtstr")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -64,7 +67,7 @@ namespace Persistence.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("employeeId");
+                    b.HasKey("EmpId");
 
                     b.HasIndex("EmployeeContractId");
 
@@ -146,10 +149,16 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedAtstr")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EmpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EmployeeEmpId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("InHandPay")
@@ -191,12 +200,9 @@ namespace Persistence.Migrations
                     b.Property<int>("UnionFee")
                         .HasColumnType("int");
 
-                    b.Property<int?>("employeeId")
-                        .HasColumnType("int");
-
                     b.HasKey("PayslipId");
 
-                    b.HasIndex("employeeId");
+                    b.HasIndex("EmployeeEmpId");
 
                     b.ToTable("Payslips");
                 });
@@ -220,7 +226,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.models.employee.Employee", "Employee")
                         .WithMany("PayRecord")
-                        .HasForeignKey("employeeId");
+                        .HasForeignKey("EmployeeEmpId");
                 });
 #pragma warning restore 612, 618
         }

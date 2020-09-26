@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class initial : Migration
+    public partial class updatedMig : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,23 +46,25 @@ namespace Persistence.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    employeeId = table.Column<int>(nullable: false)
+                    EmpId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CreatedBy = table.Column<string>(nullable: true),
                     ModifiedBy = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     ModifiedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAtstr = table.Column<string>(nullable: true),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     ImageUrl = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
                     Username = table.Column<string>(nullable: true),
+                    Designation = table.Column<string>(nullable: true),
                     EmployeeContractId = table.Column<int>(nullable: false),
                     EmployeePersonalId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.employeeId);
+                    table.PrimaryKey("PK_Employees", x => x.EmpId);
                     table.ForeignKey(
                         name: "FK_Employees_EmployeeContract_EmployeeContractId",
                         column: x => x.EmployeeContractId,
@@ -87,9 +89,11 @@ namespace Persistence.Migrations
                     ModifiedBy = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     ModifiedAt = table.Column<DateTime>(nullable: false),
+                    CreatedAtstr = table.Column<string>(nullable: true),
                     ContractedHours = table.Column<decimal>(nullable: false),
                     OvertimeHours = table.Column<decimal>(nullable: false),
                     TotalHours = table.Column<decimal>(nullable: false),
+                    TotalMonthly = table.Column<decimal>(nullable: false),
                     ContractedEarning = table.Column<decimal>(nullable: false),
                     OvertimeEarning = table.Column<decimal>(nullable: false),
                     TotalEarning = table.Column<decimal>(nullable: false),
@@ -100,16 +104,16 @@ namespace Persistence.Migrations
                     PAYE = table.Column<decimal>(nullable: false),
                     TotalDeduction = table.Column<decimal>(nullable: false),
                     EmpId = table.Column<int>(nullable: false),
-                    employeeId = table.Column<int>(nullable: true)
+                    EmployeeEmpId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Payslips", x => x.PayslipId);
                     table.ForeignKey(
-                        name: "FK_Payslips_Employees_employeeId",
-                        column: x => x.employeeId,
+                        name: "FK_Payslips_Employees_EmployeeEmpId",
+                        column: x => x.EmployeeEmpId,
                         principalTable: "Employees",
-                        principalColumn: "employeeId",
+                        principalColumn: "EmpId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -124,9 +128,9 @@ namespace Persistence.Migrations
                 column: "EmployeePersonalId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payslips_employeeId",
+                name: "IX_Payslips_EmployeeEmpId",
                 table: "Payslips",
-                column: "employeeId");
+                column: "EmployeeEmpId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

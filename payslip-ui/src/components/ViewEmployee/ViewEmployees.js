@@ -76,7 +76,7 @@ const ViewEmployees = () => {
         </div>
         <div>
           <Insights desiStats={desiStats} />
-          <PieChart />
+          <PieChart desiStats={desiStats} />
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ export const UserProvider = (props) => {
     try {
       setLoading(true);
       const users = await agent.Users.list();
-      console.log(users)
+      console.log(users);
       setUsers(users);
       setLoading(false);
     } catch (error) {
@@ -25,9 +25,9 @@ export const UserProvider = (props) => {
   const loadDesignationStats = async () => {
     try {
       setLoading(true);
-      //  const stats = await agent.Users.statList();
+      const stats = await agent.Users.statList();
+      console.log('stats', stats);
       setStats(stats);
-      console.log('stats', stats[1].designationCount);
       setLoading(false);
     } catch (error) {
       console.log(error);

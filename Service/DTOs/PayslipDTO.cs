@@ -1,6 +1,8 @@
-namespace Service.VM
+using Domain.models;
+
+namespace Service.DTOs
 {
-    public class PayslipVM
+    public class PayslipDTO : Entity
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

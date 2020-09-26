@@ -4,11 +4,14 @@ import Navbar from '../Navbar';
 import './ViewPayslips.css';
 import { Collapsible, CollapsibleItem, Icon, Select } from 'react-materialize';
 import agent from '../../api/agent';
+import { Modal } from '../../common/CustomModal/Modal';
 
 const ViewPayslips = ({ match }) => {
   const [users, setUsers] = useContext(UserContext);
   // const [payslipList, setPayslipList] = useState('');
   const [payslipsList, setPayslipsList] = useState([]);
+  const [show, setShow] = useState(false);
+  const closeModalHandler = () => setShow(false);
 
   // const currUserId = match.params.id;
 
@@ -49,13 +52,19 @@ const ViewPayslips = ({ match }) => {
             </option>
             {users.map((user) => (
               <option key={user.empId} value={user.empId}>
-                {user.firstName}
+                {user.firstName} {user.lastName}
               </option>
             ))}
           </Select>
-          <div>
-            <input type="text" placeholder="Search By Date" />
-          </div>
+
+          {payslipsList.length > 1 && (
+            <div>
+              <button onClick={() => setShow(true)} className="btn-openModal">
+                Search By Date
+              </button>
+              <Modal show={show} close={closeModalHandler} />
+            </div>
+          )}
         </div>
 
         <div>

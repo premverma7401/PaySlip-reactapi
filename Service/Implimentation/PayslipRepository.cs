@@ -5,8 +5,9 @@ using Domain.models.payslip;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Service.Interface;
-using Service.VM;
+using Service.DTOs;
 using Service.Utils;
+using Domain.models.email;
 
 namespace Service.Implimentation
 {
@@ -14,22 +15,19 @@ namespace Service.Implimentation
     {
         private readonly DataContext _context;
         private readonly IUserRepository _user;
+        private readonly SendEmail _sendemail;
         private decimal _totalAmountDeduted;
         private decimal _totalAmountEarned;
-        PayLogic pay = new PayLogic();
-
-        public PayslipRepository(DataContext context, IUserRepository user)
+        PayLogic pay = new PayLogic(); // shoul;d we call this class here or in constructor
+        public PayslipRepository(DataContext context, IUserRepository user, SendEmail sendEmail)
         {
             _user = user;
+            _sendemail = sendEmail;
             _context = context;
         }
-        public int GenratePayslip(CreatePayslipVM payVM)
+        public int GenratePayslip(CreatePayslipDTO payVM)
         {
             var emp = _context.Employees.Include(e => e.EmployeeContract).Where(e => e.employeeId == payVM.EmpId).FirstOrDefault();
-            if (emp == null)
-            {
-                throw new Exception("User Not Found");
-            }
             if (payVM.isHours == true)
             {
                 var payslip = new Payslip()
@@ -43,7 +41,7 @@ namespace Service.Implimentation
                     TotalEarning = _totalAmountEarned = pay.GetTotalEarning(),
                     TotalDeduction = _totalAmountDeduted = pay.GetTotalDeduction(emp.EmployeeContract.Union, payVM.TotalHours, _totalAmountEarned, emp.EmployeeContract.ContractHours, emp.EmployeeContract.KiwiSaver),
                     InHandPay = _totalAmountEarned - _totalAmountDeduted,
-                    CreatedAt = DateTime.Now
+                    CreatedAtstr = DateTime.Now.ToString("dddd, dd MMMM yyyy")
                 };
                 _context.Payslips.Add(payslip);
             }
@@ -56,19 +54,24 @@ namespace Service.Implimentation
                     TotalEarning = payVM.MonthlyPay,
                     TotalDeduction = _totalAmountDeduted = pay.GetMonthlyDeduction(emp.EmployeeContract.Union, _totalAmountEarned,
                     emp.EmployeeContract.KiwiSaver),
-                    InHandPay = _totalAmountEarned - _totalAmountDeduted,
-                    CreatedAt = DateTime.Now
-
+                    InHandPay = payVM.MonthlyPay - _totalAmountDeduted,
+                    CreatedAtstr = DateTime.Now.ToString("dddd, dd MMMM yyyy")
                 };
                 _context.Payslips.Add(payslip);
-
             }
             _context.SaveChanges();
+            var emailObj = new EmailModel()
+            {
+                toemail = emp.Email,
+                subject = $"Payslip for {emp.CreatedAtstr}",
+                message = "Your payslip is created.",
+                isHtml = false,
+
+            };
+            _sendemail.SendEmailHelper(emailObj);
             return 0;
         }
-
-
-        public List<PayslipVM> GetAllPayslips(int Id)
+        public List<PayslipDTO> GetAllPayslips(int Id)
         {
             var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
             if (emp == null)
@@ -76,7 +79,7 @@ namespace Service.Implimentation
                 throw new Exception("User not found");
             }
             var allPs = _context.Payslips.Where(e => e.EmpId == Id).OrderByDescending(e => e.CreatedAt).ToList();
-            return allPs.Select(e => new PayslipVM
+            return allPs.Select(e => new PayslipDTO
             {
                 FirstName = emp.FirstName,
                 LastName = emp.LastName,
@@ -88,18 +91,19 @@ namespace Service.Implimentation
                 ContractedEarning = e.ContractedEarning,
                 OvertimeEarning = e.OvertimeEarning,
                 TotalDeduction = e.TotalDeduction,
-                InHandPay = e.InHandPay
+                InHandPay = e.InHandPay,
+                CreatedAtstr = DateTime.Now.ToString("dddd, dd MMMM yyyy")
             }).ToList();
 
         }
-        public PayslipVM GetSinglePayslip(int Id)
+        public PayslipDTO GetSinglePayslip(int Id)
         {
             var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("User not found");
             }
-            return _context.Payslips.Where(e => e.EmpId == Id).OrderByDescending(e => e.CreatedAt).Select(e => new PayslipVM
+            return _context.Payslips.Where(e => e.EmpId == Id).OrderByDescending(e => e.CreatedAt).Select(e => new PayslipDTO
             {
                 FirstName = emp.FirstName,
                 LastName = emp.LastName,
@@ -111,12 +115,13 @@ namespace Service.Implimentation
                 ContractedEarning = e.ContractedEarning,
                 OvertimeEarning = e.OvertimeEarning,
                 TotalDeduction = e.TotalDeduction,
-                InHandPay = e.InHandPay
+                InHandPay = e.InHandPay,
+                CreatedAtstr = DateTime.Now.ToString("dddd, dd MMMM yyyy")
 
             }).FirstOrDefault();
         }
 
-        public PayHistoryVM GetPaySummary(int Id)
+        public PayHistoryDTO GetPaySummary(int Id)
         {
             var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
             var allPs = _context.Payslips.Where(e => e.EmpId == Id).ToList();
@@ -133,7 +138,7 @@ namespace Service.Implimentation
                 sumHoursWorked += item.TotalHours;
                 sumOTH += item.OvertimeHours;
             }
-            return allPs.Select(e => new PayHistoryVM
+            return allPs.Select(e => new PayHistoryDTO
             {
                 FirstName = emp.FirstName,
                 TotalEarningSoFar = sumEarning,
@@ -144,15 +149,41 @@ namespace Service.Implimentation
             }).FirstOrDefault();
         }
 
-        // public  int> UpdatePayslip(int Id, decimal th)
-        // {
-        //     return 1;
-        // }
-        // public  int> DeletePayslip(int Id)
-        // {
-        //     return 1;
+        public List<PayslipDTO> SearchPayslipByDates(int Id, DateTime from, DateTime to)
+        {
+            var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
 
-        // }
+            var allPs = _context.Payslips.Where(e => e.EmpId == Id).Where(e => e.CreatedAt >= from && e.CreatedAt <= to)
+            .OrderByDescending(e => e.CreatedAt).ToList();
+            return allPs.Select(e => new PayslipDTO
+            {
+                FirstName = emp.FirstName,
+                LastName = emp.LastName,
+                Username = emp.Username,
+                ContractedHours = e.ContractedHours,
+                OvertimeHours = e.OvertimeHours,
+                TotalHours = e.TotalHours,
+                TotalEarning = e.TotalEarning,
+                ContractedEarning = e.ContractedEarning,
+                OvertimeEarning = e.OvertimeEarning,
+                TotalDeduction = e.TotalDeduction,
+                InHandPay = e.InHandPay,
+                CreatedAt = e.CreatedAt
+            }).ToList();
+
+        }
 
     }
+
+    // public  int> UpdatePayslip(int Id, decimal th)
+    // {
+    //     return 1;
+    // }
+    // public  int> DeletePayslip(int Id)
+    // {
+    //     return 1;
+
+    // }
+
+
 }

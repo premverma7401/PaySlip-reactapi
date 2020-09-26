@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../Navbar';
-import { Row, Col, Collection, CollectionItem, Icon } from 'react-materialize';
+import { Collection, CollectionItem } from 'react-materialize';
 
 const PayRecords = () => {
   return (
@@ -8,30 +8,7 @@ const PayRecords = () => {
       <Navbar title="Pay Records" />
       <div className="main">
         <Collection header="First Names">
-          <CollectionItem>
-            Alvin
-            <a className="secondary-content" href="javascript:void(0)">
-              <Icon>send</Icon>
-            </a>
-          </CollectionItem>
-          <CollectionItem>
-            Alvin
-            <a className="secondary-content" href="javascript:void(0)">
-              <Icon>send</Icon>
-            </a>
-          </CollectionItem>
-          <CollectionItem>
-            Alvin
-            <a className="secondary-content" href="javascript:void(0)">
-              <Icon>send</Icon>
-            </a>
-          </CollectionItem>
-          <CollectionItem>
-            Alvin
-            <a className="secondary-content" href="javascript:void(0)">
-              <Icon>send</Icon>
-            </a>
-          </CollectionItem>
+          <CollectionItem>Alvin</CollectionItem>
         </Collection>
       </div>
     </div>

@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using Persistence;
 using Service.Interface;
 using Service.Implimentation;
+using Service.Utils;
+
 namespace Api
 {
     public class Startup
@@ -25,32 +27,16 @@ namespace Api
             services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPayslipRepository, PayslipRepository>();
+            services.AddTransient<SendEmail>();
             services.AddCors(options =>
                        {
                            options.AddDefaultPolicy(builder =>
-                           {
-                               builder.WithOrigins("http://localhost:3000")
+                               builder.WithOrigins().AllowAnyOrigin()
                                    .SetIsOriginAllowedToAllowWildcardSubdomains()
                                    .AllowAnyHeader()
                                    .AllowAnyMethod();
                            });
-                       });
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
-
-            //  app.UseHttpsRedirection();
-
-            app.UseRouting();
-            app.UseCors();
-            app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -1,6 +1,6 @@
 import axios from 'axios';
-// axios.defaults.baseURL = 'https://devcompiler.in/api';
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'https://api.devcompiler.in/api';
+// axios.defaults.baseURL = 'http://localhost:5000/api';
 const responseBody = (response) => response.data;
 
 const sleep = (ms) => (response) =>
@@ -18,11 +18,11 @@ const Users = {
   statList: () => request.post('/employee/designationCount'),
   details: (id) => request.post(`/employee/getEmpId/${id}/`),
   create: (user) => request.post('/employee/createEmp', user),
-
   update: (user, id) => request.put(`/employee/${id}`, user),
 };
 const Payslip = {
   list: (id) => request.post(`/payslip/all/${id}/`),
+  create: (payslip) => request.post('/payslip/createPayslip', payslip),
 };
 
 export default { Users, Payslip };

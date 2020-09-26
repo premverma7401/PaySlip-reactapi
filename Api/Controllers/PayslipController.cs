@@ -1,6 +1,7 @@
+using System;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
-using Service.VM;
+using Service.DTOs;
 
 namespace Api.Controllers
 {
@@ -18,7 +19,7 @@ namespace Api.Controllers
 
         [HttpPost]
         [Route("createPayslip")]
-        public IActionResult CreatePS(CreatePayslipVM payslipVM)
+        public IActionResult CreatePS(CreatePayslipDTO payslipVM)
         {
             return Ok(_payslip.GenratePayslip(payslipVM));
         }
@@ -28,6 +29,14 @@ namespace Api.Controllers
         public IActionResult GetAllPayslips(int Id)
         {
             var payslips = _payslip.GetAllPayslips(Id);
+            return Ok(payslips);
+        }
+        [HttpPost]
+        [Route("search")]
+
+        public IActionResult SearchPayslips(int Id, DateTime from, DateTime to)
+        {
+            var payslips = _payslip.SearchPayslipByDates(Id, from, to);
             return Ok(payslips);
         }
 

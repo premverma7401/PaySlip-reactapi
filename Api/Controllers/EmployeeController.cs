@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Domain.models.employee;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
-using Service.VM;
+using Service.DTOs;
 
 namespace Api.Controllers
 {
@@ -34,7 +34,7 @@ namespace Api.Controllers
         [HttpPost]
         [Route("createEmp")]
 
-        public IActionResult AddEmployee(EmployeeCreateVm employee)
+        public IActionResult AddEmployee(EmployeeCreateDTO employee)
         {
             return Ok(_user.CreateEmployee(employee));
         }
@@ -59,7 +59,7 @@ namespace Api.Controllers
             return _user.GetEmployee(Id);
         }
         [HttpPost("designationCount")]
-        public List<EmployeeDesignationVM> GetEmployeeDesignationCount()
+        public List<EmployeeDesignationDTO> GetEmployeeDesignationCount()
         {
             return _user.GetEmpCountByDesignation();
         }

@@ -1,8 +1,8 @@
 using Domain.models;
 
-namespace Service.VM
+namespace Service.DTOs
 {
-    public class CreatePayslipVM : Entity
+    public class CreatePayslipDTO : Entity
     {
         public int EmpId { get; set; }
         public bool isHours { get; set; }

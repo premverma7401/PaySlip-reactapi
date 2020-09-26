@@ -1,33 +1,14 @@
 .payslip-inputs {
   display: flex;
   justify-content: space-around;
+  height: 20vh;
 }
 
 ul.collapsible {
   margin: 0 auto;
   width: 65%;
 }
-/* Input and select feild styles */
-.payslip-inputs span {
-  /* width: 83vw;
-  height: 20vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center; */
-}
-.payslip-inputs select,
-.payslip-inputs input {
-  /* color: #333333;
-  border: 0;
-  background: none;
-  border-bottom: 1px solid #070707;
-  font-size: 18px;
-  width: 20vw;
-  padding-left: 1vw;
-  height: 5vh;
-  border-radius: 0.5vw; */
-}
+
 .payslip-inputs input:focus,
 .payslip-inputs select:focus,
 .select-date input:focus {

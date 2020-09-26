@@ -338,14 +338,24 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
-Service/obj/Debug/netcoreapp3.1/Service.assets.cache
-Service/obj/Debug/netcoreapp3.1/Service.csproj.FileListAbsolute.txt
-Persistence/obj/Debug/netcoreapp3.1/Persistence.assets.cache
-Persistence/obj/Debug/netcoreapp3.1/Persistence.csproj.FileListAbsolute.txt
-Domain/obj/Debug/netcoreapp3.1/Domain.assets.cache
-Domain/obj/Debug/netcoreapp3.1/Domain.csproj.FileListAbsolute.txt
-Api/obj/Debug/netcoreapp3.1/Api.assets.cache
-Api/obj/Debug/netcoreapp3.1/Api.csproj.FileListAbsolute.txt
-Api/obj/Debug/netcoreapp3.1/Api.csprojAssemblyReference.cache
-Api/obj/Debug/netcoreapp3.1/Api.csprojAssemblyReference.cache
-Domain/obj/Debug/netcoreapp3.1/Domain.csprojAssemblyReference.cache
+payslip-ui/build/asset-manifest.json
+payslip-ui/build/favicon.ico
+payslip-ui/build/index.html
+payslip-ui/build/logo192.png
+payslip-ui/build/logo512.png
+payslip-ui/build/manifest.json
+payslip-ui/build/precache-manifest.1c76601b1f2724d1fe65ba469a5a9381.js
+payslip-ui/build/premsager.jpg
+payslip-ui/build/robots.txt
+payslip-ui/build/service-worker.js
+payslip-ui/build/static/css/2.9a9a1f6f.chunk.css
+payslip-ui/build/static/css/2.9a9a1f6f.chunk.css.map
+payslip-ui/build/static/css/main.1792ff70.chunk.css
+payslip-ui/build/static/css/main.1792ff70.chunk.css.map
+payslip-ui/build/static/js/2.297547b5.chunk.js
+payslip-ui/build/static/js/2.297547b5.chunk.js.LICENSE.txt
+payslip-ui/build/static/js/2.297547b5.chunk.js.map
+payslip-ui/build/static/js/main.a4b0bd3a.chunk.js
+payslip-ui/build/static/js/main.a4b0bd3a.chunk.js.map
+payslip-ui/build/static/js/runtime-main.d48569d5.js
+payslip-ui/build/static/js/runtime-main.d48569d5.js.map

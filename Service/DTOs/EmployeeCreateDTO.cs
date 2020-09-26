@@ -3,9 +3,9 @@ using Domain.models.employee;
 using Microsoft.AspNetCore.Http;
 using Service.Validations;
 
-namespace Service.VM
+namespace Service.DTOs
 {
-    public class EmployeeCreateVm
+    public class EmployeeCreateDTO
     {
         public int employeeId { get; set; }
         public string FirstName { get; set; }

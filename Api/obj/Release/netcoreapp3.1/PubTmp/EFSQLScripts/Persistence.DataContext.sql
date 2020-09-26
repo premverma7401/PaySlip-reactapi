@@ -136,3 +136,18 @@ END;
 
 GO
 
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200922063644_addedMonthlyPay')
+BEGIN
+    ALTER TABLE [Payslips] ADD [TotalMonthly] decimal(18,2) NOT NULL DEFAULT 0.0;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200922063644_addedMonthlyPay')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20200922063644_addedMonthlyPay', N'3.1.5');
+END;
+
+GO
+

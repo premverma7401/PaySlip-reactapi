@@ -1,7 +1,3 @@
-C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.csprojAssemblyReference.cache
-C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfoInputs.cache
-C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfo.cs
-C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.csproj.CoreCompileInputs.cache
 C:\dev\payslip-react\Service\bin\Debug\netcoreapp3.1\Service.deps.json
 C:\dev\payslip-react\Service\bin\Debug\netcoreapp3.1\Service.dll
 C:\dev\payslip-react\Service\bin\Debug\netcoreapp3.1\Service.pdb
@@ -9,6 +5,10 @@ C:\dev\payslip-react\Service\bin\Debug\netcoreapp3.1\Domain.dll
 C:\dev\payslip-react\Service\bin\Debug\netcoreapp3.1\Persistence.dll
 C:\dev\payslip-react\Service\bin\Debug\netcoreapp3.1\Persistence.pdb
 C:\dev\payslip-react\Service\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.csprojAssemblyReference.cache
+C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfoInputs.cache
+C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.AssemblyInfo.cs
+C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.csproj.CoreCompileInputs.cache
 C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.csproj.CopyComplete
 C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.dll
 C:\dev\payslip-react\Service\obj\Debug\netcoreapp3.1\Service.pdb

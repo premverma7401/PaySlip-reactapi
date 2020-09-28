@@ -32,8 +32,7 @@ namespace Api
             {
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins().AllowAnyOrigin()
-                        .SetIsOriginAllowedToAllowWildcardSubdomains()
+                    builder.AllowAnyOrigin()
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
@@ -49,6 +48,8 @@ namespace Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors();
+        
             app.UseSwagger();
             app.UseSwaggerUI(c =>
               {
@@ -56,7 +57,7 @@ namespace Api
               });
             //  app.UseHttpsRedirection();
             app.UseRouting();
-            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

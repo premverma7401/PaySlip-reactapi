@@ -9,7 +9,7 @@ END;
 
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200909015433_initial')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200926210633_updatedMig')
 BEGIN
     CREATE TABLE [EmployeeContract] (
         [EmployeeContractId] int NOT NULL IDENTITY,
@@ -25,7 +25,7 @@ END;
 
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200909015433_initial')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200926210633_updatedMig')
 BEGIN
     CREATE TABLE [EmployeePersonal] (
         [EmployeePersonalId] int NOT NULL IDENTITY,
@@ -40,22 +40,24 @@ END;
 
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200909015433_initial')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200926210633_updatedMig')
 BEGIN
     CREATE TABLE [Employees] (
-        [employeeId] int NOT NULL IDENTITY,
+        [EmpId] int NOT NULL IDENTITY,
         [CreatedBy] nvarchar(max) NULL,
         [ModifiedBy] nvarchar(max) NULL,
         [CreatedAt] datetime2 NOT NULL,
         [ModifiedAt] datetime2 NOT NULL,
+        [CreatedAtstr] nvarchar(max) NULL,
         [FirstName] nvarchar(max) NULL,
         [LastName] nvarchar(max) NULL,
         [ImageUrl] nvarchar(max) NULL,
         [Email] nvarchar(max) NULL,
         [Username] nvarchar(max) NULL,
+        [Designation] nvarchar(max) NULL,
         [EmployeeContractId] int NOT NULL,
         [EmployeePersonalId] int NOT NULL,
-        CONSTRAINT [PK_Employees] PRIMARY KEY ([employeeId]),
+        CONSTRAINT [PK_Employees] PRIMARY KEY ([EmpId]),
         CONSTRAINT [FK_Employees_EmployeeContract_EmployeeContractId] FOREIGN KEY ([EmployeeContractId]) REFERENCES [EmployeeContract] ([EmployeeContractId]) ON DELETE CASCADE,
         CONSTRAINT [FK_Employees_EmployeePersonal_EmployeePersonalId] FOREIGN KEY ([EmployeePersonalId]) REFERENCES [EmployeePersonal] ([EmployeePersonalId]) ON DELETE CASCADE
     );
@@ -63,7 +65,7 @@ END;
 
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200909015433_initial')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200926210633_updatedMig')
 BEGIN
     CREATE TABLE [Payslips] (
         [PayslipId] int NOT NULL IDENTITY,
@@ -71,9 +73,11 @@ BEGIN
         [ModifiedBy] nvarchar(max) NULL,
         [CreatedAt] datetime2 NOT NULL,
         [ModifiedAt] datetime2 NOT NULL,
+        [CreatedAtstr] nvarchar(max) NULL,
         [ContractedHours] decimal(18,2) NOT NULL,
         [OvertimeHours] decimal(18,2) NOT NULL,
         [TotalHours] decimal(18,2) NOT NULL,
+        [TotalMonthly] decimal(18,2) NOT NULL,
         [ContractedEarning] decimal(18,2) NOT NULL,
         [OvertimeEarning] decimal(18,2) NOT NULL,
         [TotalEarning] decimal(18,2) NOT NULL,
@@ -84,69 +88,39 @@ BEGIN
         [PAYE] decimal(18,2) NOT NULL,
         [TotalDeduction] decimal(18,2) NOT NULL,
         [EmpId] int NOT NULL,
-        [employeeId] int NULL,
+        [EmployeeEmpId] int NULL,
         CONSTRAINT [PK_Payslips] PRIMARY KEY ([PayslipId]),
-        CONSTRAINT [FK_Payslips_Employees_employeeId] FOREIGN KEY ([employeeId]) REFERENCES [Employees] ([employeeId]) ON DELETE NO ACTION
+        CONSTRAINT [FK_Payslips_Employees_EmployeeEmpId] FOREIGN KEY ([EmployeeEmpId]) REFERENCES [Employees] ([EmpId]) ON DELETE NO ACTION
     );
 END;
 
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200909015433_initial')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200926210633_updatedMig')
 BEGIN
     CREATE INDEX [IX_Employees_EmployeeContractId] ON [Employees] ([EmployeeContractId]);
 END;
 
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200909015433_initial')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200926210633_updatedMig')
 BEGIN
     CREATE INDEX [IX_Employees_EmployeePersonalId] ON [Employees] ([EmployeePersonalId]);
 END;
 
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200909015433_initial')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200926210633_updatedMig')
 BEGIN
-    CREATE INDEX [IX_Payslips_employeeId] ON [Payslips] ([employeeId]);
+    CREATE INDEX [IX_Payslips_EmployeeEmpId] ON [Payslips] ([EmployeeEmpId]);
 END;
 
 GO
 
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200909015433_initial')
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200926210633_updatedMig')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20200909015433_initial', N'3.1.5');
-END;
-
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200917083223_imageUpload')
-BEGIN
-    ALTER TABLE [Employees] ADD [Designation] nvarchar(max) NULL;
-END;
-
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200917083223_imageUpload')
-BEGIN
-    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20200917083223_imageUpload', N'3.1.5');
-END;
-
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200922063644_addedMonthlyPay')
-BEGIN
-    ALTER TABLE [Payslips] ADD [TotalMonthly] decimal(18,2) NOT NULL DEFAULT 0.0;
-END;
-
-GO
-
-IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200922063644_addedMonthlyPay')
-BEGIN
-    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20200922063644_addedMonthlyPay', N'3.1.5');
+    VALUES (N'20200926210633_updatedMig', N'3.1.5');
 END;
 
 GO

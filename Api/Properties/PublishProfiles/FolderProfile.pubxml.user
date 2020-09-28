@@ -4,17 +4,17 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <_PublishTargetUrl>C:\inetpub\Payslip</_PublishTargetUrl>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\publish\</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="Default">
-      <Value>data source= plesk4300.is.cc%3binitial catalog=ps_%3bpersist security info=False%3buser id=payslip%3bpassword=Sager%407401%3b</Value>
+      <Value>data source= plesk4300.is.cc%3binitial catalog=payslip_%3bpersist security info=False%3buser id=psag179%3bpassword=Sager%407401%3b</Value>
     </DestinationConnectionStrings>
   </ItemGroup>
   <ItemGroup>
     <EFMigrations Include="Persistence.DataContext">
-      <Value>data source= plesk4300.is.cc%3binitial catalog=ps_%3bpersist security info=False%3buser id=payslip%3bpassword=Sager%407401%3b</Value>
+      <Value>data source= plesk4300.is.cc%3binitial catalog=payslip_%3bpersist security info=False%3buser id=psag179%3bpassword=Sager%407401%3b</Value>
     </EFMigrations>
   </ItemGroup>
 </Project>

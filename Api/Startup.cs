@@ -31,16 +31,54 @@ namespace Api
             services.AddCors(options =>
                        {
                            options.AddDefaultPolicy(builder =>
-                               builder.WithOrigins().AllowAnyOrigin()
-                                   .SetIsOriginAllowedToAllowWildcardSubdomains()
-                                   .AllowAnyHeader()
-                                   .AllowAnyMethod();
-                           });
-                app.UseDeveloperExceptionPage();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+                             builder.WithOrigins().AllowAnyOrigin()
+
+ .SetIsOriginAllowedToAllowWildcardSubdomains()
+
+ .AllowAnyHeader()
+
+ .AllowAnyMethod();
+
+                       });
+
+        });
+
+ }
+
+
+
+    // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+
+    {
+
+        if (env.IsDevelopment())
+
+        {
+
+            app.UseDeveloperExceptionPage();
+
         }
+
+        // app.UseHttpsRedirection();
+
+        app.UseRouting();
+
+        app.UseCors();
+
+        app.UseAuthorization();
+
+
+
+        app.UseEndpoints(endpoints =>
+
+         {
+
+             endpoints.MapControllers();
+
+         });
+
     }
+
 }

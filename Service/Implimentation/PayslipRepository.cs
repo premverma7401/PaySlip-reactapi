@@ -8,6 +8,8 @@ using Service.Interface;
 using Service.DTOs;
 using Service.Utils;
 using Domain.models.email;
+using Org.BouncyCastle.Math.EC.Rfc7748;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 
 namespace Service.Implimentation
 {
@@ -27,12 +29,12 @@ namespace Service.Implimentation
         }
         public int GenratePayslip(CreatePayslipDTO payVM)
         {
-            var emp = _context.Employees.Include(e => e.EmployeeContract).Where(e => e.employeeId == payVM.EmpId).FirstOrDefault();
+            var emp = _context.Employees.Include(e => e.EmployeeContract).Where(e => e.EmpId == payVM.EmpId).FirstOrDefault();
             if (payVM.isHours == true)
             {
                 var payslip = new Payslip()
                 {
-                    EmpId = emp.employeeId,
+                    EmpId = emp.EmpId,
                     TotalHours = payVM.TotalHours,
                     ContractedHours = emp.EmployeeContract.ContractHours,
                     OvertimeHours = (payVM.TotalHours - emp.EmployeeContract.ContractHours),
@@ -49,7 +51,7 @@ namespace Service.Implimentation
             {
                 var payslip = new Payslip()
                 {
-                    EmpId = emp.employeeId,
+                    EmpId = emp.EmpId,
                     TotalMonthly = payVM.MonthlyPay,
                     TotalEarning = payVM.MonthlyPay,
                     TotalDeduction = _totalAmountDeduted = pay.GetMonthlyDeduction(emp.EmployeeContract.Union, _totalAmountEarned,
@@ -73,7 +75,7 @@ namespace Service.Implimentation
         }
         public List<PayslipDTO> GetAllPayslips(int Id)
         {
-            var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
+            var emp = _context.Employees.Where(e => e.EmpId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("User not found");
@@ -98,7 +100,7 @@ namespace Service.Implimentation
         }
         public PayslipDTO GetSinglePayslip(int Id)
         {
-            var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
+            var emp = _context.Employees.Where(e => e.EmpId == Id).FirstOrDefault();
             if (emp == null)
             {
                 throw new Exception("User not found");
@@ -123,7 +125,7 @@ namespace Service.Implimentation
 
         public PayHistoryDTO GetPaySummary(int Id)
         {
-            var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
+            var emp = _context.Employees.Where(e => e.EmpId == Id).FirstOrDefault();
             var allPs = _context.Payslips.Where(e => e.EmpId == Id).ToList();
             decimal sumEarning = 0;
             decimal sumDeduction = 0;
@@ -151,7 +153,7 @@ namespace Service.Implimentation
 
         public List<PayslipDTO> SearchPayslipByDates(int Id, DateTime from, DateTime to)
         {
-            var emp = _context.Employees.Where(e => e.employeeId == Id).FirstOrDefault();
+            var emp = _context.Employees.Where(e => e.EmpId == Id).FirstOrDefault();
 
             var allPs = _context.Payslips.Where(e => e.EmpId == Id).Where(e => e.CreatedAt >= from && e.CreatedAt <= to)
             .OrderByDescending(e => e.CreatedAt).ToList();
@@ -173,6 +175,35 @@ namespace Service.Implimentation
 
         }
 
+        //public List<PayHistoryDTO> GetPaySummaryForAll()
+        //{
+        //    var emp = _context.Employees.ToList();
+        //    var allPs = _context.Payslips.ToList();
+        //    decimal sumEarning = 0;
+        //    decimal sumDeduction = 0;
+        //    decimal sumInhand = 0;
+        //    decimal sumHoursWorked = 0;
+        //    decimal sumOTH = 0;
+        //    foreach (var item in allPs)
+        //    {
+        //        sumEarning += item.TotalEarning;
+        //        sumDeduction += item.TotalDeduction;
+        //        sumInhand += item.InHandPay;
+        //        sumHoursWorked += item.TotalHours;
+        //        sumOTH += item.OvertimeHours;
+        //    }
+        //    return allPs.Select(e => new PayHistoryDTO
+        //    {
+        //        FirstName = e.Employee.FirstName,
+        //        TotalEarningSoFar = sumEarning,
+        //        TotalDeductionFar = sumDeduction,
+        //        TotalIHPSoFar = sumInhand,
+        //        TotalHoursSoFar = sumHoursWorked,
+        //        TotalOTHSoFar = sumOTH,
+        //    }).ToList();
+
+
+        //}
     }
 
     // public  int> UpdatePayslip(int Id, decimal th)

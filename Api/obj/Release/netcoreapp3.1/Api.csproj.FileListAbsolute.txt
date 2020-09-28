@@ -61,3 +61,13 @@ C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.genruntimeconfig.cache
 C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\Newtonsoft.Json.dll
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.csproj.CoreCompileInputs.cache
 C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\AutoMapper.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\MailKit.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\MimeKit.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\dev\payslip-react\Api\bin\Release\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\dev\payslip-react\Api\obj\Release\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cs

@@ -7,6 +7,8 @@ C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Api.runtimeconfig.json
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Api.runtimeconfig.dev.json
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Api.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Api.pdb
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\MailKit.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
@@ -29,9 +31,13 @@ C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Ab
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\MimeKit.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
@@ -56,6 +62,7 @@ C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.csprojAssemblyReference.cac
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfoInputs.cache
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfo.cs
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.csproj.CoreCompileInputs.cache
+C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cs
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.RazorTargetAssemblyInfo.cache
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.csproj.CopyComplete
@@ -64,5 +71,3 @@ C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\staticwebassets\Api.StaticWebAs
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.dll
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.pdb
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.genruntimeconfig.cache
-C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\AutoMapper.dll
-C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

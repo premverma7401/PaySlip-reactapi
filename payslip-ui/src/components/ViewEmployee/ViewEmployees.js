@@ -1,20 +1,37 @@
-import React, { useContext, useEffect } from "react";
-import Navbar from "../Navbar";
-import "../ViewEmployee/viewEmployee.css";
-import { UserContext } from "../../store/UserContext";
-import { Link } from "react-router-dom";
-import Insights from "./Insights";
-import PieChart from "./PieChart";
-import LoadingProgress from "../../common/LoadingProgress";
-import { Row, Col, Card, CardTitle, Icon } from "react-materialize";
+import React, { useContext, useEffect, useState } from 'react';
+import Navbar from '../Navbar';
+import '../ViewEmployee/viewEmployee.css';
+import { UserContext } from '../../store/UserContext';
+import { Link } from 'react-router-dom';
+import Insights from './Insights';
+import PieChart from './PieChart';
+import LoadingProgress from '../../common/LoadingProgress';
+import { Row, Col, Card, CardTitle, Icon } from 'react-materialize';
+import agent from '../../api/agent';
 
 const ViewEmployees = () => {
-  const [users, setusers, loadUsers, loading, stats, setStats] = useContext(
-    UserContext
-  );
+  const [users, , loadUsers, loading, ,] = useContext(UserContext);
+  const [desiStats, setdesiStats] = useState([]);
+
   useEffect(() => {
     loadUsers();
+    apiTest();
   }, []);
+
+  const apiTest = async () => {
+    try {
+      const desiStats = await agent.Users.statList();
+      console.log(desiStats, 'api response');
+      setdesiStats(desiStats);
+      console.log('this is from view emo', desiStats);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // useEffect(() => {
+  //   apiTest();
+  // }, []);
 
   if (loading) return <LoadingProgress text="Loading users" />;
 
@@ -39,7 +56,7 @@ const ViewEmployees = () => {
                     }
                     horizontal
                     revealIcon={<Icon>more_vert</Icon>}
-                    >
+                  >
                     <div>
                       <p>
                         {user.firstName} {user.lastName}
@@ -48,7 +65,7 @@ const ViewEmployees = () => {
                       <span>{user.username}</span>
                       <br />
                       <span>{user.email}</span>
-                      <br/>
+                      <br />
                       <span>{user.designation}</span>
                     </div>
                   </Card>
@@ -58,8 +75,8 @@ const ViewEmployees = () => {
           ))}
         </div>
         <div>
-          <Insights />
-          <PieChart />
+          <Insights desiStats={desiStats} />
+          <PieChart desiStats={desiStats} />
         </div>
       </div>
     </div>

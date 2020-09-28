@@ -21,7 +21,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.models.employee.Employee", b =>
                 {
-                    b.Property<int>("employeeId")
+                    b.Property<int>("EmpId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -65,7 +65,7 @@ namespace Persistence.Migrations
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("employeeId");
+                    b.HasKey("EmpId");
 
                     b.HasIndex("EmployeeContractId");
 
@@ -156,6 +156,9 @@ namespace Persistence.Migrations
                     b.Property<int>("EmpId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("EmployeeEmpId")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("InHandPay")
                         .HasColumnType("decimal(18,2)");
 
@@ -195,12 +198,9 @@ namespace Persistence.Migrations
                     b.Property<int>("UnionFee")
                         .HasColumnType("int");
 
-                    b.Property<int?>("employeeId")
-                        .HasColumnType("int");
-
                     b.HasKey("PayslipId");
 
-                    b.HasIndex("employeeId");
+                    b.HasIndex("EmployeeEmpId");
 
                     b.ToTable("Payslips");
                 });
@@ -224,7 +224,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.models.employee.Employee", "Employee")
                         .WithMany("PayRecord")
-                        .HasForeignKey("employeeId");
+                        .HasForeignKey("EmployeeEmpId");
                 });
 #pragma warning restore 612, 618
         }

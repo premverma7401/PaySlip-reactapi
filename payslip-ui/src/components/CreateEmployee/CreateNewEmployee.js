@@ -37,7 +37,11 @@ const CreateNewEmployee = () => {
               <div>
                 <div>
                   <div>
-                    <TextInput id="TextInput-4" label="Username" />
+                    <Field
+                      name="username"
+                      component={TextInput}
+                      label="Username"
+                    />
                     <TextInput id="TextInput-4" label="First Name" />
                   </div>
                   <div>
@@ -119,7 +123,7 @@ const CreateNewEmployee = () => {
                     options={{
                       classes: "",
                       dropdownOptions: {
-                        alignment: "center",
+                        alignment: "left",
                         autoTrigger: true,
                         closeOnClick: true,
                         constrainWidth: true,

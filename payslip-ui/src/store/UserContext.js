@@ -4,11 +4,10 @@ export const UserContext = createContext();
 
 export const UserProvider = (props) => {
   const [users, setUsers] = useState([]);
-  const [stats, setStats] = useState([]);
+  const [desiStats, setdesiStats] = useState([]);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     loadUsers();
-    loadDesignationStats();
   }, []);
   const loadUsers = async () => {
     try {
@@ -21,13 +20,12 @@ export const UserProvider = (props) => {
       console.log(error);
     }
   };
-
   const loadDesignationStats = async () => {
     try {
       setLoading(true);
-      const stats = await agent.Users.statList();
-      console.log('stats', stats);
-      setStats(stats);
+      const desiStats = await agent.Users.statList();
+      console.log('stats', desiStats);
+      setdesiStats(desiStats);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -36,7 +34,16 @@ export const UserProvider = (props) => {
 
   return (
     <UserContext.Provider
-      value={[users, setUsers, loadUsers, loading, setLoading, stats, setStats]}
+      value={[
+        users,
+        setUsers,
+        loadUsers,
+        loading,
+        setLoading,
+        loadDesignationStats,
+        desiStats,
+        setdesiStats,
+      ]}
     >
       {props.children}
     </UserContext.Provider>

@@ -49,7 +49,7 @@ namespace Api
                 app.UseDeveloperExceptionPage();
             }
             app.UseCors();
-        
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
               {
@@ -65,5 +65,29 @@ namespace Api
                 endpoints.MapControllers();
             });
         }
+
+        // app.UseHttpsRedirection();
+
+        app.UseRouting();
+
+        app.UseCors();
+
+        app.UseAuthorization();
+
+
+
+        app.UseEndpoints(endpoints =>
+
+         {
+
+             endpoints.MapControllers();
+
+         });
+
     }
+<<<<<<< HEAD
 }
+=======
+
+}
+>>>>>>> 212b8be0da9012bc3fec83f3f8b516d3c0e06285

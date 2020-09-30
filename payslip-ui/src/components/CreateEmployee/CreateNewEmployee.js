@@ -82,7 +82,7 @@ const CreateNewEmployee = () => {
             </div>
             <div className="create-contract-info">
               <InfotabComponent text="CONTRACT INFORMATION" />
-              <div>
+              <div className="dropdown-selection">
                 <div>
                   <TextInput id="TextInput-4" label="Contract Hours" />
                   <TextInput id="TextInput-4" label="Pay Per Hour" />
@@ -91,7 +91,6 @@ const CreateNewEmployee = () => {
                 <div>
                   <TextInput id="TextInput-4" label="Kiwi Saver" />
                   <Select
-                    id="Select-9"
                     value="Select Type"
                     label="Contract Type"
                     multiple={false}
@@ -112,21 +111,19 @@ const CreateNewEmployee = () => {
                         outDuration: 250,
                       },
                     }}
-                    value="2"
                   >
                     <option value="1">Full Time</option>
                     <option value="2">Part Time</option>
                     <option value="3">Intern</option>
                   </Select>
                   <Select
-                    id="Select-9"
                     value="select"
                     label="Union Member"
                     multiple={false}
                     options={{
                       classes: '',
                       dropdownOptions: {
-                        alignment: 'left',
+                        alignment: 'center',
                         autoTrigger: true,
                         closeOnClick: true,
                         constrainWidth: true,

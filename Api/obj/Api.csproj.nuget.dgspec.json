@@ -1,37 +1,35 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\payslip-react\\Api\\Api.csproj": {}
+    "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Api\\Api.csproj": {}
   },
   "projects": {
-    "C:\\dev\\payslip-react\\Api\\Api.csproj": {
+    "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Api\\Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\payslip-react\\Api\\Api.csproj",
+        "projectUniqueName": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Api\\Api.csproj",
         "projectName": "Api",
-        "projectPath": "C:\\dev\\payslip-react\\Api\\Api.csproj",
-        "packagesPath": "C:\\Users\\Prem\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\payslip-react\\Api\\obj\\",
+        "projectPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Api\\Api.csproj",
+        "packagesPath": "C:\\Users\\rajan\\.nuget\\packages\\",
+        "outputPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\rajan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj"
+              "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Persistence\\Persistence.csproj": {
+                "projectPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Persistence\\Persistence.csproj"
               },
-              "C:\\dev\\payslip-react\\Service\\Service.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Service\\Service.csproj"
+              "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Service\\Service.csproj": {
+                "projectPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Service\\Service.csproj"
               }
             }
           }
@@ -84,24 +82,22 @@
         }
       }
     },
-    "C:\\dev\\payslip-react\\Domain\\Domain.csproj": {
+    "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\payslip-react\\Domain\\Domain.csproj",
+        "projectUniqueName": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\dev\\payslip-react\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Prem\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\payslip-react\\Domain\\obj\\",
+        "projectPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\rajan\\.nuget\\packages\\",
+        "outputPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\rajan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -142,31 +138,29 @@
         }
       }
     },
-    "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj": {
+    "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Persistence\\Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Persistence\\Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj",
-        "packagesPath": "C:\\Users\\Prem\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\payslip-react\\Persistence\\obj\\",
+        "projectPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Persistence\\Persistence.csproj",
+        "packagesPath": "C:\\Users\\rajan\\.nuget\\packages\\",
+        "outputPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\rajan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\dev\\payslip-react\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Domain\\Domain.csproj"
+              "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Domain\\Domain.csproj"
               }
             }
           }
@@ -212,34 +206,32 @@
         }
       }
     },
-    "C:\\dev\\payslip-react\\Service\\Service.csproj": {
+    "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Service\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\payslip-react\\Service\\Service.csproj",
+        "projectUniqueName": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Service\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\dev\\payslip-react\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\Prem\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\payslip-react\\Service\\obj\\",
+        "projectPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Service\\Service.csproj",
+        "packagesPath": "C:\\Users\\rajan\\.nuget\\packages\\",
+        "outputPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\rajan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\dev\\payslip-react\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Domain\\Domain.csproj"
+              "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Domain\\Domain.csproj": {
+                "projectPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Domain\\Domain.csproj"
               },
-              "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj"
+              "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Persistence\\Persistence.csproj": {
+                "projectPath": "D:\\Work\\dev\\projects\\PaySlip-reactapi\\PaySlip-reactapi\\Persistence\\Persistence.csproj"
               }
             }
           }

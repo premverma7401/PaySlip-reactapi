@@ -1,6 +1,5 @@
-
 .create-personal-info,
-.create-contract-info{
+.create-contract-info {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -8,42 +7,45 @@
   width: 83.5vw;
 }
 .create-personal-info div,
-.create-contract-info div{
+.create-contract-info div {
   width: 70vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
-.create-personal-info div div{
+.create-personal-info div div {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
 }
-.create-personal-info div div div{
+.create-personal-info div div div {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   margin-right: 20px;
 }
-.emp-img{
-  width: 30vw!important;
+.emp-img {
+  width: 30vw !important;
   height: 23vh;
-  align-self: center ;
+  align-self: center;
   overflow: hidden;
   border: 1px #1d3557 solid;
   border-radius: 8vw;
-  box-shadow:1px 3px 2px #1d3557;
+  box-shadow: 1px 3px 2px #1d3557;
 }
-.create-contract-info div div{
+.create-contract-info div div {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  
+
   margin-right: 10px;
 }
+.dropdown-selection:nth-child(2) {
+  overflow-x: hidden;
+}
 .address-bar {
-  width:100%!important;
+  width: 100% !important;
   margin: 0px 5px;
 }
 .submit-button {
@@ -58,13 +60,14 @@
   background-color: #797979;
   border: 1px #1d3557 solid;
   border-radius: 0.5vw;
-  color: #f1faee;  font-size: 20px;
+  color: #f1faee;
+  font-size: 20px;
 }
 .submit-button button:nth-of-type(1) {
   margin-right: 20px;
   background-color: #2e4e7a;
 }
-.submit-button button:hover{
+.submit-button button:hover {
   background-color: #1d3557;
   transition: all 0.2 ease-in-out;
-} 
+}

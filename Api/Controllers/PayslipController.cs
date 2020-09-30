@@ -52,11 +52,11 @@ namespace Api.Controllers
         {
             return Ok(_payslip.GetPaySummary(Id));
         }
-        // [HttpGet]
-        // [Route("summaryAll")]
-        // public IActionResult GetSummaryViewForAll()
-        // {
-        //     return Ok(_payslip.GetPaySummaryForAll());
-        // }
+        [HttpGet]
+        [Route("summaryAll")]
+        public IActionResult GetSummaryViewForAll()
+        {
+            return Ok(_payslip.GetPaySummaryForAll());
+        }
     }
 }

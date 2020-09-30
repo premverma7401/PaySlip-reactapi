@@ -62,15 +62,15 @@ namespace Service.Implimentation
                 _context.Payslips.Add(payslip);
             }
             _context.SaveChanges();
-            var emailObj = new EmailModel()
-            {
-                toemail = emp.Email,
-                subject = $"Payslip for {emp.CreatedAtstr}",
-                message = "Your payslip is created.",
-                isHtml = false,
+            //var emailObj = new EmailModel()
+            //{
+            //    toemail = emp.Email,
+            //    subject = $"Payslip for {emp.CreatedAtstr}",
+            //    message = "Your payslip is created.",
+            //    isHtml = false,
 
-            };
-            _sendemail.SendEmailHelper(emailObj);
+            //};
+            //_sendemail.SendEmailHelper(emailObj);
             return 0;
         }
         public List<PayslipDTO> GetAllPayslips(int Id)
@@ -175,46 +175,25 @@ namespace Service.Implimentation
 
         }
 
-        //public List<PayHistoryDTO> GetPaySummaryForAll()
-        //{
-        //    var emp = _context.Employees.ToList();
-        //    var allPs = _context.Payslips.ToList();
-        //    decimal sumEarning = 0;
-        //    decimal sumDeduction = 0;
-        //    decimal sumInhand = 0;
-        //    decimal sumHoursWorked = 0;
-        //    decimal sumOTH = 0;
-        //    foreach (var item in allPs)
-        //    {
-        //        sumEarning += item.TotalEarning;
-        //        sumDeduction += item.TotalDeduction;
-        //        sumInhand += item.InHandPay;
-        //        sumHoursWorked += item.TotalHours;
-        //        sumOTH += item.OvertimeHours;
-        //    }
-        //    return allPs.Select(e => new PayHistoryDTO
-        //    {
-        //        FirstName = e.Employee.FirstName,
-        //        TotalEarningSoFar = sumEarning,
-        //        TotalDeductionFar = sumDeduction,
-        //        TotalIHPSoFar = sumInhand,
-        //        TotalHoursSoFar = sumHoursWorked,
-        //        TotalOTHSoFar = sumOTH,
-        //    }).ToList();
+        public List<PayHistoryDTO> GetPaySummaryForAll()
+        {
+            
+            var emp = _context.Employees.ToList();
+            var dto = (from a in _context.Payslips.ToList()
+            join e in emp on a.EmpId equals e.EmpId
+                       group a by new { a.EmpId } into pd
+                       select new PayHistoryDTO()
+                       {
+                           EmpId = pd.FirstOrDefault().EmpId,
+                           TotalDeductionFar = pd.Sum(m => m.TotalDeduction),
+                           TotalEarningSoFar = pd.Sum(x=>x.TotalEarning),
+                           TotalIHPSoFar = pd.Sum(x=>x.TotalHours)
+                       }
+            ).ToList();
+            dto.AsParallel().ForAll(q => q.FirstName = emp.Where(x => x.EmpId == q.EmpId).Select(q => q.FirstName).FirstOrDefault());
+            return dto;
+        }
 
-
-        //}
     }
-
-    // public  int> UpdatePayslip(int Id, decimal th)
-    // {
-    //     return 1;
-    // }
-    // public  int> DeletePayslip(int Id)
-    // {
-    //     return 1;
-
-    // }
-
 
 }

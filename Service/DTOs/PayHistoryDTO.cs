@@ -4,6 +4,7 @@ namespace Service.DTOs
 {
     public class PayHistoryDTO
     {
+        public int EmpId { get; set; }
         public string FirstName { get; set; }
         public decimal TotalEarningSoFar { get; set; }
         public decimal TotalDeductionFar { get; set; }

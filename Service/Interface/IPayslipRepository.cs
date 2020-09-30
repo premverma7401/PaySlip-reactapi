@@ -11,7 +11,7 @@ namespace Service.Interface
         List<PayslipDTO> GetAllPayslips(int Id);
         PayslipDTO GetSinglePayslip(int Id);
         PayHistoryDTO GetPaySummary(int Id);
-        // List<PayHistoryDTO> GetPaySummaryForAll();
+        List<PayHistoryDTO> GetPaySummaryForAll();
         List<PayslipDTO> SearchPayslipByDates(int Id, DateTime from, DateTime to);
         // Task<int> UpdatePayslip(int Id, decimal th);
         // Task<int> DeletePayslip(int Id);

@@ -47,7 +47,7 @@ body::-webkit-scrollbar-thumb,
   cursor: pointer;
   position: fixed;
   left: 71vw;
-  top: 50vh;
+  top: 60vh;
   transform: scale(1.2);
   /* height: 240px;
   width: 250px; */

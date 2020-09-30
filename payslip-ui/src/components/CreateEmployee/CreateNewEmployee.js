@@ -5,7 +5,7 @@ import LoadingProgress from "../../common/LoadingProgress";
 import agent from "../../api/agent";
 import { Formik, Field, Form } from "formik";
 import "./CreateEmployee.css";
-import { TextInput, DatePicker, Select, Button, Icon } from "react-materialize";
+import { TextInput, DatePicker, Button, Icon } from "react-materialize";
 const CreateNewEmployee = () => {
   const [loading, setLoading] = useState(false);
 
@@ -42,11 +42,19 @@ const CreateNewEmployee = () => {
                       component={TextInput}
                       label="Username"
                     />
-                    <TextInput id="TextInput-4" label="First Name" />
+                    <Field
+                      name="firstname"
+                      component={TextInput}
+                      label="First Name"
+                    />
                   </div>
                   <div>
-                    <TextInput id="TextInput-4" label="IRD" />
-                    <TextInput id="TextInput-4" label="Last Name" />
+                    <Field name="ird" component={TextInput} label="IRD" />
+                    <Field
+                      name="lastname"
+                      component={TextInput}
+                      label="Last Name"
+                    />
                   </div>
                   <div className="emp-img">
                     <input
@@ -61,20 +69,28 @@ const CreateNewEmployee = () => {
                   </div>
                 </div>
                 <div>
-                  <TextInput id="TextInput-4" label="Email Address" />
-                  <TextInput id="TextInput-4" label="Contact No." />
-                  <TextInput
+                  <Field
+                    name="email"
+                    component={TextInput}
+                    label="Email Address"
+                  />
+                  <Field
+                    name="contactno."
+                    component={TextInput}
+                    label="Contact No."
+                  />
+                  <Field
+                    name="dob"
+                    component={TextInput}
                     type="date"
-                    placeholder="DOB"
-                    value="none"
-                    id="TextInput-4"
-                    label="Date Of Birth"
+                    label="Date of Birth"
                   />
                 </div>
                 <div>
-                  <TextInput
+                  <Field
+                    name="address"
                     className="address-bar"
-                    id="TextInput-4"
+                    component={TextInput}
                     label="Address"
                   />
                 </div>
@@ -82,66 +98,30 @@ const CreateNewEmployee = () => {
             </div>
             <div className="create-contract-info">
               <InfotabComponent text="CONTRACT INFORMATION" />
-              <div className="dropdown-selection">
+              <div>
                 <div>
-                  <TextInput id="TextInput-4" label="Contract Hours" />
-                  <TextInput id="TextInput-4" label="Pay Per Hour" />
-                  <TextInput id="TextInput-4" label="Overtime Rate" />
+                  <Field
+                    name="Conracthours"
+                    component={TextInput}
+                    label="Contract Hours"
+                  />
+                  <Field
+                    name="Payperhour"
+                    component={TextInput}
+                    label="Pay Per Hour"
+                  />
+                  <Field
+                    name="overtimerate"
+                    component={TextInput}
+                    label="OverTime Rate"
+                  />
                 </div>
                 <div>
-                  <TextInput id="TextInput-4" label="Kiwi Saver" />
-                  <Select
-                    value="Select Type"
-                    label="Contract Type"
-                    multiple={false}
-                    options={{
-                      classes: "",
-                      dropdownOptions: {
-                        alignment: "left",
-                        autoTrigger: true,
-                        closeOnClick: true,
-                        constrainWidth: true,
-                        coverTrigger: true,
-                        hover: false,
-                        inDuration: 150,
-                        onCloseEnd: null,
-                        onCloseStart: null,
-                        onOpenEnd: null,
-                        onOpenStart: null,
-                        outDuration: 250,
-                      },
-                    }}
-                  >
-                    <option value="1">Full Time</option>
-                    <option value="2">Part Time</option>
-                    <option value="3">Intern</option>
-                  </Select>
-                  <Select
-                    value="select"
-                    label="Union Member"
-                    multiple={false}
-                    options={{
-                      classes: "",
-                      dropdownOptions: {
-                        alignment: "left",
-                        autoTrigger: true,
-                        closeOnClick: true,
-                        constrainWidth: true,
-                        coverTrigger: true,
-                        hover: false,
-                        inDuration: 150,
-                        onCloseEnd: null,
-                        onCloseStart: null,
-                        onOpenEnd: null,
-                        onOpenStart: null,
-                        outDuration: 250,
-                      },
-                    }}
-                    value="2"
-                  >
-                    <option value="1">YES</option>
-                    <option value="2">NO</option>
-                  </Select>
+                  <Field
+                    name="kiwisaver"
+                    component={TextInput}
+                    label="Kiwi Saver"
+                  />
                 </div>
               </div>
             </div>

@@ -6,6 +6,17 @@
   align-items: center;
   width: 83.5vw;
 }
+
+.create-personal-info h4,
+.create-contract-info h4 {
+  padding: 3vh;
+  background-color: #1d3557;
+  color: #f1faee;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 1px 1px 1px 1px #333333;
+  margin-bottom: 20px;
+}
 .create-personal-info div,
 .create-contract-info div {
   width: 70vw;
@@ -27,7 +38,7 @@
 }
 .emp-img {
   width: 30vw !important;
-  height: 23vh;
+  height: 25vh;
   align-self: center;
   overflow: hidden;
   border: 1px #1d3557 solid;
@@ -41,8 +52,13 @@
 
   margin-right: 10px;
 }
-.dropdown-selection:nth-child(2) {
-  overflow-x: hidden;
+.dropdown-selection {
+  position: absolute;
+  background-color: red;
+}
+.select-tag {
+  color: red;
+  width: 100px !important;
 }
 .address-bar {
   width: 100% !important;

@@ -1,3 +1,9 @@
+C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.csprojAssemblyReference.cache
+C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfoInputs.cache
+C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfo.cs
+C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.csproj.CoreCompileInputs.cache
+C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cs
+C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\appsettings.json
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -58,12 +64,6 @@ C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Service.dll
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Persistence.pdb
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Service.pdb
 C:\dev\payslip-react\Api\bin\Debug\netcoreapp3.1\Domain.pdb
-C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.csprojAssemblyReference.cache
-C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfoInputs.cache
-C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.AssemblyInfo.cs
-C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.csproj.CoreCompileInputs.cache
-C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cs
-C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.MvcApplicationPartsAssemblyInfo.cache
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.RazorTargetAssemblyInfo.cache
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\Api.csproj.CopyComplete
 C:\dev\payslip-react\Api\obj\Debug\netcoreapp3.1\staticwebassets\Api.StaticWebAssets.Manifest.cache

@@ -74,6 +74,7 @@
   width: 80vw;
   margin-top: 10vh;
   margin-left: 15vw;
+  overflow-x: hidden;
 }
 @media screen and (max-width: 700px) {
   .app-options-group {

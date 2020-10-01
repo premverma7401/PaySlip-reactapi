@@ -1,35 +1,78 @@
-import React from 'react';
-import { Table } from 'react-materialize';
-import Navbar from '../Navbar';
-
+import React from "react";
+import { Table } from "react-materialize";
+import Navbar from "../Navbar";
+import { Row, Col, Collection, CollectionItem, Icon } from "react-materialize";
 const PayRecords = () => {
   return (
     <div>
       <Navbar title="Pay Records" />
       <div className="main">
-        <Table>
+        <Table hoverable responsive striped style={{ marginLeft: "2em" }}>
           <thead>
             <tr>
-              <th data-field="id">Employee Name</th>
-              <th data-field="name">Item Name</th>
-              <th data-field="price">Item Price</th>
+              <th>Employee Name</th>
+              <th>Total Earning</th>
+              <th>Total Working hours</th>
+              <th>Total Deduction</th>
+              <th>Total Inhand Pay</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Alvin</td>
-              <td>Eclair</td>
-              <td>$0.87</td>
+              <td>$100</td>
+              <td>37</td>
+              <td>$20</td>
+              <td>$80</td>
             </tr>
             <tr>
-              <td>Alan</td>
-              <td>Jellybean</td>
-              <td>$3.76</td>
+              <td>Alvin</td>
+              <td>$100</td>
+              <td>37</td>
+              <td>$20</td>
+              <td>$80</td>
             </tr>
             <tr>
-              <td>Jonathan</td>
-              <td>Lollipop</td>
-              <td>$7.00</td>
+              <td>Alvin</td>
+              <td>$100</td>
+              <td>37</td>
+              <td>$20</td>
+              <td>$80</td>
+            </tr>
+            <tr>
+              <td>Alvin</td>
+              <td>$100</td>
+              <td>37</td>
+              <td>$20</td>
+              <td>$80</td>
+            </tr>
+            <tr>
+              <td>Alvin</td>
+              <td>$100</td>
+              <td>37</td>
+              <td>$20</td>
+              <td>$80</td>
+            </tr>
+            <tr>
+              <td>Alvin</td>
+              <td>$100</td>
+              <td>37</td>
+              <td>$20</td>
+              <td>$80</td>
+            </tr>
+            <tr>
+              <td>Alvin</td>
+              <td>$100</td>
+              <td>37</td>
+              <td>$20</td>
+              <td>$80</td>
+            </tr>
+            <tr>
+              <td>Alvin</td>
+              <td>$100</td>
+              <td>37</td>
+              <td>$20</td>
+              <td>$80</td>
             </tr>
           </tbody>
         </Table>

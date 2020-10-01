@@ -14,7 +14,7 @@
   color: #f1faee;
   border-top-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  box-shadow: 2px 2px 2px 2px #333333;
+  box-shadow: 1px 1px 1px 1px #333333;
   margin-bottom: 20px;
 }
 .personal-info div,
@@ -28,8 +28,8 @@
 .personal-info p,
 .contract-info p {
   border: none;
-  box-shadow: 3px 7px 10px #1d3557;
-  font-size: 18px;
+  box-shadow: 1px 3px 5px #1d3557;
+  font-size: 14px;
   width: 20vw;
   padding: 10px;
   border-radius: 0.5vw;

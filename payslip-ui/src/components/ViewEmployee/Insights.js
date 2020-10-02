@@ -15,21 +15,6 @@ const Insights = ({ desiStats }) => {
               ))}
             </span>
           </Card>
-          {/* <Card
-            closeIcon={<Icon>close</Icon>}
-            reveal={
-              <ul className="inner">
-                {desiStats.map((desiCount, i) => (
-                  <div>
-                    <li key={i}>{desiCount.designation} </li>
-                    <li>{desiCount.designationCount}</li>
-                  </div>
-                ))}
-              </ul>
-            }
-            revealIcon={<Icon>more_vert</Icon>}
-            title="INSIGHTS"
-          ></Card> */}
         </Col>
       </Row>
     </div>

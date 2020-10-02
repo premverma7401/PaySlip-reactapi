@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
 }
+.customSize {
+  width: 50%;
+}
 .user-summary-card {
   /* width: 60vw; */
   font-size: 20px;
@@ -11,6 +14,7 @@
 }
 .info-parent {
   display: flex;
+  color: black;
 }
 .info-stats {
   width: 35vw;
@@ -49,6 +53,7 @@ body::-webkit-scrollbar-thumb,
   left: 71vw;
   top: 60vh;
   transform: scale(1.2);
+  background-color: #fff;
   /* height: 240px;
   width: 250px; */
   /* background-image: conic-gradient(#ffffff 70deg, #e63946 0 235deg, #1d3557 0);

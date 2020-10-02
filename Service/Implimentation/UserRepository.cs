@@ -53,6 +53,15 @@ namespace Service.Implimentation
             }).ToList();
         }
 
+        /// <summary>
+        /// Outside se---------React, Angular, JS-------request-------
+        /// Controller.......
+        /// Services..........
+        /// Domain...........
+        /// Persistance............
+        /// </summary>
+        /// <param name="employee"></param>
+        /// <returns></returns>
         public int CreateEmployee(EmployeeCreateDTO employee)
         {
             var emp = new Employee()

@@ -9,7 +9,6 @@ import PayRecords from './PayRecord/PayRecords';
 import Information from './Information';
 import ViewEmployeeDetails from './ViewEmployee/ViewEmployeeDetails';
 import { UserProvider } from '../store/UserContext';
-import CreateNewEmployee from './CreateEmployee/CreateNewEmployee';
 import CreateUser from './CreateEmployee/CreateUser';
 const MainDashboard = () => {
   return (

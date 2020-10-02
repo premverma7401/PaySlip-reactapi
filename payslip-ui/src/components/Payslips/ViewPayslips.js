@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../store/UserContext";
-import Navbar from "../Navbar";
-import "./ViewPayslips.css";
-import { Collapsible, CollapsibleItem, Icon, Select } from "react-materialize";
-import agent from "../../api/agent";
-import { Modal } from "../../common/CustomModal/Modal";
+import React, { useContext, useState } from 'react';
+import { UserContext } from '../../store/UserContext';
+import Navbar from '../Navbar';
+import './ViewPayslips.css';
+import { Collapsible, CollapsibleItem, Icon, Select } from 'react-materialize';
+import agent from '../../api/agent';
+import { Modal } from '../../common/CustomModal/Modal';
 
 const ViewPayslips = ({ match }) => {
   const [users, setUsers] = useContext(UserContext);
@@ -36,7 +36,7 @@ const ViewPayslips = ({ match }) => {
             multiple={false}
             options={{
               dropdownOptions: {
-                alignment: "left",
+                alignment: 'left',
                 autoTrigger: true,
                 closeOnClick: true,
                 constrainWidth: true,
@@ -82,7 +82,7 @@ const ViewPayslips = ({ match }) => {
               ))}
             </Collapsible>
           ) : (
-            <div style={{ marginLeft: "2em" }}>Please select employee:</div>
+            <div style={{ marginLeft: '2em' }}>Please select employee:</div>
           )}
         </div>
       </div>

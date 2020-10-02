@@ -7,6 +7,7 @@ import Insights from './Insights';
 import PieChart from './PieChart';
 import LoadingProgress from '../../common/LoadingProgress';
 import { Row, Col, Card, CardTitle, Icon } from 'react-materialize';
+import './UserCard.css';
 import agent from '../../api/agent';
 
 const ViewEmployees = () => {
@@ -15,23 +16,17 @@ const ViewEmployees = () => {
 
   useEffect(() => {
     loadUsers();
-    apiTest();
+    designationStats();
   }, []);
 
-  const apiTest = async () => {
+  const designationStats = async () => {
     try {
       const desiStats = await agent.Users.statList();
-      console.log(desiStats, 'api response');
       setdesiStats(desiStats);
-      console.log('this is from view emo', desiStats);
     } catch (error) {
       console.log(error);
     }
   };
-
-  // useEffect(() => {
-  //   apiTest();
-  // }, []);
 
   if (loading) return <LoadingProgress text="Loading users" />;
 
@@ -39,41 +34,55 @@ const ViewEmployees = () => {
     <div>
       <Navbar title="Employees List" />
       <div className="info-parent main">
-        <div className="card-group">
-          {users.map((user) => (
+        {users.map((user) => (
+          <div className="card">
+            {/* <img src="https://lorempixel.com/300/150/nature/6" alt="John" /> */}
+            <div className="title">
+              <h5>
+                {user.firstName} {user.lastName}
+              </h5>
+              <p>{user.designation}</p>
+              <hr />
+            </div>
+            <div className="user-details">
+              <div>
+                <p>Username: {user.username}</p>
+                <p>Email:{user.email}</p>
+              </div>
+              <div>
+                <p>Phone:{user.phone}</p>
+                <p>Employee Type: </p>
+              </div>
+            </div>
             <Link to={`/viewemp/${user.empId}`} key={user.empId}>
-              <Row className="user-summary-card">
-                <Col m={6} s={12}>
-                  <Card
-                    actions={[
-                      <a key="1" href="#">
-                        View Employee
-                      </a>,
-                    ]}
-                    closeIcon={<Icon>close</Icon>}
-                    header={
-                      <CardTitle image="https://materializecss.com/images/sample-1.jpg" />
-                    }
-                    horizontal
-                    revealIcon={<Icon>more_vert</Icon>}
-                  >
-                    <div>
-                      <p>
-                        {user.firstName} {user.lastName}
-                      </p>
-                      <br />
-                      <span>{user.username}</span>
-                      <br />
-                      <span>{user.email}</span>
-                      <br />
-                      <span>{user.designation}</span>
-                    </div>
-                  </Card>
-                </Col>
-              </Row>
+              <p>
+                <button>View Details</button>
+              </p>
             </Link>
-          ))}
-        </div>
+          </div>
+        ))}
+        {/* <div className="card-group">
+            <div className="card horizontal " key={user.empId}>
+                <div className="card-image">
+                  <img src="https://lorempixel.com/250/190/nature/6" />
+                </div>
+                <div className="card-content">
+                  <p>
+                    {user.email} {user.lastName}
+                  </p>
+                  <br />
+                  <span>{user.username}</span>
+                  <br />
+                  <span>{user.email}</span>
+                  <br />
+                  <span>{user.designation}</span>
+                </div>
+                <div className="card-action">
+                  <button>View Employee</button>
+                </div>
+              </Link>
+            </div>
+        </div> */}
         <div>
           <Insights desiStats={desiStats} />
           <PieChart desiStats={desiStats} />

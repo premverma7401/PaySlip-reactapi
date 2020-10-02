@@ -1,9 +1,14 @@
 import React from 'react';
-import { useField } from 'formik';
+import { TextInput } from 'react-materialize';
 
 const CustomInput = (props) => {
-  const { name, placeholder, ...rest } = props;
-  return <input name={name} placeholder={placeholder} {...rest} />;
+  const { name, placeholder, type, ...rest } = props;
+  // object destructing
+  // properties..
+
+  return (
+    <TextInput name={name} placeholder={placeholder} type={type} {...rest} />
+  );
 };
 
 export default CustomInput;

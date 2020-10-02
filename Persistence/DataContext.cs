@@ -15,6 +15,5 @@ namespace Persistence
         public DbSet<EmployeePersonal> EmployeePersonal { get; set; }
         public DbSet<Payslip> Payslips { get; set; }
 
-     
     }
 }

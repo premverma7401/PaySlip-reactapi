@@ -7,9 +7,7 @@ using Persistence;
 using Service.Interface;
 using Service.DTOs;
 using Service.Utils;
-using Domain.models.email;
-using Org.BouncyCastle.Math.EC.Rfc7748;
-using Microsoft.EntityFrameworkCore.Query.Internal;
+
 
 namespace Service.Implimentation
 {
@@ -187,7 +185,9 @@ namespace Service.Implimentation
                            EmpId = pd.FirstOrDefault().EmpId,
                            TotalDeductionFar = pd.Sum(m => m.TotalDeduction),
                            TotalEarningSoFar = pd.Sum(x=>x.TotalEarning),
-                           TotalIHPSoFar = pd.Sum(x=>x.TotalHours)
+                           TotalIHPSoFar = pd.Sum(x=>x.TotalHours),
+                           TotalHoursSoFar = pd.Sum(x=>x.TotalHours),
+                           TotalOTHSoFar = pd.Sum(x=>x.OvertimeHours)
                        }
             ).ToList();
             dto.AsParallel().ForAll(q => q.FirstName = emp.Where(x => x.EmpId == q.EmpId).Select(q => q.FirstName).FirstOrDefault());

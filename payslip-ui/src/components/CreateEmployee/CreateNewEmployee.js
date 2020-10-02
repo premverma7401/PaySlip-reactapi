@@ -5,7 +5,7 @@ import LoadingProgress from '../../common/LoadingProgress';
 import agent from '../../api/agent';
 import { Formik, Field, Form } from 'formik';
 import './CreateEmployee.css';
-import { TextInput, DatePicker, Button, Icon } from 'react-materialize';
+import { TextInput, Button, Icon } from 'react-materialize';
 const CreateNewEmployee = () => {
   const [loading, setLoading] = useState(false);
 

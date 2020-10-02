@@ -57,16 +57,10 @@ namespace Api
 
             app.UseAuthorization();
 
-<<<<<<< HEAD
-
-
-
-=======
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
->>>>>>> fe43dfe2b8bd27ecd653277fe779484e8b96888a
         }
     }
 }

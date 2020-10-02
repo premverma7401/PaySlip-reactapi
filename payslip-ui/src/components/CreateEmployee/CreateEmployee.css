@@ -1,74 +1,28 @@
-.create-personal-info,
-.create-contract-info {
+.ui-wrapper {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 83.5vw;
+  flex-wrap: wrap;
 }
-
-.create-personal-info h4,
-.create-contract-info h4 {
-  padding: 3vh;
-  background-color: #1d3557;
-  color: #f1faee;
-  border-top-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  box-shadow: 1px 1px 1px 1px #333333;
-  margin-bottom: 20px;
+.row {
+  margin-bottom: 10px !important;
+  margin-left: 0px !important;
 }
-.create-personal-info div,
-.create-contract-info div {
-  width: 70vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.create-personal-info div div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+.input-field.col {
   width: 100%;
 }
-.create-personal-info div div div {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  margin-right: 20px;
-}
-.emp-img {
-  width: 30vw !important;
-  height: 25vh;
-  align-self: center;
-  overflow: hidden;
-  border: 1px #1d3557 solid;
-  border-radius: 8vw;
-  box-shadow: 1px 3px 2px #1d3557;
-}
-.create-contract-info div div {
+.personal-info-section {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+}
 
-  margin-right: 10px;
-}
-.dropdown-selection {
-  position: absolute;
-  background-color: red;
-}
-.select-tag {
-  color: red;
-  width: 100px !important;
-}
-.address-bar {
-  width: 100% !important;
-  margin: 0px 5px;
-}
 .submit-button {
   width: 83.5vw;
   display: flex;
   justify-content: center;
-  margin-bottom: 10px;
+  margin: 30px 0 10px 0;
 }
 .submit-button button {
   cursor: pointer;
@@ -86,4 +40,32 @@
 .submit-button button:hover {
   background-color: #1d3557;
   transition: all 0.2 ease-in-out;
+}
+
+.contract-select-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.customSelect {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0 35px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
+  display: flex;
+  align-self: center;
+}
+.customSelect:hover {
+  cursor: pointer;
+  background-color: rgba(241, 250, 238, 0.9);
+  width: 100%;
+  padding: 0 35px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
+  display: flex;
+  align-self: center;
 }

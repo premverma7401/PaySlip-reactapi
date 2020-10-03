@@ -20,7 +20,6 @@ const CreateNewEmployee = () => {
           setLoading(true);
           setTimeout(() => {
             agent.Users.create(values);
-            console.log(values);
             setLoading(false);
           }, 1000);
           actions.resetForm();

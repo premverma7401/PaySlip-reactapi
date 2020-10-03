@@ -35,10 +35,10 @@ namespace Service.Utils
                     mailMessage.To.Add(objData.toemail);
                     mailMessage.Body = objData.message;
                     mailMessage.Subject = objData.subject;
-                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
                     client.UseDefaultCredentials = false;
-                    client.EnableSsl = true;
                     client.Credentials = new System.Net.NetworkCredential(_from, _pass);
+                    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    client.EnableSsl = true;
                     client.Send(mailMessage);
                 }
                 

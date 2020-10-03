@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import { Switch, Route } from 'react-router-dom';
 import ViewEmployees from './ViewEmployee/ViewEmployees';
@@ -18,7 +17,7 @@ const MainDashboard = () => {
         {/* <Navbar title="Dashboard" /> */}
         <div className="main-content">
           <Switch>
-            <Route exact path="/" component={Navbar} />
+            <Route exact path="/" component={Information} />
             <Route path="/info" component={Information} />
             <Route path="/createemp" component={CreateUser} />
             <Route path="/viewemp" exact component={ViewEmployees} />

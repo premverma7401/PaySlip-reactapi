@@ -107,15 +107,15 @@ namespace Service.Implimentation
             }
             _context.Add(emp);
             _context.SaveChanges();
-            //var emailObj = new EmailModel()
-            //{
-            //    toemail = emp.Email,
-            //    subject = $"Your profile has been registered",
-            //    message = $"Your profile has been created and your username is {emp.Username}.",
-            //    isHtml = false,
+            var emailObj = new EmailModel()
+            {
+                toemail = emp.Email,
+                subject = $"Your profile has been registered",
+                message = $"Your profile has been created and your username is {emp.Username}.",
+                isHtml = false,
 
-            //};
-            //_sendemail.SendEmailHelper(emailObj);
+            };
+            _sendemail.SendEmailHelper(emailObj);
             return emp.EmpId;
         }
 

@@ -120,7 +120,35 @@ GO
 IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20200926210633_updatedMig')
 BEGIN
     INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
-    VALUES (N'20200926210633_updatedMig', N'3.1.5');
+    VALUES (N'20200926210633_updatedMig', N'3.1.8');
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20201003041801_updatedModels')
+BEGIN
+    ALTER TABLE [Employees] ADD [ReportingManager] nvarchar(max) NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20201003041801_updatedModels')
+BEGIN
+    DECLARE @var0 sysname;
+    SELECT @var0 = [d].[name]
+    FROM [sys].[default_constraints] [d]
+    INNER JOIN [sys].[columns] [c] ON [d].[parent_column_id] = [c].[column_id] AND [d].[parent_object_id] = [c].[object_id]
+    WHERE ([d].[parent_object_id] = OBJECT_ID(N'[EmployeeContract]') AND [c].[name] = N'ContractType');
+    IF @var0 IS NOT NULL EXEC(N'ALTER TABLE [EmployeeContract] DROP CONSTRAINT [' + @var0 + '];');
+    ALTER TABLE [EmployeeContract] ALTER COLUMN [ContractType] nvarchar(max) NULL;
+END;
+
+GO
+
+IF NOT EXISTS(SELECT * FROM [__EFMigrationsHistory] WHERE [MigrationId] = N'20201003041801_updatedModels')
+BEGIN
+    INSERT INTO [__EFMigrationsHistory] ([MigrationId], [ProductVersion])
+    VALUES (N'20201003041801_updatedModels', N'3.1.8');
 END;
 
 GO

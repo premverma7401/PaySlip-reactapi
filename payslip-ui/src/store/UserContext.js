@@ -13,7 +13,6 @@ export const UserProvider = (props) => {
       setLoading(true);
       const users = await agent.Users.list();
       setUsers(users);
-      console.log(users);
       setLoading(false);
     } catch (error) {
       console.log(error);

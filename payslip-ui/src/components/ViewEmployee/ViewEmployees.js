@@ -62,10 +62,6 @@ const ViewEmployees = () => {
                   <Col>
                     <p>
                       Employee Type:
-                      {/* {
-                        (user.contractType =
-                          user.contractType === 0 ? 'Full Time' : 'Part Time')
-                      } */}
                       {user.contractType}
                     </p>
                   </Col>

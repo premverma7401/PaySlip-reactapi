@@ -1,18 +1,13 @@
-import React, { useContext, useState } from 'react';
-import { UserContext } from '../../store/UserContext';
+import React, { useState } from 'react';
 import Navbar from '../Navbar';
 import './ViewPayslips.css';
 import { Col, Collapsible, CollapsibleItem, Row } from 'react-materialize';
 import agent from '../../api/agent';
-import { Modal } from '../../common/CustomModal/Modal';
 import UserSelect from '../../common/CustomSelect/UserSelect';
 
 const ViewPayslips = ({ match }) => {
-  const [users, setUsers] = useContext(UserContext);
-  // const [payslipList, setPayslipList] = useState('');
   const [payslipsList, setPayslipsList] = useState([]);
   const [show, setShow] = useState(false);
-  const closeModalHandler = () => setShow(false);
 
   const getPayslip = async (id) => {
     try {
@@ -31,16 +26,6 @@ const ViewPayslips = ({ match }) => {
           <Col>
             <UserSelect onChange={(e) => getPayslip(e.target.value)} />
           </Col>
-          {/* <Col>
-            {payslipsList.length > 1 && (
-              <Fragment>
-                <button onClick={() => setShow(true)} className="btn-openModal">
-                  Search By Date
-                </button>
-                <Modal show={show} close={closeModalHandler} />
-              </Fragment>
-            )}
-          </Col> */}
         </Row>
 
         <Row>

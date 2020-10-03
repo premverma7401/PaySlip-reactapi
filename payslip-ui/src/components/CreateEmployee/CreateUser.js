@@ -55,7 +55,6 @@ const CreateUser = () => {
     newEmp.payPerHour = Number.parseFloat(newEmp.payPerHour);
     newEmp.overtimeRate = Number.parseFloat(newEmp.overtimeRate);
     newEmp.kiwiSaver = Number.parseFloat(newEmp.kiwiSaver);
-    console.log(newEmp);
     setEmployee(newEmp);
   };
   const handleSubmit = (e) => {
@@ -75,7 +74,6 @@ const CreateUser = () => {
     );
   }
 
-  console.log(randomDate(new Date(2012, 0, 1), new Date()));
   const handleSample = () => {
     let sampleData = {
       username: 'pre32',

@@ -9,12 +9,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="Default">
-      <Value>data source= plesk4300.is.cc%3binitial catalog=payslip_%3bpersist security info=False%3buser id=psag179%3bpassword=Sager%407401%3b</Value>
+      <Value>data source= plesk4500.is.cc%3binitial catalog=payslip_%3bpersist security info=False%3buser id=psag179%3bpassword=Sager%407401%3b</Value>
     </DestinationConnectionStrings>
   </ItemGroup>
   <ItemGroup>
     <EFMigrations Include="Persistence.DataContext">
-      <Value>data source= plesk4300.is.cc%3binitial catalog=payslip_%3bpersist security info=False%3buser id=psag179%3bpassword=Sager%407401%3b</Value>
+      <Value>data source= plesk4500.is.cc%3binitial catalog=payslip_%3bpersist security info=False%3buser id=psag179%3bpassword=Sager%407401%3b</Value>
     </EFMigrations>
   </ItemGroup>
 </Project>

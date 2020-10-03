@@ -7,7 +7,7 @@ using Persistence;
 using Service.Interface;
 using Service.DTOs;
 using Service.Utils;
-
+using Domain.models.email;
 
 namespace Service.Implimentation
 {
@@ -60,15 +60,16 @@ namespace Service.Implimentation
                 _context.Payslips.Add(payslip);
             }
             _context.SaveChanges();
-            //var emailObj = new EmailModel()
-            //{
-            //    toemail = emp.Email,
-            //    subject = $"Payslip for {emp.CreatedAtstr}",
-            //    message = "Your payslip is created.",
-            //    isHtml = false,
+            var emailObj = new EmailModel()
+            {
+                toname = emp.Email,
+                toemail = emp.Email,
+                subject = $"Payslip Created",
+                message = "Your payslip is created.",
+                isHtml = false,
 
-            //};
-            //_sendemail.SendEmailHelper(emailObj);
+            };
+            _sendemail.SendEmailHelper(emailObj);
             return 0;
         }
         public List<PayslipDTO> GetAllPayslips(int Id)

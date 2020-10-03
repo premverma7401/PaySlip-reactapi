@@ -1,0 +1,41 @@
+.personal-info,
+.contract-info {
+  width: 83.5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.personal-info h4,
+.contract-info h4 {
+  padding: 3vh;
+  background-color: #1d3557;
+  color: #f1faee;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 1px 1px 1px 1px #333333;
+  margin-bottom: 20px;
+}
+.personal-info div,
+.contract-info div {
+  display: flex;
+  justify-content: space-evenly;
+  width: 74vw;
+  padding: 30px;
+}
+
+.personal-info p,
+.contract-info p {
+  border: none;
+  box-shadow: 1px 3px 5px #1d3557;
+  font-size: 14px;
+  width: 20vw;
+  padding: 10px;
+  border-radius: 0.5vw;
+  text-align: center;
+  margin: 0;
+}
+.address-bar {
+  width: 60vw !important;
+}

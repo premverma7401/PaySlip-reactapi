@@ -1,0 +1,71 @@
+.ui-wrapper {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.row {
+  margin-bottom: 10px !important;
+  margin-left: 0px !important;
+}
+.input-field.col {
+  width: 100%;
+}
+.personal-info-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.submit-button {
+  width: 83.5vw;
+  display: flex;
+  justify-content: center;
+  margin: 30px 0 10px 0;
+}
+.submit-button button {
+  cursor: pointer;
+  /* padding: 10px 25px; */
+  background-color: #797979;
+  border: 1px #1d3557 solid;
+  border-radius: 0.5vw;
+  color: #f1faee;
+  font-size: 20px;
+}
+.submit-button button:nth-of-type(1) {
+  margin-right: 20px;
+  background-color: #2e4e7a;
+}
+.submit-button button:hover {
+  background-color: #1d3557;
+  transition: all 0.2 ease-in-out;
+}
+
+.contract-select-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.customSelect {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 0 35px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
+  display: flex;
+  align-self: center;
+}
+.customSelect:hover {
+  cursor: pointer;
+  background-color: rgba(241, 250, 238, 0.9);
+  width: 100%;
+  padding: 0 35px;
+  border: 1px solid #f2f2f2;
+  border-radius: 2px;
+  height: 3rem;
+  display: flex;
+  align-self: center;
+}

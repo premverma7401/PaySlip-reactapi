@@ -6,10 +6,10 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   text-decoration: none;
-  color: black;
+  color: #000000;
 }
 body {
-  background-image: linear-gradient(to top, #6a85b6 0%, #bac8e0 100%);
+  background: #F1FAEE;
 }
 .container {
   display: flex;
@@ -19,5 +19,5 @@ body {
   display: flex;
   font-size: 1.2rem;
   justify-content: center;
-  border-bottom: 1px solid green;
+  border-bottom: 1px #F1FAEE solid;
 }

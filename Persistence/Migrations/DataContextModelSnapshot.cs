@@ -21,7 +21,7 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.models.employee.Employee", b =>
                 {
-                    b.Property<int>("employeeId")
+                    b.Property<int>("EmpId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -29,7 +29,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedAtstr")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Designation")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
@@ -56,10 +62,13 @@ namespace Persistence.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ReportingManager")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Username")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("employeeId");
+                    b.HasKey("EmpId");
 
                     b.HasIndex("EmployeeContractId");
 
@@ -78,8 +87,8 @@ namespace Persistence.Migrations
                     b.Property<decimal>("ContractHours")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ContractType")
-                        .HasColumnType("int");
+                    b.Property<string>("ContractType")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("KiwiSaver")
                         .HasColumnType("decimal(18,2)");
@@ -141,10 +150,16 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CreatedAtstr")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EmpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EmployeeEmpId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("InHandPay")
@@ -180,15 +195,15 @@ namespace Persistence.Migrations
                     b.Property<decimal>("TotalHours")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UnionFee")
-                        .HasColumnType("int");
+                    b.Property<decimal>("TotalMonthly")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int?>("employeeId")
+                    b.Property<int>("UnionFee")
                         .HasColumnType("int");
 
                     b.HasKey("PayslipId");
 
-                    b.HasIndex("employeeId");
+                    b.HasIndex("EmployeeEmpId");
 
                     b.ToTable("Payslips");
                 });
@@ -212,7 +227,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.models.employee.Employee", "Employee")
                         .WithMany("PayRecord")
-                        .HasForeignKey("employeeId");
+                        .HasForeignKey("EmployeeEmpId");
                 });
 #pragma warning restore 612, 618
         }

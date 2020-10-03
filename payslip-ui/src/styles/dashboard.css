@@ -1,16 +1,21 @@
 .sidebar {
+  position: fixed;
   width: 15vw;
-  border-right: 1px solid green;
+  border-right: 1px solid #f1faee;
   height: 100vh;
-  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+  background: #1d3557;
 }
+
 .date-info {
-  height: 50px;
+  height: 10vh;
+  color: #f1faee;
 }
+
 .app-options {
-  margin-top: 40px;
+  margin-top: 60px;
   width: 100%;
 }
+
 .app-options-group {
   display: flex;
   padding: 20px;
@@ -18,13 +23,19 @@
   width: 100%;
   justify-content: flex-start;
 }
+.app-options-group svg {
+  fill: white;
+  font-size: 20px;
+}
+
 .app-options-group div {
   padding: 0 10px;
   cursor: pointer;
+  color: #f1faee;
 }
 
 .app-options-group:hover {
-  background-color: #edeff3;
+  background-color: #8d9097;
   border-radius: 50px;
   width: inherit;
   cursor: pointer;
@@ -35,12 +46,36 @@
   display: flex;
   flex-direction: column;
 }
-.navbar {
-  width: 85vw;
-  height: 50px;
-  background-color: #fff;
-}
 
+.navbar {
+  position: fixed;
+  width: 85vw;
+  height: 10vh;
+  margin-left: 15vw;
+  z-index: 4;
+  background: #1d3557;
+  color: #f1faee;
+}
+.iconBtn {
+  align-self: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px 0 5px;
+}
+.iconBtn div {
+  color: white;
+  cursor: pointer;
+}
+.iconBtn svg {
+  align-self: center;
+  fill: white;
+}
+.main {
+  width: 80vw;
+  margin-top: 10vh;
+  margin-left: 15vw;
+  overflow-x: hidden;
+}
 @media screen and (max-width: 700px) {
   .app-options-group {
     pointer-events: none;

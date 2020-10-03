@@ -8,13 +8,8 @@ namespace Domain.models.employee
         public decimal OvertimeRate { get; set; }
         public decimal KiwiSaver { get; set; }
         public bool Union { get; set; }
-        public ContractType ContractType { get; set; }
+        public string ContractType { get; set; }
     }
 
-    public enum ContractType
-    {
-        Fulltime,
-        Parttime,
-        Casual
-    }
+
 }

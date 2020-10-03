@@ -1,0 +1,17 @@
+span {
+  color: black;
+  font-size: 14px;
+}
+.project-description {
+  padding: 0 10px;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.info-wrapper {
+  padding: 10px;
+}
+
+.extra-info {
+  margin-top: 10px;
+}

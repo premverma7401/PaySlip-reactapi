@@ -1,0 +1,13 @@
+.user-select {
+  display: flex;
+  cursor: pointer;
+  outline: none;
+  justify-content: center;
+}
+
+.select-wrapper {
+  width: 100%;
+}
+select.user-select {
+  width: auto;
+}

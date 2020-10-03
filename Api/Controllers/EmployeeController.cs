@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Domain.models.employee;
 using Microsoft.AspNetCore.Mvc;
 using Service.Interface;
-using Service.VM;
+using Service.DTOs;
 
 namespace Api.Controllers
 {
@@ -17,31 +16,52 @@ namespace Api.Controllers
             _user = user;
 
         }
-        [HttpGet]
-        public async Task<List<EmployeeVM>> GetEmp()
+        [HttpPost]
+        [Route("getListEmp")]
+        public IActionResult GetEmp()
         {
-            return await _user.GetEmployees();
+            var users = _user.GetEmployees();
+            return Ok(users);
+        }
+        [HttpPost]
+        [Route("test")]
+
+        public IActionResult TestFunction()
+        {
+            return Ok("test value return");
         }
 
         [HttpPost]
-        public async Task<int> AddEmployee(Employee employee)
+        [Route("createEmp")]
+
+        public IActionResult AddEmployee(EmployeeCreateDTO employee)
         {
-            return await _user.CreateEmployee(employee);
+            return Ok(_user.CreateEmployee(employee));
         }
-        [HttpPut("{Id}")]
-        public async Task<string> UpdateEmployee(Employee employee, int Id)
+        [HttpPost]
+        [Route("updateEmp/{Id}")]
+
+        public IActionResult UpdateEmployee(Employee employee, int Id)
         {
-            return await _user.UpdateEmployee(employee, Id);
+            _user.UpdateEmployee(employee, Id);
+            return Ok("Updated");
         }
-        [HttpDelete("{Id}")]
-        public async Task<string> DeleteEmployee(int Id)
+        [HttpPost]
+        [Route("deleteEmp/{Id}")]
+        public string DeleteEmployee(int Id)
         {
-            return await _user.DeleteEmployee(Id);
+            return _user.DeleteEmployee(Id);
         }
-        [HttpGet("{Id}")]
-        public async Task<Employee> GetEmpById(int Id)
+        [HttpPost]
+        [Route("getEmpId/{Id}")]
+        public Employee GetEmpById(int Id)
         {
-            return await _user.GetEmployee(Id);
+            return _user.GetEmployee(Id);
+        }
+        [HttpPost("designationCount")]
+        public List<EmployeeDesignationDTO> GetEmployeeDesignationCount()
+        {
+            return _user.GetEmpCountByDesignation();
         }
 
     }

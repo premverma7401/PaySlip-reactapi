@@ -1,20 +1,22 @@
 import React from 'react';
-import { Row, Col, Card } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 
 const Insights = ({ desiStats }) => {
   return (
     <div className="info-stats">
       <Row>
         <Col m={6} s={12}>
-          <Card className="white" title="Insights">
-            <span className="white-text">
+          <div className="card">
+            <div className="card-header">Insights</div>
+            <div className="inner">
               {desiStats.map((desiCount, i) => (
-                <div key={i}>
-                  {desiCount.designation} - {desiCount.designationCount}
-                </div>
+                <Row key={i}>
+                  <Col l={7}> {desiCount.designation}</Col>
+                  <Col> {desiCount.designationCount}</Col>
+                </Row>
               ))}
-            </span>
-          </Card>
+            </div>
+          </div>
         </Col>
       </Row>
     </div>

@@ -28,7 +28,7 @@ namespace Service.Implimentation
         public int GenratePayslip(CreatePayslipDTO payVM)
         {
             var emp = _context.Employees.Include(e => e.EmployeeContract).Where(e => e.EmpId == payVM.EmpId).FirstOrDefault();
-            if (payVM.isHours == true)
+            if (payVM.payType == "perHour")
             {
                 var payslip = new Payslip()
                 {

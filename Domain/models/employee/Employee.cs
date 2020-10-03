@@ -17,7 +17,8 @@ namespace Domain.models.employee
         public string Email { get; set; }
         public string Username { get; set; }
         public string Designation { get; set; }
-        
+        public string ReportingManager { get; set; }
+
         public List<Payslip> PayRecord { get; set; }
 
         // Foreign key to define 1 to 1 relation

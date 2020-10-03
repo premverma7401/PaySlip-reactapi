@@ -3,10 +3,14 @@ import { Button, Col, Icon, Row } from 'react-materialize';
 import agent from '../../api/agent';
 import CustomInput from '../../common/CustomInput';
 import InfotabComponent from '../../common/InfotabComponent';
+import LoadingProgress from '../../common/LoadingProgress';
 import Navbar from '../Navbar';
 import './CreateEmployee.css';
 
 const CreateUser = () => {
+  const [loading, setLoading] = useState(false);
+  const [createdSuccess, setCreatedSuccess] = useState(false);
+
   const [employee, setEmployee] = useState({
     username: '',
     firstName: '',
@@ -39,8 +43,10 @@ const CreateUser = () => {
     overtimeRate: '',
     kiwiSaver: '',
     union: true,
-    contractType: 0,
+    contractType: '',
+    reportingManager: '',
   };
+
   const handleChange = (e) => {
     const newEmp = { ...employee };
     newEmp[e.target.name] = e.target.value;
@@ -49,16 +55,27 @@ const CreateUser = () => {
     newEmp.payPerHour = Number.parseFloat(newEmp.payPerHour);
     newEmp.overtimeRate = Number.parseFloat(newEmp.overtimeRate);
     newEmp.kiwiSaver = Number.parseFloat(newEmp.kiwiSaver);
-    newEmp.contractType = Number.parseInt(newEmp.contractType);
+    console.log(newEmp);
     setEmployee(newEmp);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(employee);
+    setLoading(true);
     agent.Users.create(employee);
     setEmployee(resetData);
-    console.log(employee);
+    setLoading(false);
+    setCreatedSuccess(true);
   };
+  function getRandomNumberBetween(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  function randomDate(start, end) {
+    return new Date(
+      start.getTime() + Math.random() * (end.getTime() - start.getTime())
+    );
+  }
+
+  console.log(randomDate(new Date(2012, 0, 1), new Date()));
   const handleSample = () => {
     let sampleData = {
       username: 'pre32',
@@ -67,21 +84,33 @@ const CreateUser = () => {
       lastName: '',
       email: 'psv@gmail.com',
       contact: '0245-555-56856',
-      //    dob: Date.parse(new Date()),
+      dob: randomDate(new Date(1970, 0, 1), new Date(2004, 0, 1))
+        .toISOString()
+        .split('T')[0],
       city: 'Auckland',
       designation: 'Software Developer',
-      contractHours: '50',
-      payPerHour: '25',
-      overtimeRate: '2',
-      kiwiSaver: 2,
-      union: 0,
-      contractType: 1,
+      contractHours: getRandomNumberBetween(30, 70),
+      payPerHour: getRandomNumberBetween(18.9, 100),
+      overtimeRate: getRandomNumberBetween(1.5, 3),
+      kiwiSaver: getRandomNumberBetween(3, 8),
+      union: 1,
+      contractType: 'Full Time',
+      reportingManager: 'Sam Mattos',
     };
     setEmployee(sampleData);
   };
   const handleReset = () => {
     setEmployee(resetData);
   };
+  if (loading) return <LoadingProgress />;
+  if (createdSuccess)
+    return (
+      <div>
+        <Navbar title="Create Employee" />
+        <div className="main">User created Go back</div>
+      </div>
+    );
+
   return (
     <div>
       <Navbar title="Create Employee" />
@@ -107,6 +136,14 @@ const CreateUser = () => {
             </Col>
             <Col s={12} l={4}>
               <CustomInput
+                label="Manager Name"
+                value={employee.reportingManager}
+                onChange={(e) => handleChange(e)}
+                name="ird"
+              />
+            </Col>
+            {/* <Col s={12} l={4}>
+              <CustomInput
                 id="file-upload"
                 type="file"
                 name="imageUrl"
@@ -115,7 +152,7 @@ const CreateUser = () => {
                 //     formProps.setFieldValue('imageUrl', e.target.files[0])
                 //   }
               />
-            </Col>
+            </Col> */}
           </Row>
           <Row>
             <Col s={12} l={4}>
@@ -134,7 +171,7 @@ const CreateUser = () => {
                 onChange={(e) => handleChange(e)}
               />
             </Col>
-            <Col>
+            <Col s={12} l={4}>
               <CustomInput
                 label="Contact No."
                 value={employee.contact}
@@ -145,7 +182,7 @@ const CreateUser = () => {
           </Row>
 
           <Row>
-            <Col>
+            <Col s={12} l={4}>
               <CustomInput
                 value={employee.designation}
                 name="designation"
@@ -153,7 +190,7 @@ const CreateUser = () => {
                 label="Designation"
               />
             </Col>
-            <Col>
+            <Col s={12} l={4}>
               <CustomInput
                 name="email"
                 label="Email Address"
@@ -161,10 +198,9 @@ const CreateUser = () => {
                 onChange={(e) => handleChange(e)}
               />
             </Col>
-            <Col>
+            <Col s={12} l={4}>
               <CustomInput
                 type="date"
-                placeholder="DOB"
                 name="dob"
                 label="Date Of Birth"
                 value={employee.dob}
@@ -172,7 +208,7 @@ const CreateUser = () => {
               />
             </Col>
 
-            <Col s={8} l={9}>
+            <Col s={12} l={12}>
               <CustomInput
                 label="Address"
                 value={employee.city}
@@ -220,10 +256,11 @@ const CreateUser = () => {
                 value={employee.kiwiSaver}
                 onChange={(e) => handleChange(e)}
                 name="kiwiSaver"
+                type="number"
               />
             </Col>
             <Col s={12} l={4}>
-              <label htmlFor="Contract Type" />
+              <label htmlFor="contractType"> Contract Type </label>
               <select
                 className="customSelect"
                 name="contractType"
@@ -232,13 +269,13 @@ const CreateUser = () => {
                 onChange={(e) => handleChange(e)}
               >
                 <option value="0">Contract type</option>
-                <option value="1">Full Time</option>
-                <option value="2">Part Time</option>
-                <option value="3">Casual </option>
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+                <option value="Casual">Casual </option>
               </select>
             </Col>
             <Col s={12} l={4}>
-              <label htmlFor="Union Member" />
+              <label htmlFor="union"> Union Member</label>
               <select
                 className="customSelect"
                 name="union"
@@ -270,6 +307,7 @@ const CreateUser = () => {
               type="submit"
               waves="light"
               onClick={handleSubmit}
+              disabled={!employee.firstName || !employee.lastName}
             >
               Submit
               <Icon right>send</Icon>

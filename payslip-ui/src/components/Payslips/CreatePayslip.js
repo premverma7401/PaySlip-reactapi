@@ -1,68 +1,59 @@
-import React, { useContext, useState } from 'react';
-import { RadioGroup, Select, TextInput } from 'react-materialize';
-import { UserContext } from '../../store/UserContext';
+import React, { useState } from 'react';
+import { RadioGroup, Row, TextInput } from 'react-materialize';
 import Navbar from '../Navbar';
 import './CreatePayslips.css';
 import agent from '../../api/agent';
+import UserSelect from '../../common/CustomSelect/UserSelect';
 
 const CreatePayslip = () => {
-  const [users, setUsers] = useContext(UserContext);
+  const [createdSuccess, setCreatedSuccess] = useState(false);
 
   const [payslip, setPayslip] = useState({
     empId: '',
     payType: 'perHour',
-    totalHours: +0,
-    totalMonthly: +0,
+    totalHours: 0,
+    totalMonthly: 0,
   });
 
-  const url = `http://localhost:5000/api/payslip/createPayslip?id=${payslip.empId}&totalHours=${payslip.th}`;
+  const resetData = {
+    empId: '',
+    totalHours: 0,
+    totalMonthly: 0,
+  };
   const handleChange = (e) => {
     const newPay = { ...payslip };
     newPay[e.target.name] = e.target.value;
-    console.log(newPay);
-
+    newPay.empId = Number.parseInt(newPay.empId);
+    newPay.totalHours = Number.parseFloat(newPay.totalHours);
+    newPay.totalMonthly = Number.parseFloat(newPay.totalMonthly);
     setPayslip(newPay);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('sending', payslip);
     agent.Payslip.create(payslip);
-    console.log('sent');
+    setPayslip(resetData);
+    setCreatedSuccess(true);
   };
+  if (createdSuccess)
+    return (
+      <div>
+        <Navbar title="Generate Payslips" />
+        <div className="main">Payslip created Go back</div>
+      </div>
+    );
+
   return (
     <div>
       <Navbar title="Generate Payslips" />
       <div className="main">
         <div className="payslip-inputs">
-          <form onSubmit={(e) => handleSubmit(e)}>
-            <Select
-              multiple={false}
-              options={{
-                dropdownOptions: {
-                  alignment: 'left',
-                  autoTrigger: true,
-                  closeOnClick: true,
-                  constrainWidth: true,
-                  coverTrigger: false,
-                  hover: false,
-                },
-              }}
-              name="empId"
-              id="employee-list"
-              onChange={(e) => handleChange(e)}
-            >
-              <option disabled value="">
-                Select Employee
-              </option>
-              {users.map((user) => (
-                <option key={user.empId} value={user.empId} name={user.empId}>
-                  {user.firstName} {user.lastName}
-                </option>
-              ))}
-            </Select>
+          <form onSubmit={(e) => handleSubmit(e)} autoComplete="off">
+            <Row>
+              <UserSelect onChange={(e) => handleChange(e)} />
+            </Row>
             {payslip.empId && (
               <div className="payslip-data">
-                <div>
+                <Row className="radio-group-types">
                   <RadioGroup
                     label="Select Preference"
                     name="payType"
@@ -79,8 +70,9 @@ const CreatePayslip = () => {
                     ]}
                     value={payslip.payType}
                   />
-                </div>
-                <div>
+                </Row>
+
+                <Row>
                   {payslip.payType === 'perHour' ? (
                     <TextInput
                       type="number"
@@ -96,7 +88,7 @@ const CreatePayslip = () => {
                       name="totalMonthly"
                     />
                   )}
-                </div>
+                </Row>
               </div>
             )}
             {payslip.empId && (

@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-materialize';
 import agent from '../../api/agent';
+import LoadingProgress from '../../common/LoadingProgress';
 import Navbar from '../Navbar';
 
 const PayRecords = () => {
   const [payRecords, setPayRecords] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const payStats = async () => {
     try {
+      setLoading(true);
       const payRecords = await agent.Payslip.payRecord();
       setPayRecords(payRecords);
-      console.log(payRecords, 'PAYRECORD');
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -19,7 +22,7 @@ const PayRecords = () => {
   useEffect(() => {
     payStats();
   }, []);
-
+  if (loading) return <LoadingProgress />;
   return (
     <div>
       <Navbar title="Pay Records" />

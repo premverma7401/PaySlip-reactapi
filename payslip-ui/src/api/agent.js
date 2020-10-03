@@ -7,10 +7,9 @@ const sleep = (ms) => (response) =>
   new Promise((resolve) => setTimeout(() => resolve(response), ms));
 
 const request = {
-  get: (url) => axios.get(url).then(sleep(100)).then(responseBody),
-  post: (url) => axios.get(url).then(sleep(2000)).then(responseBody),
-  post: (url, body) =>
-    axios.post(url, body).then(sleep(2000)).then(responseBody),
+  get: (url) => axios.get(url).then(sleep(2000)).then(responseBody),
+  post: (url) => axios.get(url).then(responseBody),
+  post: (url, body) => axios.post(url, body).then(responseBody),
   put: (url, body) => axios.put(url, body).then(responseBody),
 };
 

@@ -35,7 +35,7 @@ namespace Persistence
                             ContractHours= 43,
                             PerHourPay= 23,
                             OvertimeRate= 1.5m,
-                            ContractType= 0,
+                            ContractType= "Part Time",
                              KiwiSaver=3,
                             Union=true
                       }
@@ -62,7 +62,7 @@ namespace Persistence
                             ContractHours= 30,
                             PerHourPay= 20,
                             OvertimeRate= 2.5m,
-                            ContractType= 0, KiwiSaver=3,
+                            ContractType= "Full Time", KiwiSaver=3,
                             Union=true
                       }
                     },
@@ -87,7 +87,7 @@ namespace Persistence
                             ContractHours= 50,
                             PerHourPay= 40,
                             OvertimeRate= 1.5m,
-                            ContractType= 0,
+                            ContractType= "Casual",
                             KiwiSaver=3,
                             Union=true
 

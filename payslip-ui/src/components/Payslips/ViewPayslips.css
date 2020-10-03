@@ -1,10 +1,13 @@
 .payslip-inputs {
   display: flex;
   justify-content: space-around;
-  height: 20vh;
+  /* height: 20vh; */
   margin-top: 2rem;
 }
-
+.view-ps-header {
+  display: flex;
+  justify-content: center;
+}
 ul.collapsible {
   margin: 0 auto;
   width: 65%;
@@ -37,7 +40,7 @@ ul.collapsible {
   flex-direction: column;
   justify-content: space-around;
 }
-input[type="date"] {
+input[type='date'] {
   height: 5vh;
   width: 13vw;
   margin: 0vh 1vh;

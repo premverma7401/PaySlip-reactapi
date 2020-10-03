@@ -15,7 +15,7 @@ namespace Service.DTOs
         public decimal ContractHours { get; set; }
         public decimal PerHourPay { get; set; }
         public decimal OvertimeRate { get; set; }
-        public ContractType ContractType { get; set; }
+        public string ContractType { get; set; }
         public decimal KiwiSaver { get; set; }
         public bool Union { get; set; }
         public DateTime DateOfBirth { get; set; }

@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../../store/UserContext';
 import Navbar from '../Navbar';
 import './ViewPayslips.css';
-import { Collapsible, CollapsibleItem, Icon, Select } from 'react-materialize';
+import { Col, Collapsible, CollapsibleItem, Row } from 'react-materialize';
 import agent from '../../api/agent';
 import { Modal } from '../../common/CustomModal/Modal';
+import UserSelect from '../../common/CustomSelect/UserSelect';
 
 const ViewPayslips = ({ match }) => {
   const [users, setUsers] = useContext(UserContext);
@@ -13,13 +14,10 @@ const ViewPayslips = ({ match }) => {
   const [show, setShow] = useState(false);
   const closeModalHandler = () => setShow(false);
 
-  // const currUserId = match.params.id;
-
   const getPayslip = async (id) => {
     try {
       const payslipsList = await agent.Payslip.list(id);
       setPayslipsList(payslipsList);
-      console.log(payslipsList);
     } catch (error) {
       console.log(error);
     }
@@ -29,62 +27,50 @@ const ViewPayslips = ({ match }) => {
     <div>
       <Navbar title="View Payslips" />
       <div className="main">
-        <div className="payslip-inputs">
-          <Select
-            name="employee-list"
-            id="employee-list"
-            multiple={false}
-            options={{
-              dropdownOptions: {
-                alignment: 'left',
-                autoTrigger: true,
-                closeOnClick: true,
-                constrainWidth: true,
-                coverTrigger: false,
-                hover: false,
-              },
-            }}
-            value=""
-            onChange={(e) => getPayslip(e.target.value)}
-          >
-            <option disabled value="">
-              Select Employee
-            </option>
-            {users.map((user) => (
-              <option key={user.empId} value={user.empId}>
-                {user.firstName} {user.lastName}
-              </option>
-            ))}
-          </Select>
+        <Row className="view-ps-header">
+          <Col>
+            <UserSelect onChange={(e) => getPayslip(e.target.value)} />
+          </Col>
+          {/* <Col>
+            {payslipsList.length > 1 && (
+              <Fragment>
+                <button onClick={() => setShow(true)} className="btn-openModal">
+                  Search By Date
+                </button>
+                <Modal show={show} close={closeModalHandler} />
+              </Fragment>
+            )}
+          </Col> */}
+        </Row>
 
-          {payslipsList.length > 1 && (
-            <div>
-              <button onClick={() => setShow(true)} className="btn-openModal">
-                Search By Date
-              </button>
-              <Modal show={show} close={closeModalHandler} />
-            </div>
-          )}
-        </div>
-        <div>
+        <Row>
           {payslipsList.length > 0 ? (
             <Collapsible accordion>
               {payslipsList.map((ps, i) => (
                 <CollapsibleItem
                   key={i}
                   expanded={false}
-                  header={`Total Hours worked: ${ps.totalHours}`}
-                  icon={<Icon>filter_drama</Icon>}
+                  header={`Created At ${ps.createdAtstr} `}
                   node="div"
                 >
-                  {ps.totalHours}
+                  <Row>
+                    <Col l={6}>Total Hours Worked: {ps.totalHours}</Col>
+                    <Col l={6}>Total Earning: {ps.totalEarning}</Col>
+                  </Row>
+                  <Row>
+                    <Col l={6}>Total Overtime Earning:{ps.overtimeEarning}</Col>
+                    <Col l={6}>Total Overtime Hours:{ps.overtimeHours}</Col>
+                  </Row>
+                  <Row>
+                    <Col l={6}>Total Deduction : {ps.totalDeduction}</Col>
+                  </Row>
                 </CollapsibleItem>
               ))}
             </Collapsible>
           ) : (
             <div style={{ marginLeft: '2em' }}>Please select employee:</div>
           )}
-        </div>
+        </Row>
       </div>
     </div>
   );

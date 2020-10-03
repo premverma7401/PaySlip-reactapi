@@ -6,88 +6,87 @@ import { Link } from 'react-router-dom';
 import Insights from './Insights';
 import PieChart from './PieChart';
 import LoadingProgress from '../../common/LoadingProgress';
-import { Row, Col, Card, CardTitle, Icon } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 import './UserCard.css';
 import agent from '../../api/agent';
 
 const ViewEmployees = () => {
-  const [users, , loadUsers, loading, ,] = useContext(UserContext);
+  const [users, , loadUsers] = useContext(UserContext);
   const [desiStats, setdesiStats] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     loadUsers();
     designationStats();
   }, []);
 
+  if (loading) return <LoadingProgress />;
+
   const designationStats = async () => {
     try {
+      setLoading(true);
       const desiStats = await agent.Users.statList();
       setdesiStats(desiStats);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
-  if (loading) return <LoadingProgress text="Loading users" />;
-
   return (
     <div>
       <Navbar title="Employees List" />
-      <div className="info-parent main">
-        {users.map((user) => (
-          <div className="card">
-            {/* <img src="https://lorempixel.com/300/150/nature/6" alt="John" /> */}
-            <div className="title">
-              <h5>
-                {user.firstName} {user.lastName}
-              </h5>
-              <p>{user.designation}</p>
-              <hr />
-            </div>
-            <div className="user-details">
-              <div>
-                <p>Username: {user.username}</p>
-                <p>Email:{user.email}</p>
-              </div>
-              <div>
-                <p>Phone:{user.phone}</p>
-                <p>Employee Type: </p>
-              </div>
-            </div>
-            <Link to={`/viewemp/${user.empId}`} key={user.empId}>
-              <p>
-                <button>View Details</button>
-              </p>
-            </Link>
-          </div>
-        ))}
-        {/* <div className="card-group">
-            <div className="card horizontal " key={user.empId}>
-                <div className="card-image">
-                  <img src="https://lorempixel.com/250/190/nature/6" />
+      <Row>
+        <Col s={12} l={6}>
+          <div className="info-parent main">
+            {users.map((user) => (
+              <div className="card" key={user.empId}>
+                {/* <img src="https://lorempixel.com/300/150/nature/6" alt="John" /> */}
+                <div className="title">
+                  <h5>
+                    {user.firstName} {user.lastName}
+                  </h5>
+                  <p>{user.designation}</p>
+                  <hr />
                 </div>
-                <div className="card-content">
+                <Row>
+                  <Col s={6} l={5}>
+                    Username: {user.username}
+                  </Col>
+                  <Col s={6}>Email:{user.email}</Col>
+                </Row>
+                <Row>
+                  <Col s={6} l={5}>
+                    <p>Phone:{user.phone}</p>
+                  </Col>
+                  <Col>
+                    <p>
+                      Employee Type:
+                      {/* {
+                        (user.contractType =
+                          user.contractType === 0 ? 'Full Time' : 'Part Time')
+                      } */}
+                      {user.contractType}
+                    </p>
+                  </Col>
+                </Row>
+
+                <Link to={`/viewemp/${user.empId}`} key={user.empId}>
                   <p>
-                    {user.email} {user.lastName}
+                    <button>View Details</button>
                   </p>
-                  <br />
-                  <span>{user.username}</span>
-                  <br />
-                  <span>{user.email}</span>
-                  <br />
-                  <span>{user.designation}</span>
-                </div>
-                <div className="card-action">
-                  <button>View Employee</button>
-                </div>
-              </Link>
-            </div>
-        </div> */}
-        <div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </Col>
+        <Col s={12}>
           <Insights desiStats={desiStats} />
+        </Col>
+        <Col s={12}>
           <PieChart desiStats={desiStats} />
-        </div>
-      </div>
+        </Col>
+      </Row>
     </div>
   );
 };

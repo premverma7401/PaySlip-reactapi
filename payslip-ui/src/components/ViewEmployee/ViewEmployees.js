@@ -1,14 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { Fragment as div, useContext, useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import '../ViewEmployee/viewEmployee.css';
 import { UserContext } from '../../store/UserContext';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import Insights from './Insights';
 import PieChart from './PieChart';
 import LoadingProgress from '../../common/LoadingProgress';
 import { Row, Col } from 'react-materialize';
 import './UserCard.css';
 import agent from '../../api/agent';
+import { Button, Card, Image } from 'semantic-ui-react';
 
 const ViewEmployees = () => {
   const [users, , loadUsers] = useContext(UserContext);
@@ -36,46 +37,42 @@ const ViewEmployees = () => {
   return (
     <div>
       <Navbar title="Employees List" />
-      <Row>
-        <Col s={12} l={6}>
-          <div className="info-parent main">
-            {users.map((user) => (
-              <div className="card" key={user.empId}>
-                {/* <img src="https://lorempixel.com/300/150/nature/6" alt="John" /> */}
-                <div className="title">
-                  <h5>
-                    {user.firstName} {user.lastName}
-                  </h5>
-                  <p>{user.designation}</p>
-                  <hr />
+      <div className="main">
+        <Card.Group>
+          {users.map((user) => (
+            <Card raised key={user.empId}>
+              <Card.Content>
+                <Image
+                  floated="right"
+                  size="mini"
+                  src="/images/avatar/large/steve.jpg"
+                />
+                <Card.Header>
+                  {user.firstName} {user.lastName}
+                </Card.Header>
+                <Card.Meta>{user.designation}</Card.Meta>
+                <Card.Description>
+                  Steve wants to add you to the group{' '}
+                  <strong>best friends</strong>
+                </Card.Description>
+              </Card.Content>
+              <Card.Content extra>
+                <div className="ui two buttons">
+                  <Button basic color="green">
+                    <NavLink to={'/createemp'}>Create Payslip</NavLink>
+                  </Button>
+                  <Button basic color="red">
+                    <NavLink to={`/viewemp/${user.empId}`}>
+                      View Details
+                    </NavLink>
+                  </Button>
                 </div>
-                <Row>
-                  <Col s={6} l={5}>
-                    Username: {user.username}
-                  </Col>
-                  <Col s={6}>Email:{user.email}</Col>
-                </Row>
-                <Row>
-                  <Col s={6} l={5}>
-                    <p>Phone:{user.phone}</p>
-                  </Col>
-                  <Col>
-                    <p>
-                      Employee Type:
-                      {user.contractType}
-                    </p>
-                  </Col>
-                </Row>
-
-                <Link to={`/viewemp/${user.empId}`} key={user.empId}>
-                  <p>
-                    <button>View Details</button>
-                  </p>
-                </Link>
-              </div>
-            ))}
-          </div>
-        </Col>
+              </Card.Content>
+            </Card>
+          ))}
+        </Card.Group>
+      </div>
+      <Row>
         <Col s={12}>
           <Insights desiStats={desiStats} />
         </Col>

@@ -17,16 +17,17 @@ const CreateUser = () => {
     ird: '',
     lastName: '',
     email: '',
-    contact: '',
-    dob: '',
+    phone: '',
+    dateOfBirth: '',
     city: '',
     designation: '',
     contractHours: '',
-    payPerHour: '',
+    perHourPay: '',
     overtimeRate: '',
     kiwiSaver: '',
     union: true,
     contractType: 0,
+    reportingManager: '',
   });
   const resetData = {
     username: '',
@@ -34,12 +35,12 @@ const CreateUser = () => {
     ird: '',
     lastName: '',
     email: '',
-    contact: '',
-    dob: '',
+    phone: '',
+    dateOfBirth: '',
     city: '',
     designation: '',
     contractHours: '',
-    payPerHour: '',
+    perHourPay: '',
     overtimeRate: '',
     kiwiSaver: '',
     union: true,
@@ -52,7 +53,7 @@ const CreateUser = () => {
     newEmp[e.target.name] = e.target.value;
     newEmp.union = newEmp.union === '1' ? true : false;
     newEmp.contractHours = Number.parseFloat(newEmp.contractHours);
-    newEmp.payPerHour = Number.parseFloat(newEmp.payPerHour);
+    newEmp.perHourPay = Number.parseFloat(newEmp.perHourPay);
     newEmp.overtimeRate = Number.parseFloat(newEmp.overtimeRate);
     newEmp.kiwiSaver = Number.parseFloat(newEmp.kiwiSaver);
     setEmployee(newEmp);
@@ -81,14 +82,14 @@ const CreateUser = () => {
       ird: '3232-323-1',
       lastName: '',
       email: 'psv@gmail.com',
-      contact: '0245-555-56856',
-      dob: randomDate(new Date(1970, 0, 1), new Date(2004, 0, 1))
+      phone: '0245-555-56856',
+      dateOfBirth: randomDate(new Date(1970, 0, 1), new Date(2004, 0, 1))
         .toISOString()
         .split('T')[0],
       city: 'Auckland',
       designation: 'Software Developer',
       contractHours: getRandomNumberBetween(30, 70),
-      payPerHour: getRandomNumberBetween(18.9, 100),
+      perHourPay: getRandomNumberBetween(18.9, 100),
       overtimeRate: getRandomNumberBetween(1.5, 3),
       kiwiSaver: getRandomNumberBetween(3, 8),
       union: 1,
@@ -137,7 +138,7 @@ const CreateUser = () => {
                 label="Manager Name"
                 value={employee.reportingManager}
                 onChange={(e) => handleChange(e)}
-                name="ird"
+                name="reportingManager"
               />
             </Col>
             {/* <Col s={12} l={4}>
@@ -172,9 +173,9 @@ const CreateUser = () => {
             <Col s={12} l={4}>
               <CustomInput
                 label="Contact No."
-                value={employee.contact}
+                value={employee.phone}
                 onChange={(e) => handleChange(e)}
-                name="contact"
+                name="phone"
               />
             </Col>
           </Row>
@@ -199,9 +200,9 @@ const CreateUser = () => {
             <Col s={12} l={4}>
               <CustomInput
                 type="date"
-                name="dob"
+                name="dateOfBirth"
                 label="Date Of Birth"
-                value={employee.dob}
+                value={employee.dateOfBirth}
                 onChange={(e) => handleChange(e)}
               />
             </Col>
@@ -232,9 +233,9 @@ const CreateUser = () => {
               <CustomInput
                 label="Pay Per Hour"
                 type="number"
-                value={employee.payPerHour}
+                value={employee.perHourPay}
                 onChange={(e) => handleChange(e)}
-                name="payPerHour"
+                name="perHourPay"
               />
             </Col>
             <Col s={12} l={4}>

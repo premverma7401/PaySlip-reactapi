@@ -53,19 +53,20 @@ body::-webkit-scrollbar-thumb,
   position: fixed;
   left: 71vw;
   top: 60vh;
-  background-color: #fff;
+  background-color: #e1edff;
   width: auto;
   height: 200px;
-  /* height: 240px;
-  width: 250px; */
-  /* background-image: conic-gradient(#ffffff 70deg, #e63946 0 235deg, #1d3557 0);
-  border-radius: 50%;
-  box-shadow: 6px 7px 10px #333333; */
+  box-shadow: 2px 2px 3px #787575;
 }
-.card-header {
+/* height: 240px;
+  width: 250px; */
+/* background-image: conic-gradient(#ffffff 70deg, #e63946 0 235deg, #1d3557 0);
+  border-radius: 50%;
+}
+/* .card-header {
   text-align: center;
   font-size: 22px;
   word-spacing: 1px;
   border-bottom: 1px solid black;
   padding: 5px;
-}
+} */

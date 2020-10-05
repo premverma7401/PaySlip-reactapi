@@ -4,16 +4,26 @@ import Navbar from '../Navbar';
 import './CreatePayslips.css';
 import agent from '../../api/agent';
 import UserSelect from '../../common/CustomSelect/UserSelect';
+import { Segment } from 'semantic-ui-react';
 
 const CreatePayslip = () => {
-  const [createdSuccess, setCreatedSuccess] = useState(false);
-
   const [payslip, setPayslip] = useState({
     empId: '',
     payType: 'perHour',
     totalHours: 0,
     totalMonthly: 0,
   });
+  const [createdSuccess, setCreatedSuccess] = useState(false);
+  const [selectedUser, setSelectedUser] = useState({});
+
+  const loadUser = async (id) => {
+    try {
+      const selectedUser = await agent.Users.details(id);
+      setSelectedUser(selectedUser);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const resetData = {
     empId: '',
@@ -24,6 +34,7 @@ const CreatePayslip = () => {
     const newPay = { ...payslip };
     newPay[e.target.name] = e.target.value;
     newPay.empId = Number.parseInt(newPay.empId);
+    loadUser(newPay.empId);
     newPay.totalHours = Number.parseFloat(newPay.totalHours);
     newPay.totalMonthly = Number.parseFloat(newPay.totalMonthly);
     setPayslip(newPay);
@@ -34,6 +45,7 @@ const CreatePayslip = () => {
     setPayslip(resetData);
     setCreatedSuccess(true);
   };
+
   if (createdSuccess)
     return (
       <div>
@@ -51,6 +63,20 @@ const CreatePayslip = () => {
             <Row>
               <UserSelect onChange={(e) => handleChange(e)} />
             </Row>
+            {payslip.empId && (
+              <Segment>
+                <div>
+                  Contract Hours :
+                  {selectedUser.employeeContract &&
+                    selectedUser.employeeContract.contractHours}
+                </div>
+                <div>
+                  Per hours Pay :
+                  {selectedUser.employeeContract &&
+                    selectedUser.employeeContract.perHourPay}
+                </div>
+              </Segment>
+            )}
             {payslip.empId && (
               <div className="payslip-data">
                 <Row className="radio-group-types">
@@ -91,6 +117,7 @@ const CreatePayslip = () => {
                 </Row>
               </div>
             )}
+
             {payslip.empId && (
               <button className="btn-create">Generate Payslip</button>
             )}

@@ -2,14 +2,13 @@ import React, { Fragment as div, useContext, useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import '../ViewEmployee/viewEmployee.css';
 import { UserContext } from '../../store/UserContext';
-import { Link, NavLink } from 'react-router-dom';
 import Insights from './Insights';
 import PieChart from './PieChart';
 import LoadingProgress from '../../common/LoadingProgress';
 import { Row, Col } from 'react-materialize';
 import './UserCard.css';
 import agent from '../../api/agent';
-import { Button, Card, Image } from 'semantic-ui-react';
+import EmployeeCards from './EmployeeCards';
 
 const ViewEmployees = () => {
   const [users, , loadUsers] = useContext(UserContext);
@@ -38,39 +37,7 @@ const ViewEmployees = () => {
     <div>
       <Navbar title="Employees List" />
       <div className="main">
-        <Card.Group>
-          {users.map((user) => (
-            <Card raised key={user.empId}>
-              <Card.Content>
-                <Image
-                  floated="right"
-                  size="mini"
-                  src="/images/avatar/large/steve.jpg"
-                />
-                <Card.Header>
-                  {user.firstName} {user.lastName}
-                </Card.Header>
-                <Card.Meta>{user.designation}</Card.Meta>
-                <Card.Description>
-                  Steve wants to add you to the group{' '}
-                  <strong>best friends</strong>
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <div className="ui two buttons">
-                  <Button basic color="green">
-                    <NavLink to={'/createemp'}>Create Payslip</NavLink>
-                  </Button>
-                  <Button basic color="red">
-                    <NavLink to={`/viewemp/${user.empId}`}>
-                      View Details
-                    </NavLink>
-                  </Button>
-                </div>
-              </Card.Content>
-            </Card>
-          ))}
-        </Card.Group>
+        <EmployeeCards users={users} />
       </div>
       <Row>
         <Col s={12}>

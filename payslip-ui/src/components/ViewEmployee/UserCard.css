@@ -4,3 +4,10 @@
   overflow-y: hidden;
   padding: 10px;
 }
+
+.card-inner-body {
+  display: flex;
+  justify-content: space-between;
+  padding: 2%;
+  flex-wrap: wrap;
+}

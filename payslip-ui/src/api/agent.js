@@ -1,6 +1,7 @@
 import axios from 'axios';
-axios.defaults.baseURL = 'https://api.devcompiler.in/api';
-// axios.defaults.baseURL = 'http://localhost:5000/api';
+// axios.defaults.baseURL = 'https://api.devcompiler.in/api';
+axios.defaults.baseURL = 'http://localhost:5000/api';
+const imagesUrl = 'https://picsum.photos/v2/list';
 const responseBody = (response) => response.data;
 
 const sleep = (ms) => (response) =>
@@ -15,6 +16,7 @@ const request = {
 
 const Users = {
   list: () => request.post('/employee/getListEmp'),
+  images: () => request.get(imagesUrl),
   statList: () => request.post('/employee/designationCount'),
   details: (id) => request.post(`/employee/getEmpId/${id}/`),
   create: (employee) => request.post('/employee/createEmp', employee),

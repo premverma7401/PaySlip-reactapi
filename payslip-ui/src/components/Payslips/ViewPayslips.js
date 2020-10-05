@@ -4,6 +4,7 @@ import './ViewPayslips.css';
 import { Col, Collapsible, CollapsibleItem, Row } from 'react-materialize';
 import agent from '../../api/agent';
 import UserSelect from '../../common/CustomSelect/UserSelect';
+import { Button } from 'semantic-ui-react';
 
 const ViewPayslips = ({ match }) => {
   const [payslipsList, setPayslipsList] = useState([]);
@@ -22,7 +23,7 @@ const ViewPayslips = ({ match }) => {
     <div>
       <Navbar title="View Payslips" />
       <div className="main">
-        <Row className="view-ps-header">
+        <Row className="payslip-inputs">
           <Col>
             <UserSelect onChange={(e) => getPayslip(e.target.value)} />
           </Col>
@@ -43,17 +44,38 @@ const ViewPayslips = ({ match }) => {
                     <Col l={6}>Total Earning: {ps.totalEarning}</Col>
                   </Row>
                   <Row>
-                    <Col l={6}>Total Overtime Earning:{ps.overtimeEarning}</Col>
                     <Col l={6}>Total Overtime Hours:{ps.overtimeHours}</Col>
+                    <Col l={6}>Total Overtime Earning:{ps.overtimeEarning}</Col>
+                  </Row>
+                  <Row>
+                    <Col l={6}>
+                      Total Contracted Hours : {ps.contractedHours}
+                    </Col>
+                    <Col l={6}>
+                      Total Contracted Earning : {ps.contractedEarning}
+                    </Col>
                   </Row>
                   <Row>
                     <Col l={6}>Total Deduction : {ps.totalDeduction}</Col>
                   </Row>
+                  <Button
+                    primary
+                    floated="right"
+                    compact
+                    circular
+                    onClick={() => {
+                      alert('Feature coming soon');
+                    }}
+                  >
+                    Download
+                  </Button>
                 </CollapsibleItem>
               ))}
             </Collapsible>
           ) : (
-            <div style={{ marginLeft: '2em' }}>Please select employee:</div>
+            <div style={{ marginLeft: '2em' }}>
+              No Payslip to display, Select Employee
+            </div>
           )}
         </Row>
       </div>

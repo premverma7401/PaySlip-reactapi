@@ -13,12 +13,13 @@ namespace Domain.models.employee
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string ImageUrl { get; set; }
+        //public IFormFile ImageUrl { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
         public string Designation { get; set; }
         public string ReportingManager { get; set; }
-
+        public string ImageName { get; set; }
+        //public IFormFile ImageFile { get; set; }
         public List<Payslip> PayRecord { get; set; }
 
         // Foreign key to define 1 to 1 relation

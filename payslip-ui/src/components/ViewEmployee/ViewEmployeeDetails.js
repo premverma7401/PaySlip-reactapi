@@ -37,6 +37,13 @@ const ViewEmployeeDetails = ({ match }) => {
         <div className="personal-info">
           <InfotabComponent text="PERSONAL INFORMATION" />
           <div>
+            <img
+              className="image-details"
+              src={selectedUser.imageName || '/user.png'}
+              alt="image"
+            />
+          </div>
+          <div>
             <p>Employee Id : {selectedUser.empId}</p>
             <p>Username : {selectedUser.username}</p>
             <p>

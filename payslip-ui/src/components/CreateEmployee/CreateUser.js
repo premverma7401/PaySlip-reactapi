@@ -6,27 +6,31 @@ import InfotabComponent from '../../common/InfotabComponent';
 import LoadingProgress from '../../common/LoadingProgress';
 import Navbar from '../Navbar';
 import './CreateEmployee.css';
+import { randomDate, getRandomNumberBetween } from '../../helper/RandomData.js';
 
 const CreateUser = () => {
   const [loading, setLoading] = useState(false);
   const [createdSuccess, setCreatedSuccess] = useState(false);
-
+  const defaultImage = '/user.png';
   const [employee, setEmployee] = useState({
     username: '',
     firstName: '',
     ird: '',
     lastName: '',
     email: '',
-    contact: '',
-    dob: '',
+    phone: '',
+    dateOfBirth: '',
     city: '',
     designation: '',
     contractHours: '',
-    payPerHour: '',
+    perHourPay: '',
     overtimeRate: '',
     kiwiSaver: '',
     union: true,
     contractType: 0,
+    reportingManager: '',
+    imageName: defaultImage,
+    imageFile: null,
   });
   const resetData = {
     username: '',
@@ -34,45 +38,31 @@ const CreateUser = () => {
     ird: '',
     lastName: '',
     email: '',
-    contact: '',
-    dob: '',
+    phone: '',
+    dateOfBirth: '',
     city: '',
     designation: '',
     contractHours: '',
-    payPerHour: '',
+    perHourPay: '',
     overtimeRate: '',
     kiwiSaver: '',
     union: true,
     contractType: '',
     reportingManager: '',
+    imageName: '',
+    imageFile: null,
   };
-
   const handleChange = (e) => {
     const newEmp = { ...employee };
     newEmp[e.target.name] = e.target.value;
     newEmp.union = newEmp.union === '1' ? true : false;
     newEmp.contractHours = Number.parseFloat(newEmp.contractHours);
-    newEmp.payPerHour = Number.parseFloat(newEmp.payPerHour);
+    newEmp.perHourPay = Number.parseFloat(newEmp.perHourPay);
     newEmp.overtimeRate = Number.parseFloat(newEmp.overtimeRate);
     newEmp.kiwiSaver = Number.parseFloat(newEmp.kiwiSaver);
+    console.log(newEmp);
     setEmployee(newEmp);
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-    agent.Users.create(employee);
-    setEmployee(resetData);
-    setLoading(false);
-    setCreatedSuccess(true);
-  };
-  function getRandomNumberBetween(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-  function randomDate(start, end) {
-    return new Date(
-      start.getTime() + Math.random() * (end.getTime() - start.getTime())
-    );
-  }
 
   const handleSample = () => {
     let sampleData = {
@@ -81,24 +71,73 @@ const CreateUser = () => {
       ird: '3232-323-1',
       lastName: '',
       email: 'psv@gmail.com',
-      contact: '0245-555-56856',
-      dob: randomDate(new Date(1970, 0, 1), new Date(2004, 0, 1))
+      phone: '0245-555-56856',
+      dateOfBirth: randomDate(new Date(1970, 0, 1), new Date(2004, 0, 1))
         .toISOString()
         .split('T')[0],
       city: 'Auckland',
       designation: 'Software Developer',
       contractHours: getRandomNumberBetween(30, 70),
-      payPerHour: getRandomNumberBetween(18.9, 100),
+      perHourPay: getRandomNumberBetween(18.9, 100),
       overtimeRate: getRandomNumberBetween(1.5, 3),
       kiwiSaver: getRandomNumberBetween(3, 8),
       union: 1,
       contractType: 'Full Time',
       reportingManager: 'Sam Mattos',
+      imageName: defaultImage,
+      imageFile: null,
     };
     setEmployee(sampleData);
   };
   const handleReset = () => {
     setEmployee(resetData);
+  };
+  const showPreview = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      let imageFile = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = (x) => {
+        setEmployee({
+          ...employee,
+          imageFile: imageFile,
+          imageName: x.target.result,
+        });
+      };
+      reader.readAsDataURL(imageFile);
+    } else {
+      setEmployee({
+        ...employee,
+        imageFile: null,
+        imageName: defaultImage,
+      });
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('username', employee.username);
+    formData.append('ird', employee.ird);
+    formData.append('reportingManager', employee.reportingManager);
+    formData.append('firstName', employee.firstName);
+    formData.append('lastName', employee.lastName);
+    formData.append('phone', employee.phone);
+    formData.append('designation', employee.designation);
+    formData.append('email', employee.email);
+    formData.append('dateOfBirth', employee.dateOfBirth);
+    formData.append('city', employee.city);
+    formData.append('contractHours', employee.contractHours);
+    formData.append('perHourPay', employee.perHourPay);
+    formData.append('overtimeRate', employee.overtimeRate);
+    formData.append('kiwiSaver', employee.kiwiSaver);
+    formData.append('contractType', employee.contractType);
+    formData.append('union', employee.union);
+    formData.append('imageFile', employee.imageFile);
+    formData.append('imageName', employee.imageName);
+    agent.Users.create(formData);
+    setEmployee(resetData);
+
+    setCreatedSuccess(true);
   };
   if (loading) return <LoadingProgress />;
   if (createdSuccess)
@@ -115,6 +154,21 @@ const CreateUser = () => {
       <div className="main">
         <InfotabComponent text="Personal Information" />
         <form className="ui-wrapper" autoComplete="off">
+          <Row>
+            <Col className="image-setter">
+              <img
+                className="image-size"
+                src={employee.imageName}
+                alt="userimage"
+              />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={showPreview}
+                name="imageFile"
+              />
+            </Col>
+          </Row>
           <Row>
             <Col s={12} l={4}>
               <CustomInput
@@ -137,20 +191,9 @@ const CreateUser = () => {
                 label="Manager Name"
                 value={employee.reportingManager}
                 onChange={(e) => handleChange(e)}
-                name="ird"
+                name="reportingManager"
               />
             </Col>
-            {/* <Col s={12} l={4}>
-              <CustomInput
-                id="file-upload"
-                type="file"
-                name="imageUrl"
-                label="Upload"
-                //   onChange={(e) =>
-                //     formProps.setFieldValue('imageUrl', e.target.files[0])
-                //   }
-              />
-            </Col> */}
           </Row>
           <Row>
             <Col s={12} l={4}>
@@ -172,13 +215,12 @@ const CreateUser = () => {
             <Col s={12} l={4}>
               <CustomInput
                 label="Contact No."
-                value={employee.contact}
+                value={employee.phone}
                 onChange={(e) => handleChange(e)}
-                name="contact"
+                name="phone"
               />
             </Col>
           </Row>
-
           <Row>
             <Col s={12} l={4}>
               <CustomInput
@@ -199,9 +241,9 @@ const CreateUser = () => {
             <Col s={12} l={4}>
               <CustomInput
                 type="date"
-                name="dob"
+                name="dateOfBirth"
                 label="Date Of Birth"
-                value={employee.dob}
+                value={employee.dateOfBirth}
                 onChange={(e) => handleChange(e)}
               />
             </Col>
@@ -232,15 +274,14 @@ const CreateUser = () => {
               <CustomInput
                 label="Pay Per Hour"
                 type="number"
-                value={employee.payPerHour}
+                value={employee.perHourPay}
                 onChange={(e) => handleChange(e)}
-                name="payPerHour"
+                name="perHourPay"
               />
             </Col>
             <Col s={12} l={4}>
               <CustomInput
                 label="Overtime Rate"
-                type="number"
                 value={employee.overtimeRate}
                 onChange={(e) => handleChange(e)}
                 name="overtimeRate"

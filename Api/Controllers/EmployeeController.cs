@@ -34,7 +34,7 @@ namespace Api.Controllers
         [HttpPost]
         [Route("createEmp")]
 
-        public IActionResult AddEmployee(EmployeeCreateDTO employee)
+        public IActionResult AddEmployee([FromForm]EmployeeCreateDTO employee)
         {
             return Ok(_user.CreateEmployee(employee));
         }

@@ -93,7 +93,7 @@ namespace Service.Implimentation
                 OvertimeEarning = e.OvertimeEarning,
                 TotalDeduction = e.TotalDeduction,
                 InHandPay = e.InHandPay,
-                CreatedAtstr = DateTime.Now.ToString("dddd, dd MMMM yyyy")
+                CreatedAtstr = e.CreatedAtstr
             }).ToList();
 
         }
@@ -117,7 +117,7 @@ namespace Service.Implimentation
                 OvertimeEarning = e.OvertimeEarning,
                 TotalDeduction = e.TotalDeduction,
                 InHandPay = e.InHandPay,
-                CreatedAtstr = DateTime.Now.ToString("dddd, dd MMMM yyyy")
+                CreatedAtstr = e.CreatedAtstr
 
             }).FirstOrDefault();
         }
@@ -176,19 +176,19 @@ namespace Service.Implimentation
 
         public List<PayHistoryDTO> GetPaySummaryForAll()
         {
-            
+
             var emp = _context.Employees.ToList();
             var dto = (from a in _context.Payslips.ToList()
-            join e in emp on a.EmpId equals e.EmpId
+                       join e in emp on a.EmpId equals e.EmpId
                        group a by new { a.EmpId } into pd
                        select new PayHistoryDTO()
                        {
                            EmpId = pd.FirstOrDefault().EmpId,
                            TotalDeductionFar = pd.Sum(m => m.TotalDeduction),
-                           TotalEarningSoFar = pd.Sum(x=>x.TotalEarning),
-                           TotalIHPSoFar = pd.Sum(x=>x.TotalHours),
-                           TotalHoursSoFar = pd.Sum(x=>x.TotalHours),
-                           TotalOTHSoFar = pd.Sum(x=>x.OvertimeHours)
+                           TotalEarningSoFar = pd.Sum(x => x.TotalEarning),
+                           TotalIHPSoFar = pd.Sum(x => x.InHandPay),
+                           TotalHoursSoFar = pd.Sum(x => x.TotalHours),
+                           TotalOTHSoFar = pd.Sum(x => x.OvertimeHours)
                        }
             ).ToList();
             dto.AsParallel().ForAll(q => q.FirstName = emp.Where(x => x.EmpId == q.EmpId).Select(q => q.FirstName).FirstOrDefault());

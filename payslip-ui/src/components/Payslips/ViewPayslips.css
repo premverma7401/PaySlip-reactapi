@@ -1,8 +1,9 @@
 .payslip-inputs {
   display: flex;
-  justify-content: space-around;
   /* height: 20vh; */
   margin-top: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 .view-ps-header {
   display: flex;
@@ -11,6 +12,9 @@
 ul.collapsible {
   margin: 0 auto;
   width: 65%;
+}
+button.ui.circular.compact.primary.right.floated.button {
+  margin: -2%;
 }
 
 .payslip-inputs input:focus,

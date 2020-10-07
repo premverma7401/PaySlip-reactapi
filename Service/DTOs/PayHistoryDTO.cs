@@ -11,5 +11,6 @@ namespace Service.DTOs
         public decimal TotalIHPSoFar { get; set; }
         public decimal TotalHoursSoFar { get; set; }
         public decimal TotalOTHSoFar { get; set; }
+        public string ImageName { get; set; }
     }
 }

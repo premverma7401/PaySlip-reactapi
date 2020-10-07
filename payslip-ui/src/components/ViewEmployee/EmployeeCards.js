@@ -11,7 +11,8 @@ const EmployeeCards = ({ users }) => {
             <Image
               floated="right"
               size="mini"
-              src="../../../public/premsager.jpg"
+              src={user.imageName || '/user.png'}
+              rounded
             />
             <Card.Header>
               {user.firstName} {user.lastName}
@@ -39,14 +40,17 @@ const EmployeeCards = ({ users }) => {
             </div>
           </Card.Content>
           <Card.Content extra>
-            <div className="ui two buttons">
-              <Button basic color="green">
-                <NavLink to={'/createpay'}>Create Payslip</NavLink>
-              </Button>
-              <Button basic color="red">
-                <NavLink to={`/viewemp/${user.empId}`}>View Details</NavLink>
-              </Button>
-            </div>
+            <NavLink to={'/createpay'}>
+              <Button basic color="green" content="Create Payslip"></Button>
+            </NavLink>
+            <NavLink to={`/viewemp/${user.empId}`}>
+              <Button
+                floated="right"
+                basic
+                color="red"
+                content="View Details"
+              ></Button>
+            </NavLink>
           </Card.Content>
         </Card>
       ))}

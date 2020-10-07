@@ -39,3 +39,8 @@
 .address-bar {
   width: 60vw !important;
 }
+.image-details {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}

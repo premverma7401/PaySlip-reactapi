@@ -3,7 +3,7 @@ import { Table } from 'react-materialize';
 import agent from '../../api/agent';
 import LoadingProgress from '../../common/LoadingProgress';
 import Navbar from '../Navbar';
-
+import './payRecord.css';
 const PayRecords = () => {
   const [payRecords, setPayRecords] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,6 +30,7 @@ const PayRecords = () => {
         <Table hoverable responsive striped style={{ marginLeft: '2em' }}>
           <thead>
             <tr>
+              <th>Image</th>
               <th>Employee Name</th>
               <th>Total Earning</th>
               <th>Total Deduction</th>
@@ -42,6 +43,13 @@ const PayRecords = () => {
             {payRecords &&
               payRecords.map((pay) => (
                 <tr key={pay.empId}>
+                  <td>
+                    <img
+                      className="user-pay-img"
+                      src={pay.imageName || '/user.png'}
+                      alt="user"
+                    />
+                  </td>
                   <td>{pay.firstName}</td>
                   <td>${pay.totalEarningSoFar}</td>
                   <td>${pay.totalDeductionFar}</td>

@@ -35,7 +35,7 @@ namespace Service.Implimentation
                 empId = e.EmpId,
                 FirstName = e.FirstName,
                 LastName = e.LastName,
-                ImageUrl = e.ImageUrl,
+                ImageName = e.ImageName,
                 Email = e.Email,
                 Username = e.Username,
                 ContractHours = e.EmployeeContract.ContractHours,
@@ -68,7 +68,9 @@ namespace Service.Implimentation
             {
                 FirstName = employee.FirstName,
                 LastName = employee.LastName,
-                // ImageUrl = employee.ImageUrl,
+                ImageName = employee.ImageName,
+                //Im = employee.ImageUrl,
+                ReportingManager=employee.ReportingManager,
                 Email = employee.Email,
                 Username = employee.Username,
                 Designation = employee.Designation,
@@ -93,16 +95,16 @@ namespace Service.Implimentation
                 },
                 CreatedAt = DateTime.Now,
             };
-            if (employee.ImageUrl != null && employee.ImageUrl.Length > 0)
+            if (employee.ImageFile != null && employee.ImageFile.Length > 0)
             {
                 var uploadFol = @"images/Employee";
-                var fileName = Path.GetFileNameWithoutExtension(employee.ImageUrl.FileName);
-                var extension = Path.GetExtension(employee.ImageUrl.FileName);
+                var fileName = Path.GetFileNameWithoutExtension(employee.ImageFile.FileName);
+                var extension = Path.GetExtension(employee.ImageFile.FileName);
                 var webRootPath = _hostingenvironment.WebRootPath;
                 fileName = DateTime.UtcNow.ToString("yymmssfff") + fileName + extension;
                 var path = Path.Combine(webRootPath, uploadFol, fileName);
-                employee.ImageUrl.CopyTo(new FileStream(path, FileMode.Create));
-                emp.ImageUrl = "/" + uploadFol + "/" + fileName;
+                employee.ImageFile.CopyTo(new FileStream(path, FileMode.Create));
+                emp.ImageName = "/" + uploadFol + "/" + fileName;
 
             }
             _context.Add(emp);

@@ -69,3 +69,13 @@
   display: flex;
   align-self: center;
 }
+.image-setter {
+  display: flex;
+  flex-direction: column;
+}
+.image-size {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}

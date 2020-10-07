@@ -12,13 +12,15 @@ namespace Service.DTOs
         public string LastName { get; set; }
         [ContextTypeValidator(ContentTypeGroup.Image)]
         [FileSizeValidator(4)]
-        public IFormFile ImageUrl { get; set; }
+        public IFormFile ImageFile { get; set; }
+        public string ImageName { get; set; }
         public string Email { get; set; }
         public string Username { get; set; }
         public string Designation { get; set; }
         public DateTime DateOfBirth { get; set; }
         public int Age { get; set; }
         public string Phone { get; set; }
+        public string ReportingManager { get; set; }
         public string IRD { get; set; }
         public string City { get; set; }
         public decimal ContractHours { get; set; }

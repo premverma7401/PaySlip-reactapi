@@ -16,7 +16,8 @@ const UserSelect = ({ onChange }) => {
         <option value="">Select Employee</option>
         {users.map((user) => (
           <option key={user.empId} value={user.empId} name={user.empId}>
-            {user.firstName} {user.lastName}
+            {user.firstName}
+            {user.lastName}
           </option>
         ))}
       </select>

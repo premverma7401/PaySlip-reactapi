@@ -22,7 +22,7 @@ namespace Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            services.AddDbContext<DataContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Server")));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPayslipRepository, PayslipRepository>();
             services.AddTransient<SendEmail>();

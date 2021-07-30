@@ -1,37 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dev\\payslip-react\\Api\\Api.csproj": {}
+    "/Users/prem/PaySlip-reactapi/Api/Api.csproj": {}
   },
   "projects": {
-    "C:\\dev\\payslip-react\\Api\\Api.csproj": {
+    "/Users/prem/PaySlip-reactapi/Api/Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\payslip-react\\Api\\Api.csproj",
+        "projectUniqueName": "/Users/prem/PaySlip-reactapi/Api/Api.csproj",
         "projectName": "Api",
-        "projectPath": "C:\\dev\\payslip-react\\Api\\Api.csproj",
-        "packagesPath": "C:\\Users\\Prem\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\payslip-react\\Api\\obj\\",
+        "projectPath": "/Users/prem/PaySlip-reactapi/Api/Api.csproj",
+        "packagesPath": "/Users/prem/.nuget/packages/",
+        "outputPath": "/Users/prem/PaySlip-reactapi/Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/prem/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj"
+              "/Users/prem/PaySlip-reactapi/Persistence/Persistence.csproj": {
+                "projectPath": "/Users/prem/PaySlip-reactapi/Persistence/Persistence.csproj"
               },
-              "C:\\dev\\payslip-react\\Service\\Service.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Service\\Service.csproj"
+              "/Users/prem/PaySlip-reactapi/Service/Service.csproj": {
+                "projectPath": "/Users/prem/PaySlip-reactapi/Service/Service.csproj"
               }
             }
           }
@@ -43,7 +42,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.AspNetCore.Cors": {
               "target": "Package",
@@ -80,32 +80,31 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\dev\\payslip-react\\Domain\\Domain.csproj": {
+    "/Users/prem/PaySlip-reactapi/Domain/Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\payslip-react\\Domain\\Domain.csproj",
+        "projectUniqueName": "/Users/prem/PaySlip-reactapi/Domain/Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\dev\\payslip-react\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Prem\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\payslip-react\\Domain\\obj\\",
+        "projectPath": "/Users/prem/PaySlip-reactapi/Domain/Domain.csproj",
+        "packagesPath": "/Users/prem/.nuget/packages/",
+        "outputPath": "/Users/prem/PaySlip-reactapi/Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/prem/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {}
           }
         },
@@ -116,7 +115,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.AspNetCore.Http.Features": {
               "target": "Package",
@@ -138,35 +138,34 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj": {
+    "/Users/prem/PaySlip-reactapi/Persistence/Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj",
+        "projectUniqueName": "/Users/prem/PaySlip-reactapi/Persistence/Persistence.csproj",
         "projectName": "Persistence",
-        "projectPath": "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj",
-        "packagesPath": "C:\\Users\\Prem\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\payslip-react\\Persistence\\obj\\",
+        "projectPath": "/Users/prem/PaySlip-reactapi/Persistence/Persistence.csproj",
+        "packagesPath": "/Users/prem/.nuget/packages/",
+        "outputPath": "/Users/prem/PaySlip-reactapi/Persistence/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/prem/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\dev\\payslip-react\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Domain\\Domain.csproj"
+              "/Users/prem/PaySlip-reactapi/Domain/Domain.csproj": {
+                "projectPath": "/Users/prem/PaySlip-reactapi/Domain/Domain.csproj"
               }
             }
           }
@@ -178,7 +177,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -208,38 +208,37 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\dev\\payslip-react\\Service\\Service.csproj": {
+    "/Users/prem/PaySlip-reactapi/Service/Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dev\\payslip-react\\Service\\Service.csproj",
+        "projectUniqueName": "/Users/prem/PaySlip-reactapi/Service/Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\dev\\payslip-react\\Service\\Service.csproj",
-        "packagesPath": "C:\\Users\\Prem\\.nuget\\packages\\",
-        "outputPath": "C:\\dev\\payslip-react\\Service\\obj\\",
+        "projectPath": "/Users/prem/PaySlip-reactapi/Service/Service.csproj",
+        "packagesPath": "/Users/prem/.nuget/packages/",
+        "outputPath": "/Users/prem/PaySlip-reactapi/Service/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Prem\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/prem/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "net5.0": {
+            "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\dev\\payslip-react\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Domain\\Domain.csproj"
+              "/Users/prem/PaySlip-reactapi/Domain/Domain.csproj": {
+                "projectPath": "/Users/prem/PaySlip-reactapi/Domain/Domain.csproj"
               },
-              "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj": {
-                "projectPath": "C:\\dev\\payslip-react\\Persistence\\Persistence.csproj"
+              "/Users/prem/PaySlip-reactapi/Persistence/Persistence.csproj": {
+                "projectPath": "/Users/prem/PaySlip-reactapi/Persistence/Persistence.csproj"
               }
             }
           }
@@ -251,7 +250,8 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "net5.0": {
+          "targetAlias": "net5.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -288,7 +288,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.302/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="IIS Web Application Name" description="" value="api.devcompiler.in" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\dev\\payslip-react\\Api\\obj\\Release\\netcoreapp3\.1\\PubTmp\\Out\\$" />
-  </parameter>
-  <parameter name="Persistence.DataContext" description="" value="data source= plesk4300.is.cc;initial catalog=payslip7401_;persist security info=False;user id=payslip;password=Sager@7401;" tags="dbfullsql">
-    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\dev\\payslip-react\\Api\\obj\\Release\\netcoreapp3\.1\\PubTmp\\EFSQLScripts\\Persistence\.DataContext\.sql$" />
-  </parameter>
-</parameters>
